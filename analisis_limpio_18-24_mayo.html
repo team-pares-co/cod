@@ -6,84 +6,85 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0a0c10;--s1:#111418;--s2:#181c22;--bd:#252b34;
-  --ac:#00e5a0;--a2:#ff6b35;--a3:#4da6ff;--wn:#ffcc00;--dn:#ff3d5a;
+  --ac:#00e5a0;--a3:#4da6ff;--wn:#ffcc00;--dn:#ff3d5a;--or:#ff6b35;
   --tx:#e8ecf0;--mt:#6b7685;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--tx);font-family:'Syne',sans-serif;min-height:100vh;line-height:1.5;}
-.mono{font-family:'JetBrains Mono',monospace;}
-/* HEADER */
 header{background:var(--s1);border-bottom:1px solid var(--bd);padding:1.75rem 2.5rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;}
-.h-brand{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ac);margin-bottom:.3rem;}
+.hbr{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ac);margin-bottom:.3rem;}
 header h1{font-size:1.65rem;font-weight:800;line-height:1.1;}
-.h-badge{background:var(--ac);color:var(--bg);font-family:'JetBrains Mono',monospace;font-size:.73rem;font-weight:700;padding:.4rem .9rem;border-radius:4px;white-space:nowrap;}
-.h-note{font-size:.72rem;color:var(--mt);background:rgba(77,166,255,.07);border:1px solid rgba(77,166,255,.18);border-radius:6px;padding:.65rem 1rem;margin-top:.75rem;line-height:1.5;}
-.h-note strong{color:var(--a3);}
-/* LAYOUT */
+.hbg{background:var(--ac);color:var(--bg);font-family:'JetBrains Mono',monospace;font-size:.73rem;font-weight:700;padding:.4rem .9rem;border-radius:4px;}
+.hn2{font-size:.72rem;color:var(--mt);background:rgba(77,166,255,.06);border:1px solid rgba(77,166,255,.16);border-radius:6px;padding:.65rem 1rem;margin-top:.75rem;line-height:1.5;}
+.hn2 strong{color:var(--a3);}
 main{padding:2rem 2.5rem;max-width:1400px;margin:0 auto;}
 section{margin-bottom:2.75rem;}
 .st{font-size:.67rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem;}
 .st::after{content:'';flex:1;height:1px;background:var(--bd);}
-.st.port{color:var(--a3);}
-/* CARDS */
+.st.p{color:var(--a3);}
 .cards{display:grid;gap:1rem;}
 .c4{grid-template-columns:repeat(4,1fr);}.c3{grid-template-columns:repeat(3,1fr);}.c2{grid-template-columns:repeat(2,1fr);}
 .card{background:var(--s1);border:1px solid var(--bd);border-radius:8px;padding:1.1rem 1.4rem;}
-.card.ac{border-color:var(--ac);}.card.dn{border-color:var(--dn);}.card.wn{border-color:var(--wn);}.card.bl{border-color:var(--a3);}
+.card.ac{border-color:var(--ac);}.card.bl{border-color:var(--a3);}.card.wn{border-color:var(--wn);}
 .cl{font-size:.62rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--mt);margin-bottom:.35rem;}
 .cv{font-family:'JetBrains Mono',monospace;font-size:1.65rem;font-weight:700;line-height:1;}
 .cs{font-size:.72rem;color:var(--mt);margin-top:.3rem;font-family:'JetBrains Mono',monospace;}
 .g{color:#00e5a0}.r{color:#ff3d5a}.b{color:#4da6ff}.w{color:#ffcc00}.o{color:#ff6b35}
-/* MKT BLOCK */
 .mkt{background:var(--s1);border:1px solid var(--bd);border-radius:8px;overflow:hidden;}
 .mh{padding:.65rem 1.2rem;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;}
-.mh.esp{background:rgba(0,229,160,.07);color:var(--ac);border-bottom:1px solid rgba(0,229,160,.15);}
-.mh.port{background:rgba(77,166,255,.07);color:var(--a3);border-bottom:1px solid rgba(77,166,255,.15);}
-.mgrid{display:grid;grid-template-columns:repeat(3,1fr);}
+.mh.e{background:rgba(0,229,160,.07);color:var(--ac);border-bottom:1px solid rgba(0,229,160,.15);}
+.mh.p{background:rgba(77,166,255,.07);color:var(--a3);border-bottom:1px solid rgba(77,166,255,.15);}
+.mgd{display:grid;grid-template-columns:repeat(3,1fr);}
 .mk{padding:.9rem 1.1rem;border-right:1px solid var(--bd);border-bottom:1px solid var(--bd);}
 .mk:nth-child(3n){border-right:none;}.mk:nth-last-child(-n+3){border-bottom:none;}
 .mk .l{font-size:.61rem;color:var(--mt);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem;}
 .mk .v{font-family:'JetBrains Mono',monospace;font-size:1.05rem;font-weight:700;}
-/* PLATFORM */
-.pg{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.pg2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
 .pc{background:var(--s1);border:1px solid var(--bd);border-radius:8px;overflow:hidden;}
 .ph{padding:.65rem 1.1rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--bd);}
 .pfb .ph{background:rgba(66,103,178,.1);}.ptk .ph{background:rgba(255,0,80,.07);}
 .pn{font-weight:800;font-size:.95rem;}.pfb .pn{color:#7ba3f5}.ptk .pn{color:#ff6699}
-.pb2{display:grid;grid-template-columns:repeat(3,1fr);}
+.pb{display:grid;grid-template-columns:repeat(3,1fr);}
 .pk{padding:.85rem 1rem;border-right:1px solid var(--bd);}.pk:last-child{border-right:none;}
 .pk .l{font-size:.6rem;color:var(--mt);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem;}
 .pk .v{font-family:'JetBrains Mono',monospace;font-size:1rem;font-weight:700;}
-/* NICHO BARS */
 .nbg{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
 .nb{background:var(--s1);border:1px solid var(--bd);border-radius:8px;padding:1.2rem 1.4rem;}
-.nbt{font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;color:var(--mt);margin-bottom:.9rem;font-weight:600;display:flex;justify-content:space-between;align-items:center;}
+.nbt{font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;color:var(--mt);margin-bottom:.9rem;font-weight:600;display:flex;justify-content:space-between;}
 .nleg{font-size:.58rem;display:flex;gap:.6rem;}
 .nr{display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem;}
 .ni{min-width:175px;display:flex;flex-direction:column;gap:.1rem;}
-.nl{font-size:.76rem;font-weight:600;}
-.nm2{font-size:.6rem;color:var(--mt);font-family:'JetBrains Mono',monospace;}
+.nl{font-size:.76rem;font-weight:600;}.nm2{font-size:.6rem;color:var(--mt);font-family:'JetBrains Mono',monospace;}
 .nt{flex:1;height:8px;background:var(--s2);border-radius:4px;overflow:hidden;min-width:40px;}
 .nf{height:100%;border-radius:4px;}
 .nfg{background:linear-gradient(90deg,#00e5a0,#00b87a);}.nfr{background:linear-gradient(90deg,#ff3d5a,#cc0033);}
 .nv{display:flex;gap:.6rem;align-items:center;min-width:155px;justify-content:flex-end;}
 .np{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;min-width:68px;text-align:right;}
 .npp{font-family:'JetBrains Mono',monospace;font-size:.7rem;min-width:70px;text-align:right;}
-/* TABLE */
 .tw{overflow-x:auto;border-radius:8px;border:1px solid var(--bd);}
 table{width:100%;border-collapse:collapse;font-size:.8rem;}
 thead th{background:var(--s2);padding:.65rem 1rem;text-align:left;font-size:.61rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mt);font-weight:600;white-space:nowrap;border-bottom:1px solid var(--bd);}
 tbody tr{border-bottom:1px solid var(--bd);}tbody tr:last-child{border-bottom:none;}tbody tr:hover{background:var(--s2);}
 td{padding:.6rem 1rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;white-space:nowrap;}
 td.nm{font-family:'Syne',sans-serif;font-size:.8rem;font-weight:600;}
-td.pg{color:#00e5a0;font-weight:700;}td.pr{color:#ff3d5a;font-weight:700;}td.pw{color:#ffcc00;}td.pb{color:#4da6ff;}td.po{color:#ff6b35;}
+td.pg{color:#00e5a0;font-weight:700;}td.pr{color:#ff3d5a;font-weight:700;}td.pw{color:#ffcc00;}td.pb2{color:#4da6ff;}
 .rk{display:inline-flex;width:20px;height:20px;border-radius:3px;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;background:var(--s2);color:var(--mt);margin-right:.35rem;}
 .rk.gd{background:rgba(255,204,0,.15);color:#ffcc00}.rk.sv{background:rgba(200,200,200,.1);color:#aaa}.rk.bz{background:rgba(255,107,53,.1);color:#ff6b35}
-tr.hp td{background:rgba(0,229,160,.03);}tr.hn td{background:rgba(255,61,90,.03);}tr.hw td{background:rgba(255,107,53,.03);}
+tr.hp td{background:rgba(0,229,160,.025);}tr.hn td{background:rgba(255,61,90,.025);}tr.hw td{background:rgba(255,107,53,.025);}
 .tag{display:inline-block;padding:.18rem .45rem;border-radius:3px;font-size:.62rem;font-weight:700;font-family:'JetBrains Mono',monospace;}
 .tfb{background:rgba(66,103,178,.18);color:#7ba3f5}.ttk{background:rgba(255,0,80,.13);color:#ff6699}
 .tac{background:rgba(0,229,160,.12);color:#00e5a0}.tdn{background:rgba(255,61,90,.12);color:#ff3d5a}
 .twn{background:rgba(255,204,0,.12);color:#ffcc00}.tbl{background:rgba(77,166,255,.12);color:#4da6ff}
-/* ALERT */
+/* Estado badge */
+.act{display:inline-flex;align-items:center;gap:.25rem;padding:.18rem .45rem;border-radius:3px;font-size:.62rem;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.act-on{background:rgba(0,229,160,.1);color:#00e5a0;border:1px solid rgba(0,229,160,.2);}
+.act-off{background:rgba(255,204,0,.08);color:#ffcc00;border:1px solid rgba(255,204,0,.18);}
+/* Accion badge */
+.acc{display:inline-block;padding:.18rem .5rem;border-radius:3px;font-size:.62rem;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.acc-scale{background:rgba(0,229,160,.12);color:#00e5a0;}
+.acc-pause{background:rgba(255,61,90,.14);color:#ff3d5a;}
+.acc-react{background:rgba(77,166,255,.12);color:#4da6ff;}
+.acc-watch{background:rgba(255,204,0,.1);color:#ffcc00;}
+.acc-ok{background:rgba(100,100,100,.12);color:#888;}
 .al{background:var(--s1);border-radius:8px;padding:.9rem 1.1rem;display:flex;gap:.85rem;align-items:flex-start;border-left:3px solid transparent;margin-bottom:.65rem;}
 .al.dn{border-color:var(--dn);background:rgba(255,61,90,.05);}
 .al.wn{border-color:var(--wn);background:rgba(255,204,0,.05);}
@@ -93,7 +94,6 @@ tr.hp td{background:rgba(0,229,160,.03);}tr.hn td{background:rgba(255,61,90,.03)
 .ab .at{font-weight:700;font-size:.82rem;margin-bottom:.2rem;}
 .al.dn .at{color:var(--dn)}.al.wn .at{color:var(--wn)}.al.in .at{color:var(--a3)}.al.sc .at{color:var(--ac)}
 .ab p{font-size:.77rem;color:var(--mt);line-height:1.5;}
-/* FOOTER */
 footer{margin:1.5rem 2.5rem 2.5rem;padding:1.25rem 1.5rem;background:var(--s1);border:1px solid var(--bd);border-radius:8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;}
 footer p{font-size:.72rem;color:var(--mt);}
 .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ac);margin-right:.35rem;animation:pulse 2s infinite;}
@@ -103,441 +103,474 @@ footer p{font-size:.72rem;color:var(--mt);}
 <body>
 <header>
   <div>
-    <div class="h-brand">Pares &amp; Co — COD Analytics · Datos Verificados</div>
-    <h1>Análisis Semanal — Productos Activos</h1>
-    <div class="h-note">
-      <strong>Filtros aplicados:</strong>
+    <div class="hbr">Pares &amp; Co — COD Analytics · Datos Verificados</div>
+    <h1>Análisis Semanal 18–24 Mayo 2025</h1>
+    <div class="hn2">
+      <strong>Filtros de calidad aplicados:</strong>
       (1) Solo productos con datos completos — sin campos críticos ausentes.
-      (2) Solo productos <strong>activos actualmente en campaña</strong> (cruzado con hoja ACTIVOS ACTUALMENTE).
-      (3) Testeos sin conversión excluidos — tienen reporte propio para el equipo de MB.
+      (2) Testeos sin conversión excluidos — tienen reporte propio para MB.
+      Estado <strong>ACTIVO / PAUSADO</strong> visible en productos <strong>FB</strong> como contexto para recomendaciones. Productos <strong>TK</strong>: estado no disponible (sin hoja de activos para TikTok).
     </div>
   </div>
-  <div class="h-badge">18–24 MAYO 2025</div>
+  <div class="hbg">18–24 MAYO 2025</div>
 </header>
 <main>
 
-<!-- KPIs GLOBALES -->
+<!-- KPIs -->
 <section>
-<div class="st">Resumen Ejecutivo — Productos Activos Verificados</div>
+<div class="st">Resumen Ejecutivo — Todos los Productos Verificados</div>
 <div class="cards c2" style="margin-bottom:1.25rem;">
   <div class="mkt">
-    <div class="mh esp"><span>🇪🇸 España · 60 productos activos verificados</span><span style="font-size:.62rem;opacity:.7">de 171 completos · 111 inactivos excluidos</span></div>
-    <div class="mgrid">
-      <div class="mk"><div class="l">Pedidos</div><div class="v">1.564</div></div>
-      <div class="mk"><div class="l">Confirmados</div><div class="v b">98,8%</div></div>
-      <div class="mk"><div class="v g">1.048 entr.</div><div class="l">67,0% entrega</div></div>
-      <div class="mk"><div class="l">Rechazados</div><div class="v w">497 · 31,8%</div></div>
-      <div class="mk"><div class="l">Facturación</div><div class="v">42.316€</div></div>
-      <div class="mk"><div class="v g">13.316€</div><div class="l">Profit neto est.</div></div>
-      <div class="mk"><div class="l">Gasto MB</div><div class="v">12.326€</div></div>
-      <div class="mk"><div class="l">30D Profit real</div><div class="v b">27.106€</div></div>
-      <div class="mk"><div class="v g">8,51€</div><div class="l">Profit / Pedido</div></div>
+    <div class="mh e"><span>🇪🇸 España · 171 productos verificados</span></div>
+    <div class="mgd">
+      <div class="mk"><div class="l">Pedidos</div><div class="v">2.180</div></div>
+      <div class="mk"><div class="l">Confirmados</div><div class="v b">2.154 · 98,8%</div></div>
+      <div class="mk"><div class="v g">1.478 · 67,8%</div><div class="l">Entregados</div></div>
+      <div class="mk"><div class="l">Rechazados</div><div class="v w">676 · 31,0%</div></div>
+      <div class="mk"><div class="l">Facturación</div><div class="v">59.124€</div></div>
+      <div class="mk"><div class="v g">16.793€</div><div class="l">Profit estimado</div></div>
+      <div class="mk"><div class="l">Gasto MB</div><div class="v">19.856€</div></div>
+      <div class="mk"><div class="l">30D Profit real</div><div class="v b">45.264€</div></div>
+      <div class="mk"><div class="v g">7,70€</div><div class="l">Profit / Pedido</div></div>
     </div>
   </div>
   <div class="mkt">
-    <div class="mh port"><span>🇵🇹 Portugal · 44 productos activos verificados</span><span style="font-size:.62rem;opacity:.7">de 100 completos · 56 inactivos excluidos</span></div>
-    <div class="mgrid">
-      <div class="mk"><div class="l">Pedidos</div><div class="v">774</div></div>
-      <div class="mk"><div class="l">Confirmados</div><div class="v b">97,5%</div></div>
-      <div class="mk"><div class="v g">500 entr.</div><div class="l">64,6% entrega</div></div>
-      <div class="mk"><div class="l">Rechazados</div><div class="v w">246 · 31,8%</div></div>
-      <div class="mk"><div class="l">Solo FB</div><div class="v" style="font-size:.85rem;color:#7ba3f5">Facebook</div></div>
-      <div class="mk"><div class="v g">7.404€</div><div class="l">Profit neto est.</div></div>
-      <div class="mk"><div class="l">30D Profit real</div><div class="v b">2.125€</div></div>
-      <div class="mk"><div class="l">Pérdidas activas</div><div class="v r">2 prods</div></div>
-      <div class="mk"><div class="v g">9,57€</div><div class="l">Profit / Pedido</div></div>
+    <div class="mh p"><span>🇵🇹 Portugal · 100 productos verificados</span></div>
+    <div class="mgd">
+      <div class="mk"><div class="l">Pedidos</div><div class="v">1.023</div></div>
+      <div class="mk"><div class="l">Confirmados</div><div class="v b">994 · 97,2%</div></div>
+      <div class="mk"><div class="v g">666 · 65,1%</div><div class="l">Entregados</div></div>
+      <div class="mk"><div class="l">Rechazados</div><div class="v w">328 · 32,1%</div></div>
+      <div class="mk"><div class="l">Solo FB</div><div class="v" style="color:#7ba3f5;font-size:.85rem;">Facebook</div></div>
+      <div class="mk"><div class="v g">7.035€</div><div class="l">Profit estimado</div></div>
+      <div class="mk"><div class="l">Gasto MB</div><div class="v">11.372€</div></div>
+      <div class="mk"><div class="l">30D Profit real</div><div class="v b">3.810€</div></div>
+      <div class="mk"><div class="v g">6,88€</div><div class="l">Profit / Pedido</div></div>
     </div>
   </div>
 </div>
 <div class="cards c4">
-  <div class="card ac"><div class="cl">Profit Combinado Activos (est.)</div><div class="cv g">20.720€</div><div class="cs">ESP + PORT · semana · solo activos</div></div>
-  <div class="card"><div class="cl">30D España — Profit Real Activos</div><div class="cv b">27.106€</div><div class="cs">47 prods verificados · 2.913 ped</div></div>
-  <div class="card wn"><div class="cl">Tasa Rechazo Activos</div><div class="cv w">31,8%</div><div class="cs">Igual en ESP y PORT · umbral &gt;35%</div></div>
-  <div class="card ac"><div class="cl">PxP Activos vs Total</div><div class="cv g">+0,81€</div><div class="cs">8,51€ activos vs 7,70€ total ESP</div></div>
+  <div class="card ac"><div class="cl">Profit Total Combinado (est.)</div><div class="cv g">23.828€</div><div class="cs">ESP + PORT · semana verificada</div></div>
+  <div class="card bl"><div class="cl">30D España — Profit Real</div><div class="cv b">45.264€</div><div class="cs">247 prods · 6.471 ped</div></div>
+  <div class="card wn"><div class="cl">Tasa Rechazo Combinada</div><div class="cv w">31,4%</div><div class="cs">Umbral crítico &gt;35%</div></div>
+  <div class="card"><div class="cl">TikTok vs Facebook PxP</div><div class="cv g">+2,19€</div><div class="cs">9,48€ TK vs 7,29€ FB en ESP</div></div>
 </div>
 </section>
 
 <!-- PLATAFORMAS -->
 <section>
-<div class="st">Plataformas — España · Activos</div>
-<div class="pg">
+<div class="st">Plataformas — España</div>
+<div class="pg2">
   <div class="pc pfb"><div class="ph"><span class="pn">Facebook Ads</span><span class="tag tfb">FB</span></div>
-    <div class="pb2">
-      <div class="pk"><div class="l">Productos</div><div class="v">55</div></div>
-      <div class="pk"><div class="l">Pedidos</div><div class="v">1.424</div></div>
-      <div class="pk"><div class="l">Profit</div><div class="v g">12.004€</div></div>
-      <div class="pk"><div class="l">T. entrega</div><div class="v w">67,3%</div></div>
-      <div class="pk"><div class="l">T. rechazo</div><div class="v r">31,7%</div></div>
-      <div class="pk"><div class="l">PxP</div><div class="v g">8,43€</div></div>
+    <div class="pb">
+      <div class="pk"><div class="l">Productos</div><div class="v">122 <span style="font-size:.7rem;color:var(--mt)">(55 activos)</span></div></div>
+      <div class="pk"><div class="l">Pedidos</div><div class="v">1.771</div></div>
+      <div class="pk"><div class="l">Profit</div><div class="v g">12.914€</div></div>
+      <div class="pk"><div class="l">T. entrega</div><div class="v w">67,8%</div></div>
+      <div class="pk"><div class="l">T. rechazo</div><div class="v r">31,3%</div></div>
+      <div class="pk"><div class="l">PxP</div><div class="v g">7,29€</div></div>
     </div>
   </div>
   <div class="pc ptk"><div class="ph"><span class="pn">TikTok Ads</span><span class="tag ttk">TK</span></div>
-    <div class="pb2">
-      <div class="pk"><div class="l">Productos</div><div class="v">5</div></div>
-      <div class="pk"><div class="l">Pedidos</div><div class="v">140</div></div>
-      <div class="pk"><div class="l">Profit</div><div class="v g">1.312€</div></div>
-      <div class="pk"><div class="l">T. entrega</div><div class="v w">64,3%</div></div>
-      <div class="pk"><div class="l">T. rechazo</div><div class="v w">32,9%</div></div>
-      <div class="pk"><div class="l">PxP</div><div class="v g">9,37€</div></div>
+    <div class="pb">
+      <div class="pk"><div class="l">Productos</div><div class="v">49 <span style="font-size:.7rem;color:var(--mt)">(5 activos)</span></div></div>
+      <div class="pk"><div class="l">Pedidos</div><div class="v">409</div></div>
+      <div class="pk"><div class="l">Profit</div><div class="v g">3.878€</div></div>
+      <div class="pk"><div class="l">T. entrega</div><div class="v g">68,0%</div></div>
+      <div class="pk"><div class="l">T. rechazo</div><div class="v w">29,8%</div></div>
+      <div class="pk"><div class="l">PxP</div><div class="v g">9,48€</div></div>
     </div>
   </div>
 </div>
-<div class="al sc" style="margin-top:.85rem;">
-  <div class="ai">⚡</div>
-  <div class="ab"><div class="at">TikTok: +0,94€/ped vs FB en activos · solo 5 productos activos</div>
-  <p>Con solo 5 productos TK activos frente a 55 de FB, TikTok mantiene un 9,37€/ped vs 8,43€ en FB. El potencial de escalar TK es evidente — hay 44 productos TK con datos históricos positivos actualmente pausados.</p></div>
-</div>
+<div class="al sc" style="margin-top:.85rem;"><div class="ai">⚡</div>
+<div class="ab"><div class="at">TikTok genera +2,19€/ped con menos rechazo — solo 5 de 49 productos están activos</div>
+<p>49 productos TK tienen datos completos esta semana, solo 5 activos. Los 44 pausados incluyen productos con PxP excelentes. Hay margen claro de reactivación selectiva en TK.</p></div></div>
 </section>
 
 <!-- NICHOS -->
 <section>
-<div class="st">Rentabilidad por Nicho · España — Activos</div>
+<div class="st">Rentabilidad por Nicho · España</div>
 <div class="nbg">
-  <div class="nb">
-    <div class="nbt">Profit por Nicho <div class="nleg"><span><span style="color:#00e5a0">▮</span> Total</span><span><span style="color:#4da6ff">▮</span> /ped</span></div></div>
-    <div class="nr">
-      <div class="ni"><span class="nl">CALZADO</span><span class="nm2">23 prods · 773 ped</span></div>
+  <div class="nb"><div class="nbt">Profit por Nicho<div class="nleg"><span><span style="color:#00e5a0">▮</span> Total</span><span><span style="color:#4da6ff">▮</span> /ped</span></div></div><div class="nr">
+      <div class="ni"><span class="nl">CALZADO</span><span class="nm2">67 prods · 1055 ped</span></div>
       <div class="nt"><div class="nf nfg" style="width:100%"></div></div>
-      <div class="nv"><span class="np g">6,107€</span><span class="npp w">7.90€/ped</span></div>
+      <div class="nv"><span class="np g">8,085€</span><span class="npp w">7.66€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">MODA</span><span class="nm2">28 prods · 488 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:72%"></div></div>
-      <div class="nv"><span class="np g">4,379€</span><span class="npp g">8.97€/ped</span></div>
+      <div class="ni"><span class="nl">MODA</span><span class="nm2">74 prods · 686 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:63%"></div></div>
+      <div class="nv"><span class="np g">5,080€</span><span class="npp w">7.41€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">LENCERÍA</span><span class="nm2">7 prods · 206 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:28%"></div></div>
-      <div class="nv"><span class="np g">1,690€</span><span class="npp g">8.21€/ped</span></div>
+      <div class="ni"><span class="nl">LENCERÍA</span><span class="nm2">24 prods · 324 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:30%"></div></div>
+      <div class="nv"><span class="np g">2,404€</span><span class="npp w">7.42€/ped</span></div>
     </div><div class="nr">
       <div class="ni"><span class="nl">COSMÉTICA</span><span class="nm2">1 prods · 41 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:6%"></div></div>
+      <div class="nt"><div class="nf nfg" style="width:5%"></div></div>
       <div class="nv"><span class="np g">387€</span><span class="npp g">9.44€/ped</span></div>
-    </div>
-  </div>
-  <div class="nb">
-    <div class="nbt">Top Sub-nichos <div class="nleg"><span><span style="color:#00e5a0">▮</span> Total</span><span><span style="color:#4da6ff">▮</span> /ped</span></div></div>
-    <div class="nr">
-      <div class="ni"><span class="nl">CALZADO - Zapatillas</span><span class="nm2">17 prods · 626 ped</span></div>
+    </div><div class="nr">
+      <div class="ni"><span class="nl">ACCESORIOS</span><span class="nm2">2 prods · 14 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:1%"></div></div>
+      <div class="nv"><span class="np g">85€</span><span class="npp w">6.08€/ped</span></div>
+    </div><div class="nr">
+      <div class="ni"><span class="nl">TECNOLOGÍA</span><span class="nm2">1 prods · 1 ped</span></div>
+      <div class="nt"><div class="nf nfr" style="width:1%"></div></div>
+      <div class="nv"><span class="np r">-17€</span><span class="npp r">-17.29€/ped</span></div>
+    </div></div>
+  <div class="nb"><div class="nbt">Top Sub-nichos<div class="nleg"><span><span style="color:#00e5a0">▮</span> Total</span><span><span style="color:#4da6ff">▮</span> /ped</span></div></div><div class="nr">
+      <div class="ni"><span class="nl">CALZADO - Zapatillas</span><span class="nm2">53 prods · 904 ped</span></div>
       <div class="nt"><div class="nf nfg" style="width:100%"></div></div>
-      <div class="nv"><span class="np g">4,762€</span><span class="npp w">7.61€/ped</span></div>
+      <div class="nv"><span class="np g">6,707€</span><span class="npp w">7.42€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">MODA - Pantalones</span><span class="nm2">13 prods · 222 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:46%"></div></div>
-      <div class="nv"><span class="np g">2,171€</span><span class="npp g">9.78€/ped</span></div>
+      <div class="ni"><span class="nl">MODA - Pantalones</span><span class="nm2">30 prods · 289 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:34%"></div></div>
+      <div class="nv"><span class="np g">2,281€</span><span class="npp w">7.89€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">LENCERÍA - Sujetadores</span><span class="nm2">6 prods · 167 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:28%"></div></div>
-      <div class="nv"><span class="np g">1,328€</span><span class="npp w">7.95€/ped</span></div>
+      <div class="ni"><span class="nl">LENCERÍA - Sujetadores</span><span class="nm2">22 prods · 234 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:26%"></div></div>
+      <div class="nv"><span class="np g">1,764€</span><span class="npp w">7.54€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">CALZADO - Zapatos</span><span class="nm2">5 prods · 133 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:23%"></div></div>
-      <div class="nv"><span class="np g">1,108€</span><span class="npp g">8.33€/ped</span></div>
+      <div class="ni"><span class="nl">CALZADO - Zapatos</span><span class="nm2">14 prods · 161 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:19%"></div></div>
+      <div class="nv"><span class="np g">1,285€</span><span class="npp w">7.98€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">MODA - Vestidos</span><span class="nm2">8 prods · 136 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:22%"></div></div>
-      <div class="nv"><span class="np g">1,036€</span><span class="npp w">7.62€/ped</span></div>
+      <div class="ni"><span class="nl">MODA - Vestidos</span><span class="nm2">18 prods · 177 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:18%"></div></div>
+      <div class="nv"><span class="np g">1,218€</span><span class="npp w">6.88€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">LENCERÍA - Fajas</span><span class="nm2">2 prods · 74 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:16%"></div></div>
-      <div class="nv"><span class="np g">744€</span><span class="npp g">10.06€/ped</span></div>
+      <div class="ni"><span class="nl">MODA - Conjunto</span><span class="nm2">14 prods · 120 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:13%"></div></div>
+      <div class="nv"><span class="np g">892€</span><span class="npp w">7.43€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">MODA - Conjunto</span><span class="nm2">5 prods · 77 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:12%"></div></div>
-      <div class="nv"><span class="np g">551€</span><span class="npp w">7.16€/ped</span></div>
+      <div class="ni"><span class="nl">LENCERÍA - Fajas</span><span class="nm2">3 prods · 97 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:13%"></div></div>
+      <div class="nv"><span class="np g">852€</span><span class="npp g">8.78€/ped</span></div>
     </div><div class="nr">
       <div class="ni"><span class="nl">COSMÉTICA - Maquillaje</span><span class="nm2">1 prods · 41 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:8%"></div></div>
+      <div class="nt"><div class="nf nfg" style="width:6%"></div></div>
       <div class="nv"><span class="np g">387€</span><span class="npp g">9.44€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">MODA - Faldas</span><span class="nm2">1 prods · 18 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:5%"></div></div>
-      <div class="nv"><span class="np g">239€</span><span class="npp g">13.30€/ped</span></div>
+      <div class="ni"><span class="nl">MODA - Faldas</span><span class="nm2">2 prods · 23 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:4%"></div></div>
+      <div class="nv"><span class="np g">238€</span><span class="npp g">10.36€/ped</span></div>
     </div><div class="nr">
       <div class="ni"><span class="nl">CALZADO - Livianos</span><span class="nm2">1 prods · 14 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:5%"></div></div>
+      <div class="nt"><div class="nf nfg" style="width:4%"></div></div>
       <div class="nv"><span class="np g">238€</span><span class="npp g">16.98€/ped</span></div>
     </div><div class="nr">
       <div class="ni"><span class="nl">LENCERÍA - Moldeadora</span><span class="nm2">1 prods · 29 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:4%"></div></div>
+      <div class="nt"><div class="nf nfg" style="width:3%"></div></div>
       <div class="nv"><span class="np g">181€</span><span class="npp w">6.24€/ped</span></div>
-    </div>
-  </div>
+    </div></div>
 </div>
-<div class="st port" style="margin-top:1.75rem;">Rentabilidad por Nicho · Portugal — Activos</div>
+<div class="st p" style="margin-top:1.75rem;">Rentabilidad por Nicho · Portugal</div>
 <div class="nbg">
-  <div class="nb">
-    <div class="nbt">Profit por Nicho <div class="nleg"><span><span style="color:#00e5a0">▮</span> Total</span><span><span style="color:#4da6ff">▮</span> /ped</span></div></div>
-    <div class="nr">
-      <div class="ni"><span class="nl">CALZADO</span><span class="nm2">19 prods · 378 ped</span></div>
+  <div class="nb"><div class="nbt">Profit por Nicho · PT<div class="nleg"><span><span style="color:#00e5a0">▮</span> Total</span><span><span style="color:#4da6ff">▮</span> /ped</span></div></div><div class="nr">
+      <div class="ni"><span class="nl">CALZADO</span><span class="nm2">42 prods · 487 ped</span></div>
       <div class="nt"><div class="nf nfg" style="width:100%"></div></div>
-      <div class="nv"><span class="np g">3,594€</span><span class="npp g">9.51€/ped</span></div>
+      <div class="nv"><span class="np g">3,468€</span><span class="npp w">7.12€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">MODA</span><span class="nm2">18 prods · 309 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:91%"></div></div>
-      <div class="nv"><span class="np g">3,255€</span><span class="npp g">10.53€/ped</span></div>
+      <div class="ni"><span class="nl">MODA</span><span class="nm2">40 prods · 382 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:90%"></div></div>
+      <div class="nv"><span class="np g">3,105€</span><span class="npp g">8.13€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">LENCERÍA</span><span class="nm2">4 prods · 57 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:8%"></div></div>
-      <div class="nv"><span class="np g">284€</span><span class="npp w">4.99€/ped</span></div>
+      <div class="ni"><span class="nl">LENCERÍA</span><span class="nm2">9 prods · 100 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:10%"></div></div>
+      <div class="nv"><span class="np g">337€</span><span class="npp r">3.37€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">TECNOLOGÍA</span><span class="nm2">1 prods · 17 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:4%"></div></div>
-      <div class="nv"><span class="np g">151€</span><span class="npp g">8.90€/ped</span></div>
-    </div>
-  </div>
-  <div class="nb">
-    <div class="nbt">Top Sub-nichos <div class="nleg"><span><span style="color:#00e5a0">▮</span> Total</span><span><span style="color:#4da6ff">▮</span> /ped</span></div></div>
-    <div class="nr">
-      <div class="ni"><span class="nl">CALZADO - Zapatillas</span><span class="nm2">15 prods · 311 ped</span></div>
+      <div class="ni"><span class="nl">TECNOLOGÍA</span><span class="nm2">2 prods · 22 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:5%"></div></div>
+      <div class="nv"><span class="np g">159€</span><span class="npp w">7.23€/ped</span></div>
+    </div><div class="nr">
+      <div class="ni"><span class="nl">ACCESORIOS</span><span class="nm2">1 prods · 10 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:1%"></div></div>
+      <div class="nv"><span class="np g">33€</span><span class="npp r">3.29€/ped</span></div>
+    </div><div class="nr">
+      <div class="ni"><span class="nl">LENCERÍA*</span><span class="nm2">3 prods · 7 ped</span></div>
+      <div class="nt"><div class="nf nfr" style="width:5%"></div></div>
+      <div class="nv"><span class="np r">-182€</span><span class="npp r">-25.95€/ped</span></div>
+    </div></div>
+  <div class="nb"><div class="nbt">Top Sub-nichos · PT<div class="nleg"><span><span style="color:#00e5a0">▮</span> Total</span><span><span style="color:#4da6ff">▮</span> /ped</span></div></div><div class="nr">
+      <div class="ni"><span class="nl">CALZADO - Zapatillas</span><span class="nm2">34 prods · 397 ped</span></div>
       <div class="nt"><div class="nf nfg" style="width:100%"></div></div>
-      <div class="nv"><span class="np g">2,813€</span><span class="npp g">9.04€/ped</span></div>
+      <div class="nv"><span class="np g">2,672€</span><span class="npp w">6.73€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">MODA - Conjunto</span><span class="nm2">8 prods · 144 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:65%"></div></div>
-      <div class="nv"><span class="np g">1,815€</span><span class="npp g">12.61€/ped</span></div>
+      <div class="ni"><span class="nl">MODA - Conjunto</span><span class="nm2">14 prods · 164 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:71%"></div></div>
+      <div class="nv"><span class="np g">1,904€</span><span class="npp g">11.61€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">MODA - Vestidos</span><span class="nm2">5 prods · 90 ped</span></div>
+      <div class="ni"><span class="nl">CALZADO - Zapatos</span><span class="nm2">7 prods · 87 ped</span></div>
       <div class="nt"><div class="nf nfg" style="width:30%"></div></div>
-      <div class="nv"><span class="np g">838€</span><span class="npp g">9.31€/ped</span></div>
+      <div class="nv"><span class="np g">813€</span><span class="npp g">9.34€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">CALZADO - Zapatos</span><span class="nm2">4 prods · 67 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:28%"></div></div>
-      <div class="nv"><span class="np g">781€</span><span class="npp g">11.66€/ped</span></div>
+      <div class="ni"><span class="nl">MODA - Vestidos</span><span class="nm2">10 prods · 109 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:30%"></div></div>
+      <div class="nv"><span class="np g">803€</span><span class="npp w">7.37€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">MODA - Pantalones</span><span class="nm2">1 prods · 19 ped</span></div>
+      <div class="ni"><span class="nl">LENCERÍA - Fajas</span><span class="nm2">3 prods · 48 ped</span></div>
       <div class="nt"><div class="nf nfg" style="width:10%"></div></div>
-      <div class="nv"><span class="np g">288€</span><span class="npp g">15.17€/ped</span></div>
+      <div class="nv"><span class="np g">273€</span><span class="npp w">5.69€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">LENCERÍA - Fajas</span><span class="nm2">1 prods · 34 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:10%"></div></div>
-      <div class="nv"><span class="np g">280€</span><span class="npp g">8.23€/ped</span></div>
+      <div class="ni"><span class="nl">MODA - Pantalones</span><span class="nm2">5 prods · 30 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:9%"></div></div>
+      <div class="nv"><span class="np g">233€</span><span class="npp w">7.77€/ped</span></div>
     </div><div class="nr">
       <div class="ni"><span class="nl">MODA - Faldas</span><span class="nm2">1 prods · 27 ped</span></div>
       <div class="nt"><div class="nf nfg" style="width:7%"></div></div>
       <div class="nv"><span class="np g">190€</span><span class="npp w">7.04€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">TECNOLOGÍA</span><span class="nm2">1 prods · 17 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:5%"></div></div>
-      <div class="nv"><span class="np g">151€</span><span class="npp g">8.90€/ped</span></div>
+      <div class="ni"><span class="nl">TECNOLOGÍA</span><span class="nm2">2 prods · 22 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:6%"></div></div>
+      <div class="nv"><span class="np g">159€</span><span class="npp w">7.23€/ped</span></div>
     </div><div class="nr">
-      <div class="ni"><span class="nl">LENCERÍA - Sujetadores</span><span class="nm2">3 prods · 23 ped</span></div>
-      <div class="nt"><div class="nf nfg" style="width:1%"></div></div>
-      <div class="nv"><span class="np g">4€</span><span class="npp r">0.19€/ped</span></div>
-    </div>
-  </div>
+      <div class="ni"><span class="nl">LENCERÍA - Sujetadores</span><span class="nm2">6 prods · 50 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:3%"></div></div>
+      <div class="nv"><span class="np g">87€</span><span class="npp r">1.75€/ped</span></div>
+    </div><div class="nr">
+      <div class="ni"><span class="nl">MODA - Blusa</span><span class="nm2">2 prods · 14 ped</span></div>
+      <div class="nt"><div class="nf nfg" style="width:3%"></div></div>
+      <div class="nv"><span class="np g">84€</span><span class="npp w">5.98€/ped</span></div>
+    </div></div>
 </div>
-<div class="al in" style="margin-top:.85rem;">
-  <div class="ai">💡</div>
-  <div class="ab"><div class="at">Lectura cruzada por sub-nicho: Portugal supera a España en 4 de 5 categorías comunes</div>
-  <p>MODA - Conjunto: <strong>12,61€/ped PT vs 7,16€/ped ESP</strong>. CALZADO - Zapatos: <strong>11,66€ PT vs 8,33€ ESP</strong>. MODA - Pantalones: <strong>15,17€ PT vs 9,78€ ESP</strong>. LENCERÍA - Fajas: 8,23€ PT vs 10,06€ ESP (única excepción). LENCERÍA - Sujetadores: 0,19€/ped PT — muy bajo, revisar estrategia de precios en PT.</p>
-  </div>
-</div>
+<div class="al in" style="margin-top:.85rem;"><div class="ai">💡</div>
+<div class="ab"><div class="at">Portugal supera a España en PxP en 4 de 5 sub-nichos comparables</div>
+<p>MODA - Conjunto: <strong>11,61€/ped PT vs 7,43€ ESP</strong>. CALZADO - Zapatos: <strong>9,34€ PT vs 7,98€ ESP</strong>. MODA - Pantalones: <strong>7,77€ PT vs 7,89€ ESP</strong> (similar). LENCERÍA - Sujetadores: solo 1,75€/ped PT vs 7,54€ ESP — revisar precios o targeting en PT.</p>
+</div></div>
 </section>
 
-<!-- TOP ESPAÑA -->
+<!-- TOP ESP -->
 <section>
-<div class="st">Top 15 Productos · España · Activos · Semana</div>
+<div class="st">Top 15 Productos · España · Semana</div>
+<div class="al in" style="margin-bottom:.85rem;"><div class="ai">ℹ️</div>
+<div class="ab"><div class="at">Cómo leer el estado y la acción recomendada</div>
+<p><span class="act act-on" style="margin-right:.4rem;">● ACTIVO</span> = en campaña ahora · <span class="act act-off" style="margin-right:.4rem;">○ PAUSADO</span> = ya no activo. Las acciones se proponen según rendimiento <strong>y</strong> estado: no se propone pausar lo que ya está pausado, ni reactivar lo que ya está activo.</p>
+</div></div>
 <div class="tw"><table>
-<thead><tr><th>#</th><th>Producto</th><th>Plat.</th><th>Pedidos</th><th>Entregados</th><th>Rechazados</th><th>T.Rechazo</th><th>CPA</th><th>Profit</th><th>P/Ped</th></tr></thead>
-<tbody><tr class="hp"><td><span class="rk gd">1</span></td><td class="nm">C1891-MOCASIELE</td><td><span class="tag ttk" >TK</span></td><td>97</td><td>63</td><td class="pw">30</td><td class="pw">30.9%</td><td>4.4€</td><td class="pg">1,002.71€</td><td class="pg">10.34€</td></tr>
-<tr class="hp"><td><span class="rk sv">2</span></td><td class="nm">C1915-SLIPCALZ</td><td><span class="tag tfb" >FB</span></td><td>56</td><td>38</td><td class="pw">17</td><td class="pw">30.4%</td><td>4.32€</td><td class="pg">752.12€</td><td class="pg">13.43€</td></tr>
-<tr class="hp"><td><span class="rk bz">3</span></td><td class="nm">C1845-SANDSTI</td><td><span class="tag tfb" >FB</span></td><td>46</td><td>36</td><td class="">9</td><td class="pg">19.6%</td><td>6.75€</td><td class="pg">638.57€</td><td class="pg">13.88€</td></tr>
-<tr class="hp"><td><span class="rk">4</span></td><td class="nm">C1733-ZAPATO</td><td><span class="tag tfb" >FB</span></td><td>114</td><td>62</td><td class="pr">47</td><td class="pr">41.2%</td><td>6.2€</td><td class="pg">629.55€</td><td class="pw">5.52€</td></tr>
-<tr class="hp"><td><span class="rk">5</span></td><td class="nm">B2565-VAQUER</td><td><span class="tag tfb" >FB</span></td><td>49</td><td>32</td><td class="">13</td><td class="pg">26.5%</td><td>6.69€</td><td class="pg">607.59€</td><td class="pg">12.4€</td></tr>
-<tr class="hp"><td><span class="rk">6</span></td><td class="nm">C348-ZAPIMPERANTI</td><td><span class="tag tfb" >FB</span></td><td>48</td><td>35</td><td class="">13</td><td class="pg">27.1%</td><td>8.27€</td><td class="pg">481.72€</td><td class="pg">10.04€</td></tr>
-<tr class="hp"><td><span class="rk">7</span></td><td class="nm">C575-SANDABICOL</td><td><span class="tag tfb" >FB</span></td><td>52</td><td>35</td><td class="pw">17</td><td class="pw">32.7%</td><td>7.15€</td><td class="pg">463.26€</td><td class="pg">8.91€</td></tr>
-<tr class="hp"><td><span class="rk">8</span></td><td class="nm">C1942-CALZADO</td><td><span class="tag tfb" >FB</span></td><td>36</td><td>25</td><td class="pw">11</td><td class="pw">30.6%</td><td>4.95€</td><td class="pg">447.48€</td><td class="pg">12.43€</td></tr>
-<tr class="hp"><td><span class="rk">9</span></td><td class="nm">H222-BASEMAQ</td><td><span class="tag tfb" >FB</span></td><td>41</td><td>31</td><td class="">10</td><td class="pg">24.4%</td><td>4.47€</td><td class="pg">387.20€</td><td class="pg">9.44€</td></tr>
-<tr class="hp"><td><span class="rk">10</span></td><td class="nm">B2363-VESTELEG</td><td><span class="tag tfb" >FB</span></td><td>34</td><td>26</td><td class="">8</td><td class="pg">23.5%</td><td>9.06€</td><td class="pg">385.33€</td><td class="pg">11.33€</td></tr>
-<tr class="hp"><td><span class="rk">11</span></td><td class="nm">M766-LENCERIA</td><td><span class="tag tfb" >FB</span></td><td>39</td><td>27</td><td class="pw">12</td><td class="pw">30.8%</td><td>4.61€</td><td class="pg">384.38€</td><td class="pg">9.86€</td></tr>
-<tr class="hp"><td><span class="rk">12</span></td><td class="nm">B2618-TRAJEBAÑO</td><td><span class="tag tfb" >FB</span></td><td>35</td><td>24</td><td class="pw">11</td><td class="pw">31.4%</td><td>4.17€</td><td class="pg">381.98€</td><td class="pg">10.91€</td></tr>
-<tr class="hp"><td><span class="rk">13</span></td><td class="nm">C1766-CALZADO</td><td><span class="tag tfb" >FB</span></td><td>36</td><td>28</td><td class="">8</td><td class="pg">22.2%</td><td>8.89€</td><td class="pg">380.70€</td><td class="pg">10.57€</td></tr>
-<tr class="hp"><td><span class="rk">14</span></td><td class="nm">C1786-CALZADO</td><td><span class="tag tfb" >FB</span></td><td>42</td><td>33</td><td class="">9</td><td class="pg">21.4%</td><td>12.21€</td><td class="pg">366.87€</td><td class="pg">8.73€</td></tr>
-<tr class="hp"><td><span class="rk">15</span></td><td class="nm">M773-FAJA</td><td><span class="tag tfb" >FB</span></td><td>39</td><td>27</td><td class="pw">12</td><td class="pw">30.8%</td><td>7.91€</td><td class="pg">362.13€</td><td class="pg">9.29€</td></tr>
+<thead><tr><th>#</th><th>Producto</th><th>Plat.</th><th>Estado</th><th>Ped</th><th>Entr.</th><th>Rech.</th><th>T.Rech</th><th>CPA</th><th>Profit</th><th>P/Ped</th><th>Acción</th></tr></thead>
+<tbody><tr class="hp"><td><span class="rk gd">1</span></td><td class="nm">C1762-SANDALIA-TK</td><td><span class="tag ttk">TK</span></td><td><span class="act" style="background:rgba(100,100,100,.1);color:#6b7685;border:1px solid rgba(100,100,100,.2);">— Sin info</span></td><td>92</td><td>61</td><td class="pw">27</td><td class="pw">29.3%</td><td>4.09€</td><td class="pg">1,118.38€</td><td class="pg">12.16€</td><td><span class="acc acc-scale">ESCALAR TK</span></td></tr>
+<tr class="hp"><td><span class="rk sv">2</span></td><td class="nm">C1891-MOCASIELE-TK</td><td><span class="tag ttk">TK</span></td><td><span class="act" style="background:rgba(100,100,100,.1);color:#6b7685;border:1px solid rgba(100,100,100,.2);">— Sin info</span></td><td>97</td><td>63</td><td class="pw">30</td><td class="pw">30.9%</td><td>4.4€</td><td class="pg">1,002.71€</td><td class="pg">10.34€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk bz">3</span></td><td class="nm">C1915-SLIPCALZ-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>56</td><td>38</td><td class="pw">17</td><td class="pw">30.4%</td><td>4.32€</td><td class="pg">752.12€</td><td class="pg">13.43€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk">4</span></td><td class="nm">C1845-SANDSTI-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>46</td><td>36</td><td class="">9</td><td class="pg">19.6%</td><td>6.75€</td><td class="pg">638.57€</td><td class="pg">13.88€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk">5</span></td><td class="nm">C1733-ZAPATO-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>114</td><td>62</td><td class="pr">47</td><td class="pr">41.2%</td><td>6.2€</td><td class="pg">629.55€</td><td class="pw">5.52€</td><td><span class="acc acc-watch">CAP CPA</span></td></tr>
+<tr class="hp"><td><span class="rk">6</span></td><td class="nm">B2565-VAQUER-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>49</td><td>32</td><td class="">13</td><td class="pg">26.5%</td><td>6.69€</td><td class="pg">607.59€</td><td class="pg">12.4€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk">7</span></td><td class="nm">C348-ZAPIMPERANTI-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>48</td><td>35</td><td class="">13</td><td class="pg">27.1%</td><td>8.27€</td><td class="pg">481.72€</td><td class="pg">10.04€</td><td><span class="acc acc-scale">MANTENER</span></td></tr>
+<tr class="hp"><td><span class="rk">8</span></td><td class="nm">C575-SANDABICOL-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>52</td><td>35</td><td class="pw">17</td><td class="pw">32.7%</td><td>7.15€</td><td class="pg">463.26€</td><td class="pg">8.91€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class="hp"><td><span class="rk">9</span></td><td class="nm">C1942-CALZADO-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>36</td><td>25</td><td class="pw">11</td><td class="pw">30.6%</td><td>4.95€</td><td class="pg">447.48€</td><td class="pg">12.43€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk">10</span></td><td class="nm">H222-BASEMAQ-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>41</td><td>31</td><td class="">10</td><td class="pg">24.4%</td><td>4.47€</td><td class="pg">387.20€</td><td class="pg">9.44€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk">11</span></td><td class="nm">B2363-VESTELEG-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>34</td><td>26</td><td class="">8</td><td class="pg">23.5%</td><td>9.06€</td><td class="pg">385.33€</td><td class="pg">11.33€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk">12</span></td><td class="nm">M766-LENCERIA-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>39</td><td>27</td><td class="pw">12</td><td class="pw">30.8%</td><td>4.61€</td><td class="pg">384.38€</td><td class="pg">9.86€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class="hp"><td><span class="rk">13</span></td><td class="nm">B2618-TRAJEBAÑO-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>35</td><td>24</td><td class="pw">11</td><td class="pw">31.4%</td><td>4.17€</td><td class="pg">381.98€</td><td class="pg">10.91€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class="hp"><td><span class="rk">14</span></td><td class="nm">C1766-CALZADO-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>36</td><td>28</td><td class="">8</td><td class="pg">22.2%</td><td>8.89€</td><td class="pg">380.70€</td><td class="pg">10.57€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk">15</span></td><td class="nm">C1786-CALZADO-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>42</td><td>33</td><td class="">9</td><td class="pg">21.4%</td><td>12.21€</td><td class="pg">366.87€</td><td class="pg">8.73€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
 </tbody></table></div>
 </section>
 
 <!-- TOP PxP -->
 <section>
-<div class="st">Top Eficiencia — Profit por Pedido · España · Activos (≥10 ped)</div>
+<div class="st">Top Eficiencia — Profit por Pedido · España (≥10 ped)</div>
 <div class="tw"><table>
-<thead><tr><th>#</th><th>Producto</th><th>Plat.</th><th>Pedidos</th><th>Profit Total</th><th>Profit/Ped</th><th>CPA</th></tr></thead>
-<tbody>
-  <tr class="hp"><td><span class="rk gd">1</span></td><td class="nm">B553-CONJLIN-FB</td><td><span class="tag tfb" >FB</span></td><td>15</td><td class="pg">339,96€</td><td class="pg">22,66€</td><td>8,12€</td></tr>
-  <tr class="hp"><td><span class="rk sv">2</span></td><td class="nm">C609-ZUECOSDECUER-FB</td><td><span class="tag tfb" >FB</span></td><td>14</td><td class="pg">237,75€</td><td class="pg">16,98€</td><td>12,88€</td></tr>
-  <tr class="hp"><td><span class="rk bz">3</span></td><td class="nm">C1845-SANDSTI-FB</td><td><span class="tag tfb" >FB</span></td><td>46</td><td class="pg">638,57€</td><td class="pg">13,88€</td><td>6,75€</td></tr>
-  <tr><td><span class="rk">4</span></td><td class="nm">C1915-SLIPCALZ-FB</td><td><span class="tag tfb" >FB</span></td><td>56</td><td class="pg">752,12€</td><td class="pg">13,43€</td><td>4,32€</td></tr>
-  <tr><td><span class="rk">5</span></td><td class="nm">C1990-CALSPO-FB</td><td><span class="tag tfb" >FB</span></td><td>10</td><td class="pg">133,93€</td><td class="pg">13,39€</td><td>6,28€</td></tr>
-  <tr><td><span class="rk">6</span></td><td class="nm">B2617-WOMEPRINT-FB</td><td><span class="tag tfb" >FB</span></td><td>18</td><td class="pg">239,40€</td><td class="pg">13,30€</td><td>7,94€</td></tr>
-  <tr><td><span class="rk">7</span></td><td class="nm">C1942-CALZADO-FB</td><td><span class="tag tfb" >FB</span></td><td>36</td><td class="pg">447,48€</td><td class="pg">12,43€</td><td>4,95€</td></tr>
-  <tr><td><span class="rk">8</span></td><td class="nm">B2565-VAQUER-FB</td><td><span class="tag tfb" >FB</span></td><td>49</td><td class="pg">607,59€</td><td class="pg">12,40€</td><td>6,69€</td></tr>
-  <tr><td><span class="rk">9</span></td><td class="nm">B52-PANPUSHUP-TK</td><td><span class="tag ttk" >TK</span></td><td>15</td><td class="pg">173,21€</td><td class="pg">11,55€</td><td>5,82€</td></tr>
-  <tr><td><span class="rk">10</span></td><td class="nm">B2363-VESTELEG-FB</td><td><span class="tag tfb" >FB</span></td><td>34</td><td class="pg">385,33€</td><td class="pg">11,33€</td><td>9,06€</td></tr>
+<thead><tr><th>#</th><th>Producto</th><th>Plat.</th><th>Estado</th><th>Pedidos</th><th>Profit</th><th>P/Ped</th><th>CPA</th><th>Acción</th></tr></thead>
+<tbody><tr class="hp"><td><span class="rk gd">1</span></td><td class="nm">B553-CONJLIN-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>15</td><td class="pg">339.96€</td><td class="pg">22.66€</td><td>8.12€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk sv">2</span></td><td class="nm">C609-ZUECOSDECUER-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>14</td><td class="pg">237.75€</td><td class="pg">16.98€</td><td>12.88€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk bz">3</span></td><td class="nm">B2632-VESTUNIC-TK</td><td><span class="tag ttk">TK</span></td><td><span class="act" style="background:rgba(100,100,100,.1);color:#6b7685;border:1px solid rgba(100,100,100,.2);">— Sin info</span></td><td>14</td><td class="pg">215.28€</td><td class="pg">15.38€</td><td>6.09€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk ">4</span></td><td class="nm">C1845-SANDSTI-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>46</td><td class="pg">638.57€</td><td class="pg">13.88€</td><td>6.75€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk ">5</span></td><td class="nm">C1915-SLIPCALZ-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>56</td><td class="pg">752.12€</td><td class="pg">13.43€</td><td>4.32€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk ">6</span></td><td class="nm">C1990-CALSPO-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>10</td><td class="pg">133.93€</td><td class="pg">13.39€</td><td>6.28€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk ">7</span></td><td class="nm">B2617-WOMEPRINT-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>18</td><td class="pg">239.40€</td><td class="pg">13.30€</td><td>7.94€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk ">8</span></td><td class="nm">C722-SUECTACO-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-off">○ PAUSADO</span></td><td>10</td><td class="pg">128.09€</td><td class="pg">12.81€</td><td>12.28€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
+<tr class="hp"><td><span class="rk ">9</span></td><td class="nm">C1942-CALZADO-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>36</td><td class="pg">447.48€</td><td class="pg">12.43€</td><td>4.95€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk ">10</span></td><td class="nm">B2565-VAQUER-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>49</td><td class="pg">607.59€</td><td class="pg">12.40€</td><td>6.69€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
 </tbody></table></div>
 </section>
 
-<!-- TOP PORTUGAL -->
+<!-- TOP PORT -->
 <section>
-<div class="st port">Top 15 Productos · Portugal · Activos · Semana</div>
+<div class="st p">Top 15 Productos · Portugal · Semana</div>
 <div class="tw"><table>
-<thead><tr><th>#</th><th>Producto</th><th>Pedidos</th><th>Entregados</th><th>Rechazados</th><th>T.Rechazo</th><th>CPA</th><th>Profit</th><th>P/Ped</th></tr></thead>
-<tbody><tr class="hp"><td><span class="rk gd">1</span></td><td class="nm">C1733-ZAPATO-FB</td><td>77</td><td>44</td><td class="pw">29</td><td class="pw">37.7%</td><td>5.45€</td><td class="pg">836.87€</td><td class="pg">10.87€</td></tr>
-<tr class="hp"><td><span class="rk sv">2</span></td><td class="nm">B2426-CONJUNTO-FB</td><td>37</td><td>23</td><td class="">9</td><td class="pg">24.3%</td><td>9.42€</td><td class="pg">694.29€</td><td class="pg">18.76€</td></tr>
-<tr class="hp"><td><span class="rk bz">3</span></td><td class="nm">B2363-VESTELEG-FB</td><td>43</td><td>32</td><td class="">11</td><td class="pg">25.6%</td><td>8.37€</td><td class="pg">540.83€</td><td class="pg">12.58€</td></tr>
-<tr class="hp"><td><span class="rk">4</span></td><td class="nm">B703-CASUALDIANOCHE-FB</td><td>48</td><td>27</td><td class="pw">18</td><td class="pw">37.5%</td><td>5.32€</td><td class="pg">528.59€</td><td class="pg">11.01€</td></tr>
-<tr class="hp"><td><span class="rk">5</span></td><td class="nm">C391-ZAPREMIUMCUE-FB</td><td>36</td><td>29</td><td class="">7</td><td class="pg">19.4%</td><td>7.12€</td><td class="pg">456.29€</td><td class="pg">12.67€</td></tr>
-<tr class="hp"><td><span class="rk">6</span></td><td class="nm">C1426-CALZAHM-FB</td><td>44</td><td>30</td><td class="">8</td><td class="pg">18.2%</td><td>8.92€</td><td class="pg">375.17€</td><td class="pg">8.53€</td></tr>
-<tr class="hp"><td><span class="rk">7</span></td><td class="nm">C1787-ZAPATO-FB</td><td>17</td><td>14</td><td class="">3</td><td class="pg">17.6%</td><td>7.62€</td><td class="pg">326.31€</td><td class="pg">19.19€</td></tr>
-<tr class="hp"><td><span class="rk">8</span></td><td class="nm">C90-SKECHERS-FB</td><td>29</td><td>22</td><td class="">5</td><td class="pg">17.2%</td><td>10.18€</td><td class="pg">292.36€</td><td class="pg">10.08€</td></tr>
-<tr class="hp"><td><span class="rk">9</span></td><td class="nm">B2043-PANTALONHOLG-FB</td><td>19</td><td>14</td><td class="">5</td><td class="pg">26.3%</td><td>7.99€</td><td class="pg">288.18€</td><td class="pg">15.17€</td></tr>
-<tr class="hp"><td><span class="rk">10</span></td><td class="nm">M728-MOLDEADOR-FB</td><td>34</td><td>20</td><td class="pw">10</td><td class="pw">29.4%</td><td>7.1€</td><td class="pg">279.88€</td><td class="pg">8.23€</td></tr>
-<tr class="hp"><td><span class="rk">11</span></td><td class="nm">C1762-SANDALIA-FB</td><td>27</td><td>19</td><td class="pw">8</td><td class="pw">29.6%</td><td>6.88€</td><td class="pg">279.34€</td><td class="pg">10.35€</td></tr>
-<tr class="hp"><td><span class="rk">12</span></td><td class="nm">B2607-MONOMJ-FB</td><td>20</td><td>13</td><td class="pw">7</td><td class="pw">35.0%</td><td>10.41€</td><td class="pg">235.52€</td><td class="pg">11.78€</td></tr>
-<tr class="hp"><td><span class="rk">13</span></td><td class="nm">C781-CALHOM-FB</td><td>15</td><td>10</td><td class="">4</td><td class="pg">26.7%</td><td>4.32€</td><td class="pg">206.83€</td><td class="pg">13.79€</td></tr>
-<tr class="hp"><td><span class="rk">14</span></td><td class="nm">B2620-FALDMJ-FB</td><td>27</td><td>15</td><td class="pr">11</td><td class="pr">40.7%</td><td>6.63€</td><td class="pg">189.97€</td><td class="pw">7.04€</td></tr>
-<tr class="hp"><td><span class="rk">15</span></td><td class="nm">C571-SAPTACON-FB</td><td>13</td><td>12</td><td class="">1</td><td class="pg">7.7%</td><td>9.59€</td><td class="pg">184.68€</td><td class="pg">14.21€</td></tr>
+<thead><tr><th>#</th><th>Producto</th><th>Estado</th><th>Ped</th><th>Entr.</th><th>Rech.</th><th>T.Rech</th><th>CPA</th><th>Profit</th><th>P/Ped</th><th>Acción</th></tr></thead>
+<tbody><tr class="hp"><td><span class="rk gd">1</span></td><td class="nm">C1733-ZAPATO-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>77</td><td>44</td><td class="pw">29</td><td class="pw">37.7%</td><td>5.45€</td><td class="pg">836.87€</td><td class="pg">10.87€</td><td><span class="acc acc-watch">CAP CPA</span></td></tr>
+<tr class="hp"><td><span class="rk sv">2</span></td><td class="nm">B2426-CONJUNTO-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>37</td><td>23</td><td class="">9</td><td class="pg">24.3%</td><td>9.42€</td><td class="pg">694.29€</td><td class="pg">18.76€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk bz">3</span></td><td class="nm">B2363-VESTELEG-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>43</td><td>32</td><td class="">11</td><td class="pg">25.6%</td><td>8.37€</td><td class="pg">540.83€</td><td class="pg">12.58€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk">4</span></td><td class="nm">B703-CASUALDIANOCHE-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>48</td><td>27</td><td class="pw">18</td><td class="pw">37.5%</td><td>5.32€</td><td class="pg">528.59€</td><td class="pg">11.01€</td><td><span class="acc acc-watch">VIGILAR RECH</span></td></tr>
+<tr class="hp"><td><span class="rk">5</span></td><td class="nm">C391-ZAPREMIUMCUE-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>36</td><td>29</td><td class="">7</td><td class="pg">19.4%</td><td>7.12€</td><td class="pg">456.29€</td><td class="pg">12.67€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk">6</span></td><td class="nm">C1426-CALZAHM-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>44</td><td>30</td><td class="">8</td><td class="pg">18.2%</td><td>8.92€</td><td class="pg">375.17€</td><td class="pg">8.53€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class="hp"><td><span class="rk">7</span></td><td class="nm">C1787-ZAPATO-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>17</td><td>14</td><td class="">3</td><td class="pg">17.6%</td><td>7.62€</td><td class="pg">326.31€</td><td class="pg">19.19€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk">8</span></td><td class="nm">C90-SKECHERS-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>29</td><td>22</td><td class="">5</td><td class="pg">17.2%</td><td>10.18€</td><td class="pg">292.36€</td><td class="pg">10.08€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class="hp"><td><span class="rk">9</span></td><td class="nm">B2043-PANTALONHOLG-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>19</td><td>14</td><td class="">5</td><td class="pg">26.3%</td><td>7.99€</td><td class="pg">288.18€</td><td class="pg">15.17€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk">10</span></td><td class="nm">M728-MOLDEADOR-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>34</td><td>20</td><td class="pw">10</td><td class="pw">29.4%</td><td>7.1€</td><td class="pg">279.88€</td><td class="pg">8.23€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class="hp"><td><span class="rk">11</span></td><td class="nm">C1762-SANDALIA-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>27</td><td>19</td><td class="pw">8</td><td class="pw">29.6%</td><td>6.88€</td><td class="pg">279.34€</td><td class="pg">10.35€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class="hp"><td><span class="rk">12</span></td><td class="nm">B2607-MONOMJ-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>20</td><td>13</td><td class="pw">7</td><td class="pw">35.0%</td><td>10.41€</td><td class="pg">235.52€</td><td class="pg">11.78€</td><td><span class="acc acc-watch">VIGILAR RECH</span></td></tr>
+<tr class="hp"><td><span class="rk">13</span></td><td class="nm">C781-CALHOM-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>15</td><td>10</td><td class="">4</td><td class="pg">26.7%</td><td>4.32€</td><td class="pg">206.83€</td><td class="pg">13.79€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td><span class="rk">14</span></td><td class="nm">B2620-FALDMJ-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>27</td><td>15</td><td class="pr">11</td><td class="pr">40.7%</td><td>6.63€</td><td class="pg">189.97€</td><td class="pw">7.04€</td><td><span class="acc acc-watch">VIGILAR RECH</span></td></tr>
+<tr class="hp"><td><span class="rk">15</span></td><td class="nm">C571-SAPTACON-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>13</td><td>12</td><td class="">1</td><td class="pg">7.7%</td><td>9.59€</td><td class="pg">184.68€</td><td class="pg">14.21€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
 </tbody></table></div>
 </section>
 
 <!-- PÉRDIDAS -->
 <section>
-<div class="st">Productos Activos en Pérdida — Acción Requerida</div>
+<div class="st">Productos en Pérdida — Con Acción por Estado</div>
+<div class="al in" style="margin-bottom:.85rem;"><div class="ai">ℹ️</div>
+<div class="ab"><div class="at">Lógica de recomendación</div>
+<p>Si está <span class="act act-on" style="margin:0 .3rem;">● ACTIVO</span> y en pérdida → acción requerida. Si está <span class="act act-off" style="margin:0 .3rem;">○ PAUSADO</span> → la decisión ya fue tomada correctamente, se documenta como referencia.</p>
+</div></div>
 <div class="cards c2">
   <div>
     <div style="font-size:.67rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mt);margin-bottom:.65rem;font-weight:600;">🇪🇸 España (≥5 pedidos)</div>
     <div class="tw"><table>
-    <thead><tr><th>Producto</th><th>Plat.</th><th>Ped</th><th>Rech</th><th>T.Rech</th><th>Profit</th><th>P/Ped</th><th>CPA</th></tr></thead>
-    <tbody>
-      <tr class="hn"><td class="nm">C655-MOCASINE-FB</td><td><span class="tag tfb" >FB</span></td><td>31</td><td class="pr">20</td><td class="pr">64,5%</td><td class="pr">-189,98€</td><td class="pr">-6,13€</td><td class="pw">10,13€</td></tr>
-      <tr class="hn"><td class="nm">C677-ZAPNEGRO-TK</td><td><span class="tag ttk" >TK</span></td><td>6</td><td class="pr">4</td><td class="pr">66,7%</td><td class="pr">-23,07€</td><td class="pr">-3,85€</td><td>7,60€</td></tr>
-      <tr class="hn"><td class="nm">B612-CONJ2PZSBOTON-FB</td><td><span class="tag tfb" >FB</span></td><td>5</td><td>2</td><td class="pw">40,0%</td><td class="pr">-5,67€</td><td class="pr">-1,13€</td><td class="pw">19,68€</td></tr>
-    </tbody></table></div>
+    <thead><tr><th>Producto</th><th>Plat.</th><th>Estado</th><th>Ped</th><th>Rech</th><th>T.Rech</th><th>Profit</th><th>P/Ped</th><th>CPA</th><th>Acción</th></tr></thead>
+    <tbody><tr class="hn"><td class="nm">C655-MOCASINE-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>31</td><td class="pr">20</td><td class="pr">64.5%</td><td class="pr">-189.98€</td><td class="pr">-6.13€</td><td class="pw">10.13€</td><td><span class="acc acc-pause">PAUSAR YA</span></td></tr>
+<tr class="hn"><td class="nm">C1911-CALZADO-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-off">○ PAUSADO</span></td><td>5</td><td class="pr">2</td><td class="pr">40.0%</td><td class="pr">-70.14€</td><td class="pr">-14.03€</td><td class="pw">26.67€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+<tr class="hn"><td class="nm">C1931-CALZBROGUE-TK</td><td><span class="tag ttk">TK</span></td><td><span class="act" style="background:rgba(100,100,100,.1);color:#6b7685;border:1px solid rgba(100,100,100,.2);">— Sin info</span></td><td>7</td><td class="pr">3</td><td class="pr">42.9%</td><td class="pr">-50.17€</td><td class="pr">-7.17€</td><td class="pw">18.81€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+<tr class="hn"><td class="nm">C1928-ZAPATSLIN-TK</td><td><span class="tag ttk">TK</span></td><td><span class="act" style="background:rgba(100,100,100,.1);color:#6b7685;border:1px solid rgba(100,100,100,.2);">— Sin info</span></td><td>13</td><td class="pr">5</td><td class="pr">38.5%</td><td class="pr">-33.43€</td><td class="pr">-2.57€</td><td class="pw">16.14€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+<tr class="hn"><td class="nm">B2605-VESTSKIT-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-off">○ PAUSADO</span></td><td>6</td><td class="pr">3</td><td class="pr">50.0%</td><td class="pr">-30.84€</td><td class="pr">-5.14€</td><td class="pw">15.48€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+<tr class="hn"><td class="nm">C677-ZAPNEGRO-TK</td><td><span class="tag ttk">TK</span></td><td><span class="act" style="background:rgba(100,100,100,.1);color:#6b7685;border:1px solid rgba(100,100,100,.2);">— Sin info</span></td><td>6</td><td class="pr">2</td><td class="pr">66.7%</td><td class="pr">-23.07€</td><td class="pr">-3.85€</td><td class="pw">7.60€</td><td><span class="acc acc-pause">PAUSAR</span></td></tr>
+<tr class="hn"><td class="nm">B2634-PANTAPNT-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-off">○ PAUSADO</span></td><td>6</td><td class="pr">2</td><td class="pr">33.3%</td><td class="pr">-6.29€</td><td class="pr">-1.05€</td><td class="pw">17.34€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+<tr class="hn"><td class="nm">B612-CONJ2PZSBOTON-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-on">● ACTIVO</span></td><td>5</td><td class="pr">2</td><td class="pr">40.0%</td><td class="pr">-5.67€</td><td class="pr">-1.13€</td><td class="pw">19.68€</td><td><span class="acc acc-pause">PAUSAR</span></td></tr>
+<tr class="hn"><td class="nm">C1879-MOCASHM-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-off">○ PAUSADO</span></td><td>6</td><td class="pr">2</td><td class="pr">33.3%</td><td class="pr">-1.63€</td><td class="pr">-0.27€</td><td class="pw">15.27€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+<tr class="hn"><td class="nm">B2645-SHORTVOLA-FB</td><td><span class="tag tfb">FB</span></td><td><span class="act act-off">○ PAUSADO</span></td><td>5</td><td class="pr">2</td><td class="pr">40.0%</td><td class="pr">-1.10€</td><td class="pr">-0.22€</td><td class="pw">16.41€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+</tbody></table></div>
   </div>
   <div>
     <div style="font-size:.67rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mt);margin-bottom:.65rem;font-weight:600;">🇵🇹 Portugal (≥5 pedidos)</div>
     <div class="tw"><table>
-    <thead><tr><th>Producto</th><th>Ped</th><th>Rech</th><th>T.Rech</th><th>Profit</th><th>P/Ped</th><th>CPA</th></tr></thead>
-    <tbody>
-      <tr class="hn"><td class="nm">M83-SUJELISO-FB</td><td>6</td><td class="pr">3</td><td class="pr">50,0%</td><td class="pr">-29,80€</td><td class="pr">-4,97€</td><td class="pw">13,44€</td></tr>
-      <tr class="hn"><td class="nm">C1958-SANDPUNT-FB</td><td>9</td><td class="pr">4</td><td class="pr">44,4%</td><td class="pr">-10,96€</td><td class="pr">-1,22€</td><td class="pw">13,05€</td></tr>
-    </tbody></table></div>
+    <thead><tr><th>Producto</th><th>Estado</th><th>Ped</th><th>Rech</th><th>T.Rech</th><th>Profit</th><th>P/Ped</th><th>CPA</th><th>Acción</th></tr></thead>
+    <tbody><tr class="hn"><td class="nm">M339-FAJALTACOMPRE-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td>5</td><td class="pr">3</td><td class="pr">60.0%</td><td class="pr">-93.78€</td><td class="pr">-18.76€</td><td class="pw">22.25€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+<tr class="hn"><td class="nm">B788-VESTCORTO-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td>6</td><td class="pr">3</td><td class="pr">50.0%</td><td class="pr">-58.82€</td><td class="pr">-9.80€</td><td class="pw">23.80€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+<tr class="hn"><td class="nm">C555-ZAPCIERRLATE-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td>5</td><td class="pr">2</td><td class="pr">40.0%</td><td class="pr">-53.58€</td><td class="pr">-10.72€</td><td class="pw">23.90€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+<tr class="hn"><td class="nm">M83-SUJELISO-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>6</td><td class="pr">3</td><td class="pr">50.0%</td><td class="pr">-29.80€</td><td class="pr">-4.97€</td><td class="pw">13.44€</td><td><span class="acc acc-pause">PAUSAR</span></td></tr>
+<tr class="hn"><td class="nm">B634-PANTESJOGGER-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td>5</td><td class="pr">2</td><td class="pr">40.0%</td><td class="pr">-17.62€</td><td class="pr">-3.52€</td><td class="pw">17.14€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+<tr class="hn"><td class="nm">C590-SANPLATABI-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td>8</td><td class="pr">3</td><td class="pr">37.5%</td><td class="pr">-13.14€</td><td class="pr">-1.64€</td><td class="pw">15.70€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+<tr class="hn"><td class="nm">C1959-SANDAPT-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td>5</td><td class="pr">2</td><td class="pr">40.0%</td><td class="pr">-12.03€</td><td class="pr">-2.41€</td><td class="pw">15.90€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+<tr class="hn"><td class="nm">C1958-SANDPUNT-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>9</td><td class="pr">4</td><td class="pr">44.4%</td><td class="pr">-10.96€</td><td class="pr">-1.22€</td><td class="pw">13.05€</td><td><span class="acc acc-pause">PAUSAR</span></td></tr>
+<tr class="hn"><td class="nm">B2608-VESTLINE-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td>5</td><td class="pr">2</td><td class="pr">40.0%</td><td class="pr">-3.34€</td><td class="pr">-0.67€</td><td class="pw">16.27€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+<tr class="hn"><td class="nm">C1843-MOSAICOS-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td>10</td><td class="pr">4</td><td class="pr">40.0%</td><td class="pr">-1.58€</td><td class="pr">-0.16€</td><td class="pw">14.12€</td><td><span class="acc acc-ok">YA PAUSADO ✓</span></td></tr>
+</tbody></table></div>
   </div>
-</div>
-<div class="al dn" style="margin-top:.85rem;">
-  <div class="ai">🚨</div>
-  <div class="ab"><div class="at">C655-MOCASINE-FB — Activo con 64,5% de rechazo · pausar inmediatamente</div>
-  <p>31 pedidos activos esta semana, 20 rechazos. Pérdida de 189,98€ y CPA 10,13€ en un producto que no llega al cliente. Es el único producto activo con pérdida significativa y volumen alto. No tiene justificación para seguir activo con estos números.</p></div>
 </div>
 </section>
 
 <!-- TENDENCIAS ESP -->
 <section>
-<div class="st">Tendencias — Semana vs Histórico 30D · España · Activos</div>
-<div class="al in" style="margin-bottom:.85rem;">
-  <div class="ai">📊</div>
-  <div class="ab"><div class="at">Metodología</div>
-  <p>Ped/día semana = total ÷ 7. Ped/día 30D = total ÷ 20 días efectivos. Tendencia SUBIENDO si ped/día semana supera +15% al histórico. Solo productos activos en ambas hojas.</p></div>
-</div>
-<div class="al wn" style="margin-bottom:.85rem;">
-  <div class="ai">⚠️</div>
-  <div class="ab"><div class="at">C1733-ZAPATO-FB — Escalado agresivo degradando rentabilidad</div>
-  <p>Pasó de 6,4 a 16,3 ped/día (+155%). El PxP cayó de 12,91€ (30D real) a 5,52€ estadístico y el CPA subió de 3,57€ a 6,20€. El escalado está erosionando el margen. Establecer cap de presupuesto con CPA máximo ≤4,50€.</p></div>
-</div>
+<div class="st">Tendencias — Semana vs 30D · España</div>
+<div class="al in" style="margin-bottom:.85rem;"><div class="ai">📊</div>
+<div class="ab"><div class="at">Metodología</div>
+<p>Ped/día semana = total ÷ 7 · Ped/día 30D = total ÷ 20 días efectivos. SUBIENDO si supera +15% al histórico. La acción recomendada combina tendencia, estado actual y variación de PxP.</p>
+</div></div>
 <div class="tw"><table>
-<thead><tr><th>Producto</th><th>Ped/día Sem</th><th>Ped/día 30D</th><th>Tendencia</th><th>PxP Sem</th><th>PxP 30D</th><th>Δ PxP</th><th>CPA Sem</th><th>CPA 30D</th><th>Δ CPA</th></tr></thead>
-<tbody><tr class="hw"><td class="nm">C1733-ZAPATO-FB</td><td class="pb">16.3</td><td style="color:var(--mt)">6.4</td><td><span class="tag twn">⚡ SUBIENDO ⚠</span></td><td class="pw">5.52€</td><td style="color:var(--mt)">12.91€</td><td class="pr">-7.39€</td><td style="color:var(--mt)">6.20€</td><td style="color:var(--mt)">3.57€</td><td class="pr">+2.63€</td></tr>
-<tr class=""><td class="nm">C575-SANDABICOL-FB</td><td class="pb">7.4</td><td style="color:var(--mt)">2.1</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">8.91€</td><td style="color:var(--mt)">7.93€</td><td class="pg">+0.98€</td><td style="color:var(--mt)">7.15€</td><td style="color:var(--mt)">9.58€</td><td class="pg">-2.43€</td></tr>
-<tr class=""><td class="nm">B2565-VAQUER-FB</td><td class="pb">7.0</td><td style="color:var(--mt)">0.7</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">12.40€</td><td style="color:var(--mt)">14.50€</td><td class="pr">-2.10€</td><td style="color:var(--mt)">6.69€</td><td style="color:var(--mt)">6.17€</td><td class="pr">+0.52€</td></tr>
-<tr class=""><td class="nm">C348-ZAPIMPERANTI-FB</td><td class="pb">6.9</td><td style="color:var(--mt)">2.4</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">10.04€</td><td style="color:var(--mt)">13.38€</td><td class="pr">-3.34€</td><td style="color:var(--mt)">8.27€</td><td style="color:var(--mt)">5.05€</td><td class="pr">+3.22€</td></tr>
-<tr class="hp"><td class="nm">H222-BASEMAQ-FB</td><td class="pb">5.9</td><td style="color:var(--mt)">3.5</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">9.44€</td><td style="color:var(--mt)">6.53€</td><td class="pg">+2.91€</td><td style="color:var(--mt)">4.47€</td><td style="color:var(--mt)">7.76€</td><td class="pg">-3.29€</td></tr>
-<tr class="hp"><td class="nm">C391-ZAPREMIUMCUE-FB</td><td class="pb">5.7</td><td style="color:var(--mt)">3.0</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">8.83€</td><td style="color:var(--mt)">6.27€</td><td class="pg">+2.56€</td><td style="color:var(--mt)">5.58€</td><td style="color:var(--mt)">8.42€</td><td class="pg">-2.84€</td></tr>
-<tr class=""><td class="nm">C1845-SANDSTI-FB</td><td class="pb">6.6</td><td style="color:var(--mt)">8.0</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">13.88€</td><td style="color:var(--mt)">12.34€</td><td class="pg">+1.54€</td><td style="color:var(--mt)">6.75€</td><td style="color:var(--mt)">6.70€</td><td class="pb">+0.05€</td></tr>
-<tr class=""><td class="nm">M766-LENCERIA-FB</td><td class="pb">5.6</td><td style="color:var(--mt)">8.2</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">9.86€</td><td style="color:var(--mt)">5.55€</td><td class="pg">+4.31€</td><td style="color:var(--mt)">4.61€</td><td style="color:var(--mt)">8.33€</td><td class="pg">-3.72€</td></tr>
-<tr class=""><td class="nm">M773-FAJA-FB</td><td class="pb">5.6</td><td style="color:var(--mt)">8.8</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">9.29€</td><td style="color:var(--mt)">8.05€</td><td class="pg">+1.24€</td><td style="color:var(--mt)">7.91€</td><td style="color:var(--mt)">8.07€</td><td class="pb">-0.16€</td></tr>
-<tr class=""><td class="nm">C1786-CALZADO-FB</td><td class="pb">6.0</td><td style="color:var(--mt)">12.3</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">8.73€</td><td style="color:var(--mt)">10.27€</td><td class="pr">-1.54€</td><td style="color:var(--mt)">12.21€</td><td style="color:var(--mt)">8.99€</td><td class="pr">+3.22€</td></tr>
-<tr class=""><td class="nm">B2363-VESTELEG-FB</td><td class="pb">4.9</td><td style="color:var(--mt)">7.3</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">11.33€</td><td style="color:var(--mt)">12.87€</td><td class="pr">-1.54€</td><td style="color:var(--mt)">9.06€</td><td style="color:var(--mt)">9.74€</td><td class="pg">-0.68€</td></tr>
-<tr class=""><td class="nm">M104-POSTUBRA-FB</td><td class="pb">3.0</td><td style="color:var(--mt)">5.7</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">10.57€</td><td style="color:var(--mt)">9.43€</td><td class="pg">+1.14€</td><td style="color:var(--mt)">6.30€</td><td style="color:var(--mt)">9.99€</td><td class="pg">-3.69€</td></tr>
-<tr class=""><td class="nm">C1766-CALZADO-FB</td><td class="pb">5.1</td><td style="color:var(--mt)">7.7</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">10.57€</td><td style="color:var(--mt)">10.13€</td><td class="pg">+0.44€</td><td style="color:var(--mt)">8.89€</td><td style="color:var(--mt)">9.13€</td><td class="pb">-0.24€</td></tr>
-<tr class="hp"><td class="nm">B2476-PANSUMME-FB</td><td class="pb">2.7</td><td style="color:var(--mt)">3.0</td><td><span class="tag tbl">➡ ESTABLE</span></td><td class="pg">10.03€</td><td style="color:var(--mt)">8.01€</td><td class="pg">+2.02€</td><td style="color:var(--mt)">10.73€</td><td style="color:var(--mt)">11.82€</td><td class="pg">-1.09€</td></tr>
-<tr class="hp"><td class="nm">C677-ZAPNEGRO-FB</td><td class="pb">2.6</td><td style="color:var(--mt)">0.1</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">9.95€</td><td style="color:var(--mt)">2.33€</td><td class="pg">+7.62€</td><td style="color:var(--mt)">8.10€</td><td style="color:var(--mt)">11.31€</td><td class="pg">-3.21€</td></tr>
-<tr class="hn"><td class="nm">C655-MOCASINE-FB</td><td class="pb">4.4</td><td style="color:var(--mt)">1.8</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pr">-6.13€</td><td style="color:var(--mt)">0.91€</td><td class="pr">-7.04€</td><td style="color:var(--mt)">10.13€</td><td style="color:var(--mt)">5.31€</td><td class="pr">+4.82€</td></tr>
-<tr class="hp"><td class="nm">B553-CONJLIN-FB</td><td class="pb">2.1</td><td style="color:var(--mt)">1.4</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">22.66€</td><td style="color:var(--mt)">9.74€</td><td class="pg">+12.92€</td><td style="color:var(--mt)">8.12€</td><td style="color:var(--mt)">15.51€</td><td class="pg">-7.39€</td></tr>
-<tr class=""><td class="nm">B2477-VESTELEG-FB</td><td class="pb">2.4</td><td style="color:var(--mt)">3.1</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pw">7.86€</td><td style="color:var(--mt)">12.24€</td><td class="pr">-4.38€</td><td style="color:var(--mt)">16.28€</td><td style="color:var(--mt)">9.43€</td><td class="pr">+6.85€</td></tr>
-<tr class=""><td class="nm">M83-SUJELISO-FB</td><td class="pb">2.4</td><td style="color:var(--mt)">3.2</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pw">6.22€</td><td style="color:var(--mt)">6.56€</td><td class="pr">-0.34€</td><td style="color:var(--mt)">10.49€</td><td style="color:var(--mt)">9.99€</td><td class="pb">+0.50€</td></tr>
-<tr class=""><td class="nm">B52-PANPUSHUP-TK</td><td class="pb">2.1</td><td style="color:var(--mt)">3.2</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">11.55€</td><td style="color:var(--mt)">12.12€</td><td class="pr">-0.57€</td><td style="color:var(--mt)">5.82€</td><td style="color:var(--mt)">8.92€</td><td class="pg">-3.10€</td></tr>
+<thead><tr><th>Producto</th><th>Estado</th><th>Ped/día Sem</th><th>Ped/día 30D</th><th>Tendencia</th><th>PxP Sem</th><th>PxP 30D</th><th>Δ PxP</th><th>CPA Sem</th><th>CPA 30D</th><th>Δ CPA</th><th>Acción</th></tr></thead>
+<tbody><tr class="hw"><td class="nm">C1733-ZAPATO-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">16.3</td><td style="color:var(--mt)">6.4</td><td><span class="tag twn">⚡ SUBE ⚠</span></td><td class="pw">5.52€</td><td style="color:var(--mt)">12.91€</td><td class="pr">-7.39€</td><td style="color:var(--mt)">6.20€</td><td style="color:var(--mt)">3.57€</td><td class="pr">+2.63€</td><td><span class="acc acc-watch">CAP CPA ≤4,50€</span></td></tr>
+<tr class=""><td class="nm">C575-SANDABICOL-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">7.4</td><td style="color:var(--mt)">2.1</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">8.91€</td><td style="color:var(--mt)">7.93€</td><td class="pg">+0.98€</td><td style="color:var(--mt)">7.15€</td><td style="color:var(--mt)">9.58€</td><td class="pg">-2.43€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class=""><td class="nm">B2565-VAQUER-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">7.0</td><td style="color:var(--mt)">0.7</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">12.40€</td><td style="color:var(--mt)">14.50€</td><td class="pr">-2.10€</td><td style="color:var(--mt)">6.69€</td><td style="color:var(--mt)">6.17€</td><td class="pr">+0.52€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class=""><td class="nm">C348-ZAPIMPERANTI-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">6.9</td><td style="color:var(--mt)">2.4</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">10.04€</td><td style="color:var(--mt)">13.38€</td><td class="pr">-3.34€</td><td style="color:var(--mt)">8.27€</td><td style="color:var(--mt)">5.05€</td><td class="pr">+3.22€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class="hp"><td class="nm">H222-BASEMAQ-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">5.9</td><td style="color:var(--mt)">3.5</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">9.44€</td><td style="color:var(--mt)">6.53€</td><td class="pg">+2.91€</td><td style="color:var(--mt)">4.47€</td><td style="color:var(--mt)">7.76€</td><td class="pg">-3.29€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td class="nm">C391-ZAPREMIUMCUE-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">5.7</td><td style="color:var(--mt)">3.0</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">8.83€</td><td style="color:var(--mt)">6.27€</td><td class="pg">+2.56€</td><td style="color:var(--mt)">5.58€</td><td style="color:var(--mt)">8.42€</td><td class="pg">-2.84€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class=""><td class="nm">C1845-SANDSTI-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">6.6</td><td style="color:var(--mt)">8.0</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">13.88€</td><td style="color:var(--mt)">12.34€</td><td class="pg">+1.54€</td><td style="color:var(--mt)">6.75€</td><td style="color:var(--mt)">6.70€</td><td class="pb2">+0.05€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class=""><td class="nm">M766-LENCERIA-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">5.6</td><td style="color:var(--mt)">8.2</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">9.86€</td><td style="color:var(--mt)">5.55€</td><td class="pg">+4.31€</td><td style="color:var(--mt)">4.61€</td><td style="color:var(--mt)">8.33€</td><td class="pg">-3.72€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class=""><td class="nm">M773-FAJA-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">5.6</td><td style="color:var(--mt)">8.8</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">9.29€</td><td style="color:var(--mt)">8.05€</td><td class="pg">+1.24€</td><td style="color:var(--mt)">7.91€</td><td style="color:var(--mt)">8.07€</td><td class="pb2">-0.16€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class=""><td class="nm">C1786-CALZADO-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">6.0</td><td style="color:var(--mt)">12.3</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">8.73€</td><td style="color:var(--mt)">10.27€</td><td class="pr">-1.54€</td><td style="color:var(--mt)">12.21€</td><td style="color:var(--mt)">8.99€</td><td class="pr">+3.22€</td><td><span class="acc acc-watch">REVISAR CPA</span></td></tr>
+<tr class=""><td class="nm">B2363-VESTELEG-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">4.9</td><td style="color:var(--mt)">7.3</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">11.33€</td><td style="color:var(--mt)">12.87€</td><td class="pr">-1.54€</td><td style="color:var(--mt)">9.06€</td><td style="color:var(--mt)">9.74€</td><td class="pg">-0.68€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class=""><td class="nm">M768-FAJASHORT-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">4.1</td><td style="color:var(--mt)">3.2</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pw">6.24€</td><td style="color:var(--mt)">8.00€</td><td class="pr">-1.76€</td><td style="color:var(--mt)">10.93€</td><td style="color:var(--mt)">10.20€</td><td class="pr">+0.73€</td><td><span class="acc acc-react">REACTIVAR?</span></td></tr>
+<tr class=""><td class="nm">C1213-ZAPATOPLA-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">3.7</td><td style="color:var(--mt)">2.1</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pr">2.61€</td><td style="color:var(--mt)">7.89€</td><td class="pr">-5.28€</td><td style="color:var(--mt)">9.34€</td><td style="color:var(--mt)">6.50€</td><td class="pr">+2.84€</td><td><span class="acc acc-ok">YA PAUSADO</span></td></tr>
+<tr class="hp"><td class="nm">C572-ZAPLUJOCUERO-TK</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">3.4</td><td style="color:var(--mt)">1.1</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pw">6.04€</td><td style="color:var(--mt)">3.01€</td><td class="pg">+3.03€</td><td style="color:var(--mt)">7.96€</td><td style="color:var(--mt)">10.28€</td><td class="pg">-2.32€</td><td><span class="acc acc-watch">EVALUAR TK</span></td></tr>
+<tr class=""><td class="nm">M104-POSTUBRA-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">3.0</td><td style="color:var(--mt)">5.7</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">10.57€</td><td style="color:var(--mt)">9.43€</td><td class="pg">+1.14€</td><td style="color:var(--mt)">6.30€</td><td style="color:var(--mt)">9.99€</td><td class="pg">-3.69€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class=""><td class="nm">B2477-VESTELEG-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">2.4</td><td style="color:var(--mt)">3.1</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pw">7.86€</td><td style="color:var(--mt)">12.24€</td><td class="pr">-4.38€</td><td style="color:var(--mt)">16.28€</td><td style="color:var(--mt)">9.43€</td><td class="pr">+6.85€</td><td><span class="acc acc-watch">REVISAR CPA</span></td></tr>
+<tr class="hp"><td class="nm">B553-CONJLIN-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">2.1</td><td style="color:var(--mt)">1.4</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">22.66€</td><td style="color:var(--mt)">9.74€</td><td class="pg">+12.92€</td><td style="color:var(--mt)">8.12€</td><td style="color:var(--mt)">15.51€</td><td class="pg">-7.39€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hn"><td class="nm">C655-MOCASINE-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">4.4</td><td style="color:var(--mt)">1.8</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pr">-6.13€</td><td style="color:var(--mt)">0.91€</td><td class="pr">-7.04€</td><td style="color:var(--mt)">10.13€</td><td style="color:var(--mt)">5.31€</td><td class="pr">+4.82€</td><td><span class="acc acc-pause">PAUSAR YA</span></td></tr>
+<tr class=""><td class="nm">B2555-CONJFLOR-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">5.6</td><td style="color:var(--mt)">1.1</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pr">1.55€</td><td style="color:var(--mt)">7.72€</td><td class="pr">-6.17€</td><td style="color:var(--mt)">9.46€</td><td style="color:var(--mt)">7.73€</td><td class="pr">+1.73€</td><td><span class="acc acc-watch">REVISAR PxP</span></td></tr>
+<tr class=""><td class="nm">B52-PANPUSHUP-TK</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">2.1</td><td style="color:var(--mt)">3.2</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">11.55€</td><td style="color:var(--mt)">12.12€</td><td class="pr">-0.57€</td><td style="color:var(--mt)">5.82€</td><td style="color:var(--mt)">8.92€</td><td class="pg">-3.10€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
 </tbody></table></div>
 
 <div style="margin-top:1.25rem;">
-<div style="font-size:.67rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mt);margin-bottom:.65rem;font-weight:600;">Activos en 30D sin datos esta semana — España</div>
+<div style="font-size:.67rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mt);margin-bottom:.65rem;font-weight:600;">Con historial 30D sólido pero sin datos esta semana · España</div>
 <div class="tw"><table>
-<thead><tr><th>Producto</th><th>Plat.</th><th>Ped/día 30D</th><th>Profit 30D</th><th>PxP 30D</th><th>Acción</th></tr></thead>
-<tbody>
-  <tr class="hw"><td class="nm">M83-SUJELISO-TK</td><td><span class="tag ttk" >TK</span></td><td class="pb">3,6</td><td class="pg">764,00€</td><td class="pg">10,76€</td><td style="color:var(--wn)">⚠ Sin actividad esta semana</td></tr>
-  <tr><td class="nm">B2476-PANSUMME-TK</td><td><span class="tag ttk" >TK</span></td><td class="pb">0,8</td><td class="pg">192,51€</td><td class="pg">12,83€</td><td style="color:var(--wn)">⚠ Sin actividad esta semana</td></tr>
+<thead><tr><th>Producto</th><th>Estado</th><th>Ped/día 30D</th><th>Profit 30D</th><th>PxP 30D</th><th>CPA 30D</th><th>Acción</th></tr></thead>
+<tbody><tr><td class="nm">G186-ESTACIONCARGA-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">8.1</td><td class="pg">1,864.53€</td><td class="pg">11.58€</td><td>10.57€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
+<tr><td class="nm">B1890-PANTAFAJA-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">3.8</td><td class="pg">868.79€</td><td class="pg">11.58€</td><td>12.69€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
+<tr><td class="nm">M83-SUJELISO-TK</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">3.5</td><td class="pg">764.00€</td><td class="pg">10.76€</td><td>8.12€</td><td><span class="acc acc-watch">¿ACTIVO SIN DATOS?</span></td></tr>
+<tr><td class="nm">C90-SKECHERS-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">3.6</td><td class="pg">687.78€</td><td class="pg">9.55€</td><td>7.29€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
+<tr><td class="nm">G136-KITTV-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">6.8</td><td class="pg">662.30€</td><td class="pg">4.87€</td><td>9.44€</td><td><span class="acc acc-watch">EVALUAR</span></td></tr>
+<tr><td class="nm">B2043-PANTALONHOLG-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">2.6</td><td class="pg">607.38€</td><td class="pg">11.68€</td><td>12.28€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
+<tr><td class="nm">C572-ZAPLUJOCUERO-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">3.3</td><td class="pg">532.50€</td><td class="pg">8.07€</td><td>9.61€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
+<tr><td class="nm">C1686-BOTASTREK-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">2.6</td><td class="pg">419.69€</td><td class="pg">7.92€</td><td>7.05€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
+<tr><td class="nm">C1835-SANDALI-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">1.8</td><td class="pg">359.74€</td><td class="pg">9.99€</td><td>9.24€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
+<tr><td class="nm">C1867-ALPARG-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">1.8</td><td class="pg">339.48€</td><td class="pg">9.70€</td><td>8.83€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
 </tbody></table></div>
 </div>
 </section>
 
 <!-- TENDENCIAS PORT -->
 <section>
-<div class="st port">Tendencias — Semana vs Histórico 30D · Portugal · Activos</div>
-<div class="al wn" style="margin-bottom:.85rem;">
-  <div class="ai">⚠️</div>
-  <div class="ab"><div class="at">C1845-SANDSTI-FB Portugal — Escalado con caída crítica de PxP: −20,80€/ped</div>
-  <p>Históricamente el mejor producto de Portugal (26,59€/ped real). Esta semana escaló a 4,4 ped/día vs 0,5 histórico (+780%) y el PxP estadístico cayó a 5,79€ con CPA disparado de 2,51€ a 8,19€. Revisar campaña urgente antes de seguir escalando.</p></div>
-</div>
+<div class="st p">Tendencias — Semana vs 30D · Portugal</div>
+<div class="al wn" style="margin-bottom:.85rem;"><div class="ai">⚠️</div>
+<div class="ab"><div class="at">C1845-SANDSTI-FB Portugal — Escalado con caída crítica de PxP: −20,80€/ped</div>
+<p>Históricamente el mejor producto de Portugal (26,59€/ped real). Escaló a 4,4 ped/día vs 0,5 histórico y el PxP estadístico cayó a 5,79€. CPA de 2,51€ a 8,19€. Revisar campaña urgente.</p>
+</div></div>
 <div class="tw"><table>
-<thead><tr><th>Producto</th><th>Ped/día Sem</th><th>Ped/día 30D</th><th>Tendencia</th><th>PxP Sem</th><th>PxP 30D</th><th>Δ PxP</th><th>CPA Sem</th><th>CPA 30D</th><th>Δ CPA</th></tr></thead>
-<tbody><tr class=""><td class="nm">C1426-CALZAHM-FB</td><td class="pb">6.3</td><td style="color:var(--mt)">1.6</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">8.53€</td><td style="color:var(--mt)">9.47€</td><td class="pr">-0.94€</td><td style="color:var(--mt)">8.92€</td><td style="color:var(--mt)">7.19€</td><td class="pr">+1.73€</td></tr>
-<tr class=""><td class="nm">B2363-VESTELEG-FB</td><td class="pb">6.1</td><td style="color:var(--mt)">1.6</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">12.58€</td><td style="color:var(--mt)">15.22€</td><td class="pr">-2.64€</td><td style="color:var(--mt)">8.37€</td><td style="color:var(--mt)">5.02€</td><td class="pr">+3.35€</td></tr>
-<tr class="hp"><td class="nm">B2426-CONJUNTO-FB</td><td class="pb">5.3</td><td style="color:var(--mt)">2.1</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">18.76€</td><td style="color:var(--mt)">12.60€</td><td class="pg">+6.16€</td><td style="color:var(--mt)">9.42€</td><td style="color:var(--mt)">5.18€</td><td class="pr">+4.24€</td></tr>
-<tr class="hp"><td class="nm">M728-MOLDEADOR-FB</td><td class="pb">4.9</td><td style="color:var(--mt)">1.4</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">8.23€</td><td style="color:var(--mt)">5.67€</td><td class="pg">+2.56€</td><td style="color:var(--mt)">7.10€</td><td style="color:var(--mt)">4.54€</td><td class="pr">+2.56€</td></tr>
-<tr class="hw"><td class="nm">C1845-SANDSTI-FB</td><td class="pb">4.4</td><td style="color:var(--mt)">0.5</td><td><span class="tag twn">⚡ SUBIENDO ⚠</span></td><td class="pw">5.79€</td><td style="color:var(--mt)">26.59€</td><td class="pr">-20.80€</td><td style="color:var(--mt)">8.19€</td><td style="color:var(--mt)">2.51€</td><td class="pr">+5.68€</td></tr>
-<tr class=""><td class="nm">C90-SKECHERS-FB</td><td class="pb">4.1</td><td style="color:var(--mt)">0.3</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">10.08€</td><td style="color:var(--mt)">17.06€</td><td class="pr">-6.98€</td><td style="color:var(--mt)">10.18€</td><td style="color:var(--mt)">7.78€</td><td class="pr">+2.40€</td></tr>
-<tr class="hp"><td class="nm">C571-SAPTACON-FB</td><td class="pb">1.9</td><td style="color:var(--mt)">0.6</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">14.21€</td><td style="color:var(--mt)">12.12€</td><td class="pg">+2.09€</td><td style="color:var(--mt)">9.59€</td><td style="color:var(--mt)">7.96€</td><td class="pr">+1.63€</td></tr>
-<tr class=""><td class="nm">C575-SANDABICOL-FB</td><td class="pb">1.1</td><td style="color:var(--mt)">0.5</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pw">6.28€</td><td style="color:var(--mt)">6.02€</td><td class="pg">+0.26€</td><td style="color:var(--mt)">7.76€</td><td style="color:var(--mt)">9.60€</td><td class="pg">-1.84€</td></tr>
-<tr class=""><td class="nm">C552-SANTIRCRU-FB</td><td class="pb">1.4</td><td style="color:var(--mt)">0.3</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">12.31€</td><td style="color:var(--mt)">14.27€</td><td class="pr">-1.96€</td><td style="color:var(--mt)">13.48€</td><td style="color:var(--mt)">8.58€</td><td class="pr">+4.90€</td></tr>
-<tr class=""><td class="nm">C1788-ZAPATO-FB</td><td class="pb">1.3</td><td style="color:var(--mt)">0.6</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pr">3.62€</td><td style="color:var(--mt)">7.95€</td><td class="pr">-4.33€</td><td style="color:var(--mt)">14.88€</td><td style="color:var(--mt)">9.86€</td><td class="pr">+5.02€</td></tr>
+<thead><tr><th>Producto</th><th>Estado</th><th>Ped/día Sem</th><th>Ped/día 30D</th><th>Tendencia</th><th>PxP Sem</th><th>PxP 30D</th><th>Δ PxP</th><th>CPA Sem</th><th>CPA 30D</th><th>Δ CPA</th><th>Acción</th></tr></thead>
+<tbody><tr class=""><td class="nm">C1426-CALZAHM-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">6.3</td><td style="color:var(--mt)">1.6</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">8.53€</td><td style="color:var(--mt)">9.47€</td><td class="pr">-0.94€</td><td style="color:var(--mt)">8.92€</td><td style="color:var(--mt)">7.19€</td><td class="pr">+1.73€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class=""><td class="nm">B2363-VESTELEG-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">6.1</td><td style="color:var(--mt)">1.6</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">12.58€</td><td style="color:var(--mt)">15.22€</td><td class="pr">-2.64€</td><td style="color:var(--mt)">8.37€</td><td style="color:var(--mt)">5.02€</td><td class="pr">+3.35€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td class="nm">B2426-CONJUNTO-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">5.3</td><td style="color:var(--mt)">2.1</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">18.76€</td><td style="color:var(--mt)">12.60€</td><td class="pg">+6.16€</td><td style="color:var(--mt)">9.42€</td><td style="color:var(--mt)">5.18€</td><td class="pr">+4.24€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td class="nm">M728-MOLDEADOR-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">4.9</td><td style="color:var(--mt)">1.4</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">8.23€</td><td style="color:var(--mt)">5.67€</td><td class="pg">+2.56€</td><td style="color:var(--mt)">7.10€</td><td style="color:var(--mt)">4.54€</td><td class="pr">+2.56€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class="hw"><td class="nm">C1845-SANDSTI-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">4.4</td><td style="color:var(--mt)">0.5</td><td><span class="tag twn">⚡ SUBE ⚠</span></td><td class="pw">5.79€</td><td style="color:var(--mt)">26.59€</td><td class="pr">-20.80€</td><td style="color:var(--mt)">8.19€</td><td style="color:var(--mt)">2.51€</td><td class="pr">+5.68€</td><td><span class="acc acc-watch">REVISAR ESCAL.</span></td></tr>
+<tr class=""><td class="nm">C90-SKECHERS-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">4.1</td><td style="color:var(--mt)">0.3</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">10.08€</td><td style="color:var(--mt)">17.06€</td><td class="pr">-6.98€</td><td style="color:var(--mt)">10.18€</td><td style="color:var(--mt)">7.78€</td><td class="pr">+2.40€</td><td><span class="acc acc-ok">MANTENER</span></td></tr>
+<tr class="hp"><td class="nm">C571-SAPTACON-FB</td><td><span class="act act-on">● ACTIVO</span></td><td class="pb2">1.9</td><td style="color:var(--mt)">0.6</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pg">14.21€</td><td style="color:var(--mt)">12.12€</td><td class="pg">+2.09€</td><td style="color:var(--mt)">9.59€</td><td style="color:var(--mt)">7.96€</td><td class="pr">+1.63€</td><td><span class="acc acc-scale">ESCALAR</span></td></tr>
+<tr class="hp"><td class="nm">B2388-BODYMODEL-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">1.4</td><td style="color:var(--mt)">1.1</td><td><span class="tag tac">📈 SUBIENDO</span></td><td class="pr">1.97€</td><td style="color:var(--mt)">-0.76€</td><td class="pg">+2.73€</td><td style="color:var(--mt)">11.24€</td><td style="color:var(--mt)">6.83€</td><td class="pr">+4.41€</td><td><span class="acc acc-ok">YA PAUSADO</span></td></tr>
+<tr class=""><td class="nm">B2332-PANTALON-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">0.3</td><td style="color:var(--mt)">1.9</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pg">9.20€</td><td style="color:var(--mt)">15.44€</td><td class="pr">-6.24€</td><td style="color:var(--mt)">23.70€</td><td style="color:var(--mt)">8.91€</td><td class="pr">+14.79€</td><td><span class="acc acc-ok">YA PAUSADO</span></td></tr>
+<tr class=""><td class="nm">B1041-VESTIDO-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">0.3</td><td style="color:var(--mt)">1.6</td><td><span class="tag tdn">📉 BAJANDO</span></td><td class="pr">1.12€</td><td style="color:var(--mt)">10.33€</td><td class="pr">-9.21€</td><td style="color:var(--mt)">31.14€</td><td style="color:var(--mt)">10.38€</td><td class="pr">+20.76€</td><td><span class="acc acc-ok">YA PAUSADO</span></td></tr>
 </tbody></table></div>
+
+<div style="margin-top:1.25rem;">
+<div style="font-size:.67rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mt);margin-bottom:.65rem;font-weight:600;">Con historial 30D positivo pero sin datos esta semana · Portugal</div>
+<div class="tw"><table>
+<thead><tr><th>Producto</th><th>Estado</th><th>Ped/día 30D</th><th>Profit 30D</th><th>PxP 30D</th><th>Acción</th></tr></thead>
+<tbody><tr><td class="nm">B2555-CONJFLOR-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">0.4</td><td class="pg">134.47€</td><td class="pg">16.81€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
+<tr><td class="nm">C1766-CALZADO-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">0.3</td><td class="pg">106.28€</td><td class="pg">17.71€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
+<tr><td class="nm">C1786-CALZADO-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">0.6</td><td class="pg">115.04€</td><td class="pg">10.46€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
+<tr><td class="nm">B2171-PANTHM-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">0.3</td><td class="pg">86.16€</td><td class="pg">12.31€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
+<tr><td class="nm">C206-TENISERGOMUJ-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">0.2</td><td class="pg">67.86€</td><td class="pg">13.57€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
+<tr><td class="nm">B1890-PANTAFAJA-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td class="pb2">0.2</td><td class="pg">57.74€</td><td class="pg">11.55€</td><td><span class="acc acc-react">REACTIVAR</span></td></tr>
+</tbody></table></div>
+</div>
 </section>
 
-<!-- 30D REFERENCIA -->
+<!-- 30D TOP -->
 <section>
-<div class="st">Histórico 30D — Top Activos Verificados · España</div>
-<div class="cards c3" style="margin-bottom:1.25rem;">
-  <div class="card bl"><div class="cl">Profit Real 30D — Activos ESP</div><div class="cv b">27.106€</div><div class="cs">47 prods verificados · 2.913 ped</div></div>
-  <div class="card bl"><div class="cl">Profit Real 30D — Activos PORT</div><div class="cv b">2.125€</div><div class="cs">10 prods verificados · 186 ped</div></div>
-  <div class="card"><div class="cl">Diferencia PxP activos vs semana</div><div class="cv g">+0,81€</div><div class="cs">Activos generan mejor margen que promedio</div></div>
-</div>
+<div class="st">Histórico 30D Real — Top 10 España Verificados</div>
 <div class="tw"><table>
-<thead><tr><th>#</th><th>Producto</th><th>Ped 30D</th><th>Profit Real</th><th>P/Ped</th><th>CPA</th><th>T.Entrega</th></tr></thead>
+<thead><tr><th>#</th><th>Producto</th><th>Estado</th><th>Ped 30D</th><th>Profit Real</th><th>P/Ped</th><th>CPA</th><th>T.Entrega</th></tr></thead>
 <tbody>
-  <tr class="hp"><td><span class="rk gd">1</span></td><td class="nm">C1786-CALZADO-FB</td><td>246</td><td class="pg">2.527,51€</td><td class="pg">10,27€</td><td>8,99€</td><td class="pw">71,1%</td></tr>
-  <tr class="hp"><td><span class="rk sv">2</span></td><td class="nm">C1845-SANDSTI-FB</td><td>160</td><td class="pg">1.974,97€</td><td class="pg">12,34€</td><td>6,70€</td><td class="pg">72,5%</td></tr>
-  <tr class="hp"><td><span class="rk bz">3</span></td><td class="nm">B2363-VESTELEG-FB</td><td>147</td><td class="pg">1.892,29€</td><td class="pg">12,87€</td><td>9,74€</td><td class="pg">82,3%</td></tr>
-  <tr><td><span class="rk">4</span></td><td class="nm">C1733-ZAPATO-FB</td><td>128</td><td class="pg">1.651,87€</td><td class="pg">12,91€</td><td>3,57€</td><td class="pw">62,5%</td></tr>
-  <tr><td><span class="rk">5</span></td><td class="nm">C1766-CALZADO-FB</td><td>154</td><td class="pg">1.559,51€</td><td class="pg">10,13€</td><td>9,13€</td><td class="pg">75,3%</td></tr>
-  <tr><td><span class="rk">6</span></td><td class="nm">M773-FAJA-FB</td><td>177</td><td class="pg">1.425,61€</td><td>8,05€</td><td>8,07€</td><td class="pw">68,9%</td></tr>
-  <tr><td><span class="rk">7</span></td><td class="nm">B2364-VESTIDO-FB</td><td>119</td><td class="pg">1.315,51€</td><td class="pg">11,05€</td><td>9,51€</td><td class="pg">80,7%</td></tr>
-  <tr><td><span class="rk">8</span></td><td class="nm">M104-POSTUBRA-FB</td><td>114</td><td class="pg">1.074,96€</td><td>9,43€</td><td>9,99€</td><td class="pg">81,6%</td></tr>
-  <tr><td><span class="rk">9</span></td><td class="nm">C552-SANTIRCRU-FB</td><td>130</td><td class="pg">953,19€</td><td>7,33€</td><td>10,23€</td><td class="pw">67,7%</td></tr>
-  <tr><td><span class="rk">10</span></td><td class="nm">M783-SUJETADORPUSH-FB</td><td>109</td><td class="pg">911,64€</td><td>8,36€</td><td>10,34€</td><td class="pg">81,7%</td></tr>
+  <tr class="hp"><td><span class="rk gd">1</span></td><td class="nm">C1786-CALZADO-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>246</td><td class="pg">2.527,51€</td><td class="pg">10,27€</td><td>8,99€</td><td class="pw">71,1%</td></tr>
+  <tr class="hp"><td><span class="rk sv">2</span></td><td class="nm">C1845-SANDSTI-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>160</td><td class="pg">1.974,97€</td><td class="pg">12,34€</td><td>6,70€</td><td class="pg">72,5%</td></tr>
+  <tr class="hp"><td><span class="rk bz">3</span></td><td class="nm">B2363-VESTELEG-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>147</td><td class="pg">1.892,29€</td><td class="pg">12,87€</td><td>9,74€</td><td class="pg">82,3%</td></tr>
+  <tr><td><span class="rk">4</span></td><td class="nm">G186-ESTACIONCARGA-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td>161</td><td class="pg">1.864,53€</td><td class="pg">11,58€</td><td>10,57€</td><td class="pg">77,6%</td></tr>
+  <tr><td><span class="rk">5</span></td><td class="nm">C1733-ZAPATO-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>128</td><td class="pg">1.651,87€</td><td class="pg">12,91€</td><td>3,57€</td><td class="pw">62,5%</td></tr>
+  <tr><td><span class="rk">6</span></td><td class="nm">C1766-CALZADO-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>154</td><td class="pg">1.559,51€</td><td class="pg">10,13€</td><td>9,13€</td><td class="pg">75,3%</td></tr>
+  <tr><td><span class="rk">7</span></td><td class="nm">M773-FAJA-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>177</td><td class="pg">1.425,61€</td><td>8,05€</td><td>8,07€</td><td class="pw">68,9%</td></tr>
+  <tr><td><span class="rk">8</span></td><td class="nm">B2364-VESTIDO-FB</td><td><span class="act act-off">○ PAUSADO</span></td><td>119</td><td class="pg">1.315,51€</td><td class="pg">11,05€</td><td>9,51€</td><td class="pg">80,7%</td></tr>
+  <tr><td><span class="rk">9</span></td><td class="nm">M104-POSTUBRA-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>114</td><td class="pg">1.074,96€</td><td>9,43€</td><td>9,99€</td><td class="pg">81,6%</td></tr>
+  <tr><td><span class="rk">10</span></td><td class="nm">C552-SANTIRCRU-FB</td><td><span class="act act-on">● ACTIVO</span></td><td>130</td><td class="pg">953,19€</td><td>7,33€</td><td>10,23€</td><td class="pw">67,7%</td></tr>
 </tbody></table></div>
 </section>
 
 <!-- ALERTAS -->
 <section>
-<div class="st">Alertas y Recomendaciones</div>
-<div class="al dn"><div class="ai">🚨</div><div class="ab"><div class="at">C655-MOCASINE-FB — Pausar hoy</div><p>Único activo con volumen significativo y pérdida real. 64,5% rechazo, -189,98€ en semana. No tiene viabilidad con estos números. Pausar y revisar propuesta antes de reactivar.</p></div></div>
-<div class="al dn"><div class="ai">⚡</div><div class="ab"><div class="at">C1733-ZAPATO-FB — Cap urgente en CPA</div><p>El mejor margen histórico de España (12,91€/ped real, CPA 3,57€) se está deteriorando con el escalado. Esta semana: 5,52€/ped y CPA 6,20€. Establecer límite de CPA a 4,50€ en la campaña ahora.</p></div></div>
-<div class="al wn"><div class="ai">📉</div><div class="ab"><div class="at">C1845-SANDSTI-FB Portugal — Revisar escalado urgente</div><p>El mejor producto Portugal históricamente (26,59€/ped real) cayó a 5,79€/ped estadístico al escalarlo. El CPA pasó de 2,51€ a 8,19€. Revisar segmentación y creatividades antes de seguir.</p></div></div>
-<div class="al wn"><div class="ai">📉</div><div class="ab"><div class="at">Productos clave bajando volumen sin causa aparente</div><p>C1786-CALZADO-FB: de 12,3 a 6,0 ped/día (−51%). B2363-VESTELEG-FB: de 7,3 a 4,9 (−33%). M773-FAJA-FB: de 8,8 a 5,6 (−36%). Tres de los mejores históricos bajando simultáneamente. Revisar fatiga de creatividades o redistribución de presupuesto.</p></div></div>
-<div class="al sc"><div class="ai">🚀</div><div class="ab"><div class="at">Oportunidad: escalar TK con solo 5 productos activos vs 44 pausados con historial positivo</div><p>TikTok genera 9,37€/ped vs 8,43€ en FB en activos. Hay 44 productos TK con datos históricos buenos que están pausados. Priorizar reactivación de los mejores: C1762-SANDALIA-TK (1.118€ profit semana pasada, 12,16€/ped) como primer candidato.</p></div></div>
-<div class="al in"><div class="ai">💡</div><div class="ab"><div class="at">M83-SUJELISO-TK y B2476-PANSUMME-TK — Activos sin datos esta semana en España</div><p>Ambos tienen historial 30D sólido (764€ y 192€ profit real, 10,76€ y 12,83€/ped). No aparecen en la programación semanal. Verificar si están activos realmente o si hay un problema de tracking.</p></div></div>
+<div class="st">Alertas y Recomendaciones Accionables</div>
+<div class="al dn"><div class="ai">🚨</div><div class="ab"><div class="at">C655-MOCASINE-FB — ACTIVO con 64,5% de rechazo · pausar hoy</div>
+<p>31 pedidos, 20 rechazos. Pérdida de 189,98€ en semana. CPA 10,13€ sin retorno real. Es el único activo con pérdida significativa y volumen alto. Pausar inmediatamente.</p></div></div>
+<div class="al dn"><div class="ai">⚡</div><div class="ab"><div class="at">C1733-ZAPATO-FB — Escalado agresivo destruyendo margen</div>
+<p>Mejor CPA histórico de España (3,57€). Esta semana subió a 6,20€ al escalar de 6,4 a 16,3 ped/día. El PxP bajó de 12,91€ a 5,52€. Establecer cap de CPA en campaña a 4,50€ máximo.</p></div></div>
+<div class="al wn"><div class="ai">📉</div><div class="ab"><div class="at">C1786, B2363, M773 — Activos bajando volumen sin causa identificada</div>
+<p>C1786-CALZADO-FB: de 12,3 a 6,0 ped/día (−51%). B2363-VESTELEG-FB: de 7,3 a 4,9 (−33%). M773-FAJA-FB: de 8,8 a 5,6 (−36%). Los tres con historial excelente. Revisar fatiga de creatividades.</p></div></div>
+<div class="al wn"><div class="ai">⚠️</div><div class="ab"><div class="at">C1845-SANDSTI-FB Portugal — Revisar escalado urgente</div>
+<p>El mejor producto Portugal históricamente (26,59€/ped real). PxP estadístico cayó a 5,79€ al escalarlo. CPA: de 2,51€ a 8,19€. Revisar segmentación antes de continuar.</p></div></div>
+<div class="al sc"><div class="ai">🚀</div><div class="ab"><div class="at">Reactivar G186-ESTACIONCARGA-FB — Pausado pero 4º producto por profit real 30D</div>
+<p>1.864,53€ profit real 30D, 11,58€/ped, 77,6% tasa entrega. Sin actividad esta semana y actualmente pausado. Reactivar con prioridad — es el mejor producto pausado del catálogo.</p></div></div>
+<div class="al sc"><div class="ai">🚀</div><div class="ab"><div class="at">C1762-SANDALIA-TK — 1er producto por profit semana · estado desconocido (TK)</div>
+<p>1.118,38€ profit esta semana, 12,16€/ped, CPA 4,09€. El mejor producto de la semana. No tenemos datos de estado en TikTok — verificar con el equipo si está activo y si no, escalar.</p></div></div>
 </section>
 
 </main>
 <footer>
-  <p><span class="dot"></span>Análisis filtrado: datos completos + activos actualmente. Testeos sin conversión en reporte MB separado. Inactivos con datos completos excluidos del análisis principal.</p>
+  <p><span class="dot"></span>Datos verificados: completos + sin testeos sin conversión. Estado activo/pausado como contexto de recomendación, no como filtro de análisis.</p>
   <p style="font-family:'JetBrains Mono',monospace;font-size:.67rem;color:var(--mt);">Pares &amp; Co · COD Analytics · Semana 21/2025</p>
 </footer>
 </body></html>
