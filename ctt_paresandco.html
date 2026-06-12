@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTT Express — Análisis de Costos · Pares & Co</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --primary:#3057F3; --primary-light:#ECEFFE; --primary-dark:#1E3FD8;
+  --navy:#111931; --fg:#0F1626; --muted:#75787E;
+  --bg:#FFFFFF; --card-bg:#F2F3F5; --border:#E5E7EB;
+  --danger:#EF4444; --danger-light:#FEF2F2;
+  --warn:#D97706; --warn-light:#FFFBEB;
+  --success:#059669; --success-light:#ECFDF5;
+  --feb:#F59E0B; --mar:#3057F3; --abr:#059669; --may:#8B5CF6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--fg);font-size:14px;min-width:900px}
+
+/* HEADER */
+.hdr{background:var(--navy);padding:16px 28px;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;flex-direction:column;line-height:1.1}
+.logo-p{color:var(--primary);font-weight:800;font-size:17px;letter-spacing:.06em}
+.logo-c{color:#fff;font-weight:800;font-size:17px;letter-spacing:.06em}
+.hdr-sep{width:1px;height:36px;background:rgba(255,255,255,.12);margin:0 20px}
+.hdr-title{color:rgba(255,255,255,.9);font-size:14px;font-weight:600}
+.hdr-sub{color:rgba(255,255,255,.4);font-size:10px;margin-top:3px;letter-spacing:.04em}
+
+/* TABS */
+.tab-bar{background:var(--bg);border-bottom:1px solid var(--border);padding:0 28px;display:flex;gap:0}
+.tab-btn{padding:13px 22px;font-size:12px;font-weight:600;font-family:'Montserrat',sans-serif;color:var(--muted);background:transparent;border:none;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;letter-spacing:.02em;text-transform:uppercase}
+.tab-btn:hover{color:var(--fg);background:var(--card-bg)}
+.tab-btn.active{color:var(--primary);border-bottom-color:var(--primary)}
+
+/* LAYOUT */
+.content{padding:22px 28px}
+.tab-panel{display:none}.tab-panel.active{display:block}
+.month-pip{height:3px;width:32px;border-radius:2px;margin-bottom:16px}
+
+/* METRICS */
+.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:16px}
+.met{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.met.hl{background:var(--bg);border-color:var(--primary);box-shadow:0 0 0 1px var(--primary-light)}
+.met-lbl{font-size:9px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.met-val{font-size:20px;font-weight:800;color:var(--fg);letter-spacing:-.02em}
+.met-sub{font-size:10px;color:var(--muted);margin-top:3px;font-weight:500}
+.sub-g{color:var(--success)}.sub-r{color:var(--danger)}
+
+/* GRID */
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.gap{margin-top:12px}
+
+/* CARD */
+.card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.card-ttl{font-size:9px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+.card-sub{font-size:10px;color:#C4C8D0;margin-bottom:12px}
+
+/* TARIFA BARS */
+.tr{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.tr-kg{font-size:11px;color:var(--muted);min-width:34px;font-weight:600}
+.tr-bw{flex:1;background:var(--card-bg);border-radius:3px;height:15px;overflow:hidden}
+.tr-b{height:100%;border-radius:3px;transition:width .5s ease}
+.tr-n{font-size:10px;color:var(--muted);min-width:36px;text-align:right}
+.tr-e{font-size:12px;font-weight:700;color:var(--fg);min-width:46px;text-align:right}
+
+/* ZONA */
+.zr{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)}
+.zr:last-child{border-bottom:none}
+.zbadge{display:inline-block;font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:.04em}
+.z-ptc{background:var(--primary-light);color:var(--primary)}
+.z-pte{background:var(--success-light);color:var(--success)}
+.z-pti{background:var(--danger-light);color:var(--danger)}
+.zr-lbl{font-size:10px;color:var(--muted);margin-top:2px}
+.zr-val{font-size:13px;font-weight:700;color:var(--fg)}
+.zr-sub{font-size:10px;margin-top:1px}
+
+/* RATIO BARS */
+.rr{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.rr-kg{font-size:11px;color:var(--muted);min-width:34px;font-weight:600}
+.rr-bw{flex:1;background:var(--card-bg);border-radius:3px;height:15px;overflow:hidden}
+.rr-b{height:100%;border-radius:3px}
+.rr-pct{font-size:12px;font-weight:700;min-width:40px;text-align:right}
+
+/* COD */
+.cr{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:12px}
+.cr:last-child{border-bottom:none}
+
+/* ALERTS */
+.alert{border-radius:8px;padding:9px 12px;font-size:11px;line-height:1.55;margin-bottom:7px;border-left:3px solid;font-weight:500}
+.al-d{background:var(--danger-light);color:#991B1B;border-color:var(--danger)}
+.al-w{background:var(--warn-light);color:#92400E;border-color:var(--warn)}
+.al-i{background:var(--primary-light);color:#1E3A8A;border-color:var(--primary)}
+
+/* FUEL TOGGLE */
+.ftoggle{display:flex;gap:5px}
+.fbtn{font-size:10px;font-weight:700;font-family:'Montserrat',sans-serif;padding:5px 12px;border-radius:6px;border:1px solid var(--border);cursor:pointer;background:var(--card-bg);color:var(--muted);transition:all .15s;letter-spacing:.03em;text-transform:uppercase}
+.fbtn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+/* TABLE */
+.dtbl{width:100%;border-collapse:collapse;font-size:12px}
+.dtbl th{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;padding:9px 14px;border-bottom:2px solid var(--border);text-align:center;background:var(--card-bg)}
+.dtbl th:first-child{text-align:left}
+.dtbl td{padding:10px 14px;text-align:center;border-bottom:1px solid var(--border);font-weight:600;color:var(--fg)}
+.dtbl td:first-child{text-align:left;font-weight:700}
+.dtbl tr:last-child td{border-bottom:none}
+.dtbl tbody tr:hover td{background:var(--primary-light)}
+.td-g{color:var(--success);font-weight:800}.td-r{color:var(--danger);font-weight:800}
+
+/* LEGEND */
+.leg{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.leg-i{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted);font-weight:600}
+.leg-d{width:10px;height:10px;border-radius:2px;display:inline-block}
+
+/* FOOTER */
+.footer{background:var(--navy);padding:12px 28px;display:flex;justify-content:space-between;align-items:center;margin-top:32px}
+.footer-txt{color:rgba(255,255,255,.4);font-size:10px;letter-spacing:.05em}
+.footer-logo{display:flex;gap:4px;align-items:center}
+.footer-p{color:var(--primary);font-weight:800;font-size:12px;letter-spacing:.05em}
+.footer-c{color:#fff;font-weight:800;font-size:12px;letter-spacing:.05em}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div style="display:flex;align-items:center">
+    <div class="logo"><span class="logo-p">PARES</span><span class="logo-c">& CO</span></div>
+    <div class="hdr-sep"></div>
+    <div><div class="hdr-title">Análisis de Costos Logísticos — CTT Express</div><div class="hdr-sub">Portugal · Servicio 19E · Excl. PTI y 67D · Feb–Abr 2026</div></div>
+  </div>
+  <div style="text-align:right"><div style="color:rgba(255,255,255,.5);font-size:11px;font-weight:600">Documento Interno</div><div style="color:rgba(255,255,255,.3);font-size:10px;margin-top:2px">Confidencial · Uso operativo</div></div>
+</div>
+
+<!-- TABS -->
+<div class="tab-bar">
+  <button class="tab-btn" data-tab="feb" onclick="switchTab('feb')">Febrero</button>
+  <button class="tab-btn active" data-tab="mar" onclick="switchTab('mar')">Marzo</button>
+  <button class="tab-btn" data-tab="abr" onclick="switchTab('abr')">Abril</button>
+  <button class="tab-btn" data-tab="may" onclick="switchTab('may')">Mayo</button>
+  <button class="tab-btn" data-tab="comp" onclick="switchTab('comp')">Comparativa 4M</button>
+</div>
+
+<div class="content">
+
+<!-- ===== FEBRERO ===== -->
+<div id="tab-feb" class="tab-panel">
+  <div class="month-pip" style="background:var(--feb)"></div>
+  <div class="metrics">
+    <div class="met"><div class="met-lbl">Total pedidos</div><div class="met-val">86</div><div class="met-sub">envíos facturados</div></div>
+    <div class="met"><div class="met-lbl">Costo envíos</div><div class="met-val">€606</div><div class="met-sub">sin fuel surcharge</div></div>
+    <div class="met"><div class="met-lbl">Fuel surcharge</div><div class="met-val">—</div><div class="met-sub">no facturado por sep.</div></div>
+    <div class="met hl"><div class="met-lbl">Total factura</div><div class="met-val">€606,17</div><div class="met-sub">neto sin IVA</div></div>
+    <div class="met"><div class="met-lbl">Costo promedio</div><div class="met-val">€6,97</div><div class="met-sub sub-r">↑ €0,38 vs marzo</div></div>
+    <div class="met"><div class="met-lbl">Ratio log./COD</div><div class="met-val">16,3%</div><div class="met-sub">COD avg €42,69</div></div>
+  </div>
+  <div class="g3">
+    <div>
+      <div class="card"><div class="card-ttl">Tarifas por peso — 19E</div><div class="card-sub">Portugal continental · 86 pedidos</div><div id="tar-feb"></div></div>
+      <div class="card gap">
+        <div class="card-ttl">Zonas de destino</div>
+        <div style="margin-top:10px">
+          <div class="zr"><div><span class="zbadge z-ptc">PTC</span><div class="zr-lbl">Portugal continental</div></div><div style="text-align:right"><div class="zr-val">76 ped.</div><div class="zr-sub" style="color:var(--muted)">ratio 16,1%</div></div></div>
+          <div class="zr"><div><span class="zbadge z-pte">PTE</span><div class="zr-lbl">España · con COD</div></div><div style="text-align:right"><div class="zr-val">10 ped.</div><div class="zr-sub" style="color:var(--warn)">verificar tipo</div></div></div>
+          <div class="zr"><div><span class="zbadge z-pti">PTI</span><div class="zr-lbl">Azores</div></div><div style="text-align:right"><div class="zr-val" style="color:var(--muted)">0 ped.</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card"><div class="card-ttl">Distribución por peso</div><div style="height:195px;margin:10px 0"><canvas id="pie-feb"></canvas></div><div class="leg"><span class="leg-i"><span class="leg-d" style="background:#059669"></span>2 kg 68,6%</span><span class="leg-i"><span class="leg-d" style="background:#3057F3"></span>1 kg 18,6%</span><span class="leg-i"><span class="leg-d" style="background:#065F46"></span>3 kg 11,6%</span><span class="leg-i"><span class="leg-d" style="background:#92400E"></span>6 kg 1,2%</span></div></div>
+      <div class="card gap"><div class="card-ttl">COD — puntos de precio</div><div style="margin-top:10px"><div class="cr"><span style="font-weight:700">€39,99</span><div style="text-align:right"><div style="font-weight:700">64 ped.</div><div style="font-size:10px;color:var(--muted)">74,4%</div></div></div><div class="cr"><span style="font-weight:700">€49,99</span><div style="text-align:right"><div style="font-weight:700">14 ped.</div><div style="font-size:10px;color:var(--muted)">16,3%</div></div></div><div class="cr"><span style="font-weight:700">€54,99</span><div style="text-align:right"><div style="font-weight:700">7 ped.</div><div style="font-size:10px;color:var(--muted)">8,1%</div></div></div><div class="cr"><span style="font-weight:700">€69,99</span><div style="text-align:right"><div style="font-weight:700">1 ped.</div><div style="font-size:10px;color:var(--muted)">1,2%</div></div></div></div></div>
+    </div>
+    <div>
+      <div class="card"><div class="card-ttl">Ratio logística / COD por peso</div><div style="margin-top:12px" id="ratio-feb"></div><div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--muted)">Fuel prorrateado: <strong style="color:var(--fg)">€0,000/ped.</strong></div></div>
+      <div class="card gap"><div class="card-ttl">Alertas operativas</div><div style="margin-top:10px"><div class="alert al-d">Tarifa más cara que marzo: €6,27 vs €5,77 (1kg). Indica contratos distintos, no subida mensual.</div><div class="alert al-w">6 kg (1 pedido): ratio 25,2% — producto pesado sin precio diferenciado.</div><div class="alert al-i">PTE con COD en febrero: 10/11 pedidos cobrados. Verificar si son ventas o retornos.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MARZO ===== -->
+<div id="tab-mar" class="tab-panel active">
+  <div class="month-pip" style="background:var(--mar)"></div>
+  <div class="metrics">
+    <div class="met"><div class="met-lbl">Total pedidos</div><div class="met-val">2.788</div><div class="met-sub">envíos facturados</div></div>
+    <div class="met"><div class="met-lbl">Costo envíos</div><div class="met-val">€18.360</div><div class="met-sub">sin fuel surcharge</div></div>
+    <div class="met"><div class="met-lbl">Fuel surcharge</div><div class="met-val">€656</div><div class="met-sub">suplemento combustible</div></div>
+    <div class="met hl"><div class="met-lbl">Total factura</div><div class="met-val">€19.016</div><div class="met-sub">incl. fuel</div></div>
+    <div class="met"><div class="met-lbl">Costo promedio</div><div class="met-val">€6,59</div><div class="met-sub">referencia base</div></div>
+    <div class="met"><div class="met-lbl">Ratio log./COD</div><div class="met-val">15,6%</div><div class="met-sub">COD avg €42,21</div></div>
+  </div>
+  <div class="g3">
+    <div>
+      <div class="card"><div class="card-ttl">Tarifas por peso — 19E</div><div class="card-sub">Portugal continental · 2.772 pedidos (99,4%)</div><div id="tar-mar"></div></div>
+      <div class="card gap">
+        <div class="card-ttl">Zonas de destino</div>
+        <div style="margin-top:10px">
+          <div class="zr"><div><span class="zbadge z-ptc">PTC</span><div class="zr-lbl">Portugal continental</div></div><div style="text-align:right"><div class="zr-val">2.772 ped.</div><div class="zr-sub" style="color:var(--muted)">ratio 15,4%</div></div></div>
+          <div class="zr"><div><span class="zbadge z-pte">PTE</span><div class="zr-lbl">España · sin COD</div></div><div style="text-align:right"><div class="zr-val">10 ped.</div><div class="zr-sub" style="color:var(--muted)">posibles retornos</div></div></div>
+          <div class="zr"><div><span class="zbadge z-pti">PTI</span><div class="zr-lbl">Azores · 19H</div></div><div style="text-align:right"><div class="zr-val" style="color:var(--danger)">6 ped.</div><div class="zr-sub" style="color:var(--danger)">ratio 56,6% ⚠</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card"><div class="card-ttl">Distribución por peso</div><div style="height:195px;margin:10px 0"><canvas id="pie-mar"></canvas></div><div class="leg"><span class="leg-i"><span class="leg-d" style="background:#059669"></span>2 kg 53,1%</span><span class="leg-i"><span class="leg-d" style="background:#3057F3"></span>1 kg 33,5%</span><span class="leg-i"><span class="leg-d" style="background:#92400E"></span>6 kg 6,9%</span><span class="leg-i"><span class="leg-d" style="background:#065F46"></span>3 kg 5,4%</span></div></div>
+      <div class="card gap"><div class="card-ttl">COD — puntos de precio</div><div style="margin-top:10px"><div class="cr"><span style="font-weight:700">€39,99</span><div style="text-align:right"><div style="font-weight:700">1.656 ped.</div><div style="font-size:10px;color:var(--muted)">59,6%</div></div></div><div class="cr"><span style="font-weight:700">€49,99</span><div style="text-align:right"><div style="font-weight:700">496 ped.</div><div style="font-size:10px;color:var(--muted)">17,9%</div></div></div><div class="cr"><span style="font-weight:700">€34,99</span><div style="text-align:right"><div style="font-weight:700">387 ped.</div><div style="font-size:10px;color:var(--muted)">13,9%</div></div></div><div class="cr"><span style="font-weight:700">€44,99</span><div style="text-align:right"><div style="font-weight:700">128 ped.</div><div style="font-size:10px;color:var(--muted)">4,6%</div></div></div></div></div>
+    </div>
+    <div>
+      <div class="card"><div class="card-ttl">Ratio logística / COD por peso</div><div style="margin-top:12px" id="ratio-mar"></div><div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--muted)">Fuel prorrateado: <strong style="color:var(--fg)">€0,237/ped.</strong></div></div>
+      <div class="card gap"><div class="card-ttl">Alertas operativas</div><div style="margin-top:10px"><div class="alert al-d">Azores PTI: €25,45 logística sobre €44,99 COD = 56,6% de carga. Evaluar recargo o exclusión de zona.</div><div class="alert al-w">6 kg (192 ped.): ratio 21,7% — COD no sube proporcionalmente al peso.</div><div class="alert al-i">PTE sin COD: 10 envíos a Castellbisbal/Madrid — probablemente reposiciones al FF.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ABRIL ===== -->
+<div id="tab-abr" class="tab-panel">
+  <div class="month-pip" style="background:var(--abr)"></div>
+  <div class="metrics">
+    <div class="met"><div class="met-lbl">Total pedidos</div><div class="met-val">1.857</div><div class="met-sub">envíos facturados</div></div>
+    <div class="met"><div class="met-lbl">Costo envíos</div><div class="met-val">€11.712</div><div class="met-sub">sin fuel surcharge</div></div>
+    <div class="met"><div class="met-lbl">Fuel surcharge</div><div class="met-val">€416</div><div class="met-sub">suplemento combustible</div></div>
+    <div class="met hl"><div class="met-lbl">Total factura</div><div class="met-val">€12.128</div><div class="met-sub">incl. fuel</div></div>
+    <div class="met"><div class="met-lbl">Costo promedio</div><div class="met-val">€6,31</div><div class="met-sub sub-g">↓ €0,28 vs marzo</div></div>
+    <div class="met"><div class="met-lbl">Ratio log./COD</div><div class="met-val">15,8%</div><div class="met-sub">COD avg €39,89</div></div>
+  </div>
+  <div class="g3">
+    <div>
+      <div class="card"><div class="card-ttl">Tarifas por peso — 19E</div><div class="card-sub">Portugal continental · 1.855 pedidos</div><div id="tar-abr"></div></div>
+      <div class="card gap">
+        <div class="card-ttl">Zonas de destino</div>
+        <div style="margin-top:10px">
+          <div class="zr"><div><span class="zbadge z-ptc">PTC</span><div class="zr-lbl">Portugal continental</div></div><div style="text-align:right"><div class="zr-val">1.855 ped.</div><div class="zr-sub" style="color:var(--muted)">ratio 15,8%</div></div></div>
+          <div class="zr"><div><span class="zbadge z-pti">PTI</span><div class="zr-lbl">Azores · 19H</div></div><div style="text-align:right"><div class="zr-val" style="color:var(--danger)">2 ped.</div><div class="zr-sub" style="color:var(--danger)">ratio 61,2% ⚠</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card"><div class="card-ttl">Distribución por peso</div><div style="height:195px;margin:10px 0"><canvas id="pie-abr"></canvas></div><div class="leg"><span class="leg-i"><span class="leg-d" style="background:#059669"></span>2 kg 68,0%</span><span class="leg-i"><span class="leg-d" style="background:#3057F3"></span>1 kg 26,4%</span><span class="leg-i"><span class="leg-d" style="background:#065F46"></span>3 kg 4,4%</span><span class="leg-i"><span class="leg-d" style="background:#92400E"></span>6 kg 0,8%</span></div></div>
+      <div class="card gap"><div class="card-ttl">COD — puntos de precio</div><div style="margin-top:10px"><div class="cr"><span style="font-weight:700">€39,99</span><div style="text-align:right"><div style="font-weight:700">1.124 ped.</div><div style="font-size:10px;color:var(--muted)">60,5%</div></div></div><div class="cr"><span style="font-weight:700">€34,99</span><div style="text-align:right"><div style="font-weight:700">528 ped.</div><div style="font-size:10px;color:var(--muted)">28,4%</div></div></div><div class="cr"><span style="font-weight:700">€49,99</span><div style="text-align:right"><div style="font-weight:700">109 ped.</div><div style="font-size:10px;color:var(--muted)">5,9%</div></div></div><div class="cr"><span style="font-weight:700">€44,99+</span><div style="text-align:right"><div style="font-weight:700">96 ped.</div><div style="font-size:10px;color:var(--muted)">5,2%</div></div></div></div></div>
+    </div>
+    <div>
+      <div class="card"><div class="card-ttl">Ratio logística / COD por peso</div><div style="margin-top:12px" id="ratio-abr"></div><div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--muted)">Fuel prorrateado: <strong style="color:var(--fg)">€0,224/ped.</strong></div></div>
+      <div class="card gap"><div class="card-ttl">Alertas operativas</div><div style="margin-top:10px"><div class="alert al-i">Tarifa €0,10 menor que marzo en todos los tramos — posible ajuste de contrato.</div><div class="alert al-d">PTI Azores (2 pedidos): €24,46 flete sobre €39,99 COD = ratio 61,2%.</div><div class="alert al-w">1 pedido 19 kg: €17,55 flete, COD €34,99 → ratio 50,2%. Verificar error de pesaje.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MAYO ===== -->
+<div id="tab-may" class="tab-panel">
+  <div class="month-pip" style="background:var(--may)"></div>
+  <div class="metrics">
+    <div class="met"><div class="met-lbl">Total pedidos</div><div class="met-val">2.105</div><div class="met-sub">envíos facturados</div></div>
+    <div class="met"><div class="met-lbl">Costo envíos</div><div class="met-val">€13.691</div><div class="met-sub">sin fuel surcharge</div></div>
+    <div class="met"><div class="met-lbl">Fuel surcharge</div><div class="met-val">€118</div><div class="met-sub">suplemento combustible</div></div>
+    <div class="met hl"><div class="met-lbl">Total factura</div><div class="met-val">€13.839</div><div class="met-sub">incl. fuel + recogida</div></div>
+    <div class="met"><div class="met-lbl">Costo promedio</div><div class="met-val">€6,50</div><div class="met-sub sub-r">↑ €0,19 vs abril</div></div>
+    <div class="met"><div class="met-lbl">Ratio log./COD</div><div class="met-val">15,6%</div><div class="met-sub">COD avg €41,66</div></div>
+  </div>
+  <div class="g3">
+    <div>
+      <div class="card"><div class="card-ttl">Tarifas por peso — 19E</div><div class="card-sub">Portugal continental · 2.102 pedidos</div><div id="tar-may"></div></div>
+      <div class="card gap">
+        <div class="card-ttl">Zonas de destino</div>
+        <div style="margin-top:10px">
+          <div class="zr"><div><span class="zbadge z-ptc">PTC</span><div class="zr-lbl">Portugal continental</div></div><div style="text-align:right"><div class="zr-val">2.102 ped.</div><div class="zr-sub" style="color:var(--muted)">ratio 15,5%</div></div></div>
+          <div class="zr"><div><span class="zbadge z-pti">PTI</span><div class="zr-lbl">Azores · 19H</div></div><div style="text-align:right"><div class="zr-val" style="color:var(--danger)">3 ped.</div><div class="zr-sub" style="color:var(--danger)">ratio 61,7% ⚠</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card"><div class="card-ttl">Distribución por peso</div><div style="height:195px;margin:10px 0"><canvas id="pie-may"></canvas></div><div class="leg"><span class="leg-i"><span class="leg-d" style="background:#059669"></span>2 kg 66,6%</span><span class="leg-i"><span class="leg-d" style="background:#3057F3"></span>1 kg 27,8%</span><span class="leg-i"><span class="leg-d" style="background:#065F46"></span>3 kg 4,4%</span><span class="leg-i"><span class="leg-d" style="background:#92400E"></span>6 kg 0,6%</span></div></div>
+      <div class="card gap"><div class="card-ttl">COD — puntos de precio</div><div style="margin-top:10px"><div class="cr"><span style="font-weight:700">€39,99</span><div style="text-align:right"><div style="font-weight:700">1.394 ped.</div><div style="font-size:10px;color:var(--muted)">66,2%</div></div></div><div class="cr"><span style="font-weight:700">€49,99</span><div style="text-align:right"><div style="font-weight:700">275 ped.</div><div style="font-size:10px;color:var(--muted)">13,1%</div></div></div><div class="cr"><span style="font-weight:700">€34,99</span><div style="text-align:right"><div style="font-weight:700">252 ped.</div><div style="font-size:10px;color:var(--muted)">12,0%</div></div></div><div class="cr"><span style="font-weight:700">€44,99</span><div style="text-align:right"><div style="font-weight:700">125 ped.</div><div style="font-size:10px;color:var(--muted)">5,9%</div></div></div></div></div>
+    </div>
+    <div>
+      <div class="card"><div class="card-ttl">Ratio logística / COD por peso</div><div style="margin-top:12px" id="ratio-may"></div><div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--muted)">Fuel prorrateado: <strong style="color:var(--fg)">€0,056/ped.</strong></div></div>
+      <div class="card gap"><div class="card-ttl">Alertas operativas</div><div style="margin-top:10px"><div class="alert al-i">Tarifa sube ~€0,20 respecto a abril en todos los tramos (€5,87 vs €5,67 1kg · €6,62 vs €6,42 2kg) — revertiendo la baja de abril.</div><div class="alert al-d">PTI Azores (3 pedidos): €24,66 flete sobre €39,99 COD = ratio 61,7%. Cuarto mes consecutivo con el mismo patrón.</div><div class="alert al-w">6 kg (13 ped.): ratio 17,6% — leve incremento de carga logística en el tramo pesado.</div></div></div>
+    </div>
+  </div>
+</div>
+<div id="tab-comp" class="tab-panel">
+  <div class="month-pip" style="background:linear-gradient(90deg,var(--feb),var(--mar),var(--abr),var(--may))"></div>
+  <div class="g4">
+    <div class="met"><div class="met-lbl">Total pedidos 4M</div><div class="met-val">6.815</div><div class="met-sub">solo 19E · excl. PTI y 67D</div></div>
+    <div class="met"><div class="met-lbl">Total facturado 4M</div><div class="met-val">€45.589</div><div class="met-sub">incl. fuel surcharge</div></div>
+    <div class="met"><div class="met-lbl">Fuel acumulado</div><div class="met-val">€1.190</div><div class="met-sub">Mar €656 + Abr €416 + May €118</div></div>
+    <div class="met"><div class="met-lbl">Tarifa más barata</div><div class="met-val">Abril</div><div class="met-sub sub-g">1kg €5,67 · 2kg €6,42</div></div>
+  </div>
+  <div class="g2" style="margin-bottom:12px">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+        <div><div class="card-ttl" style="margin-bottom:2px">Tarifa promedio por peso</div><div style="font-size:10px;color:#C4C8D0" id="fuel-lbl">Sin combustible · tarifa neta 19E</div></div>
+        <div class="ftoggle"><button class="fbtn active" id="btn-sin" onclick="setFuel('sin')">Sin fuel</button><button class="fbtn" id="btn-con" onclick="setFuel('con')">Con fuel</button></div>
+      </div>
+      <div class="leg"><span class="leg-i"><span class="leg-d" style="background:var(--feb)"></span>Febrero</span><span class="leg-i"><span class="leg-d" style="background:var(--mar)"></span>Marzo</span><span class="leg-i"><span class="leg-d" style="background:var(--abr)"></span>Abril</span><span class="leg-i"><span class="leg-d" style="background:var(--may)"></span>Mayo</span></div>
+      <div style="height:230px"><canvas id="chart-tar"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-ttl" style="margin-bottom:12px">Distribución por peso — % pedidos por mes (19E)</div>
+      <div class="leg"><span class="leg-i"><span class="leg-d" style="background:var(--feb)"></span>Febrero</span><span class="leg-i"><span class="leg-d" style="background:var(--mar)"></span>Marzo</span><span class="leg-i"><span class="leg-d" style="background:var(--abr)"></span>Abril</span><span class="leg-i"><span class="leg-d" style="background:var(--may)"></span>Mayo</span></div>
+      <div style="height:230px"><canvas id="chart-dist"></canvas></div>
+    </div>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div class="card-ttl" style="margin-bottom:0">Tabla comparativa · <span id="tbl-lbl">sin combustible</span> · solo 19E · excl. PTI y 67D</div>
+    </div>
+    <table class="dtbl">
+      <thead><tr><th>Peso</th><th style="color:var(--feb)">Febrero</th><th style="color:var(--mar)">Marzo</th><th style="color:var(--abr)">Abril</th><th style="color:var(--may)">Mayo</th><th>Feb → May</th><th>vs Feb</th></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div id="fuel-note" style="display:none;margin-top:10px;padding:8px 12px;background:var(--card-bg);border-radius:6px;font-size:11px;color:var(--muted)">Fuel prorrateado incluido: Feb €0,000/ped · Mar €0,237/ped · Abr €0,224/ped · May €0,056/ped</div>
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-txt">PARES & CO · Análisis interno · Confidencial · 2026</div>
+  <div class="footer-logo"><span class="footer-p">PARES</span><span class="footer-c"> & CO</span></div>
+</div>
+
+<script>
+Chart.defaults.font.family = "'Montserrat', sans-serif";
+const CH = {};
+let fuel = 'sin';
+
+const SF = {feb:[6.27,7.02,7.65,10.07],mar:[5.77,6.52,7.15,9.57],abr:[5.67,6.42,7.05,9.47],may:[5.87,6.62,7.25,9.67]};
+const CF = {feb:[6.27,7.02,7.65,10.07],mar:[6.007,6.757,7.387,9.807],abr:[5.894,6.644,7.274,9.694],may:[5.926,6.676,7.306,9.726]};
+const KGS = ['1 kg','2 kg','3 kg','6 kg'];
+
+const TAR = {
+  feb:[{kg:'1 kg',n:16,e:6.27},{kg:'2 kg',n:59,e:7.02},{kg:'3 kg',n:10,e:7.65},{kg:'6 kg',n:1,e:10.07}],
+  mar:[{kg:'1 kg',n:928,e:5.77},{kg:'2 kg',n:1473,e:6.52},{kg:'3 kg',n:150,e:7.15},{kg:'4 kg',n:6,e:7.86},{kg:'5 kg',n:3,e:8.59},{kg:'6 kg',n:192,e:9.57},{kg:'7 kg',n:15,e:10.25},{kg:'8 kg',n:2,e:10.96}],
+  abr:[{kg:'1 kg',n:490,e:5.67},{kg:'2 kg',n:1262,e:6.42},{kg:'3 kg',n:81,e:7.05},{kg:'4 kg',n:3,e:7.76},{kg:'5 kg',n:1,e:8.49},{kg:'6 kg',n:15,e:9.47},{kg:'7 kg',n:2,e:10.15}],
+  may:[{kg:'1 kg',n:584,e:5.87},{kg:'2 kg',n:1400,e:6.62},{kg:'3 kg',n:93,e:7.25},{kg:'4 kg',n:2,e:7.96},{kg:'5 kg',n:2,e:8.69},{kg:'6 kg',n:13,e:9.67},{kg:'7 kg',n:6,e:10.35},{kg:'9 kg',n:1,e:11.75},{kg:'13 kg',n:1,e:14.27}]
+};
+const RAT = {
+  feb:[{kg:'1 kg',c:41.24,e:6.27},{kg:'2 kg',c:42.53,e:7.02},{kg:'3 kg',c:50.49,e:7.65},{kg:'6 kg',c:39.99,e:10.07}],
+  mar:[{kg:'1 kg',c:40.83,e:5.77},{kg:'2 kg',c:42.60,e:6.52},{kg:'3 kg',c:47.66,e:7.15},{kg:'6 kg',c:44.10,e:9.57}],
+  abr:[{kg:'1 kg',c:38.37,e:5.67},{kg:'2 kg',c:40.29,e:6.42},{kg:'3 kg',c:42.21,e:7.05},{kg:'6 kg',c:43.66,e:9.47}],
+  may:[{kg:'1 kg',c:42.28,e:5.87},{kg:'2 kg',c:41.22,e:6.62},{kg:'3 kg',c:42.09,e:7.25},{kg:'6 kg',c:54.99,e:9.67}]
+};
+const PIED = {
+  feb:{d:[68.6,18.6,11.6,1.2],c:['#059669','#3057F3','#065F46','#92400E'],l:['2 kg','1 kg','3 kg','6 kg']},
+  mar:{d:[53.1,33.5,5.4,6.9,1.1],c:['#059669','#3057F3','#065F46','#92400E','#9CA3AF'],l:['2 kg','1 kg','3 kg','6 kg','Otros']},
+  abr:{d:[68.0,26.4,4.4,0.8,0.4],c:['#059669','#3057F3','#065F46','#92400E','#9CA3AF'],l:['2 kg','1 kg','3 kg','6 kg','Otros']},
+  may:{d:[66.6,27.8,4.4,0.6,0.6],c:['#059669','#3057F3','#065F46','#92400E','#9CA3AF'],l:['2 kg','1 kg','3 kg','6 kg','Otros']}
+};
+const MC = {feb:'#F59E0B',mar:'#3057F3',abr:'#059669',may:'#8B5CF6'};
+
+const f2 = v => v.toFixed(2).replace('.',',');
+const f1 = v => v.toFixed(1).replace('.',',');
+const fn = v => v.toLocaleString('es-ES');
+
+function buildTar(id, month) {
+  const el = document.getElementById(id); if(!el) return;
+  const data = TAR[month], col = MC[month];
+  const mx = Math.max(...data.map(t=>t.n));
+  el.innerHTML = data.map(t=>`<div class="tr"><div class="tr-kg">${t.kg}</div><div class="tr-bw"><div class="tr-b" style="width:${(t.n/mx*100).toFixed(1)}%;background:${col}"></div></div><div class="tr-n">${fn(t.n)}</div><div class="tr-e">€${f2(t.e)}</div></div>`).join('');
+}
+
+function buildRat(id, month) {
+  const el = document.getElementById(id); if(!el) return;
+  el.innerHTML = RAT[month].map(r => {
+    const pct = r.e/r.c*100;
+    const col = pct>20?'#EF4444':pct>16?'#D97706':'#059669';
+    return `<div class="rr"><div class="rr-kg">${r.kg}</div><div class="rr-bw"><div class="rr-b" style="width:${Math.min(pct/30*100,100).toFixed(1)}%;background:${col}"></div></div><div class="rr-pct" style="color:${col}">${f1(pct)}%</div></div>`;
+  }).join('');
+}
+
+function buildPie(id, month) {
+  if(CH[id]) { CH[id].destroy(); }
+  const ctx = document.getElementById(id); if(!ctx) return;
+  const p = PIED[month];
+  CH[id] = new Chart(ctx, {
+    type:'doughnut',
+    data:{labels:p.l,datasets:[{data:p.d,backgroundColor:p.c,borderWidth:0,hoverOffset:4}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'60%',
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.label}: ${f1(c.parsed)}%`}}}}
+  });
+}
+
+function buildComp() {
+  const d = fuel==='sin' ? SF : CF;
+  const cData = KGS.map((kg,i)=>({kg,Febrero:d.feb[i],Marzo:d.mar[i],Abril:d.abr[i],Mayo:d.may[i]}));
+  const dData = [{kg:'1 kg',Febrero:18.6,Marzo:33.5,Abril:26.4,Mayo:27.8},{kg:'2 kg',Febrero:68.6,Marzo:53.1,Abril:68.0,Mayo:66.6},{kg:'3 kg',Febrero:11.6,Marzo:5.4,Abril:4.4,Mayo:4.4},{kg:'6 kg',Febrero:1.2,Marzo:6.9,Abril:0.8,Mayo:0.6}];
+
+  const baseOpts = (min,max,pct) => ({
+    responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${pct?f1(c.parsed.y)+'%':'€'+f2(c.parsed.y)}`}}},
+    scales:{
+      x:{grid:{display:false},ticks:{color:'#75787E',font:{size:11,weight:'600'}}},
+      y:{grid:{color:'#F2F3F5',lineWidth:1},ticks:{color:'#75787E',font:{size:11},callback:v=>pct?v+'%':'€'+v},min,max}
+    }
+  });
+
+  ['chart-tar','chart-dist'].forEach(id=>{ if(CH[id]){CH[id].destroy();} });
+
+  const c1 = document.getElementById('chart-tar');
+  if(c1) CH['chart-tar'] = new Chart(c1, {type:'bar',data:{labels:KGS,datasets:[
+    {label:'Febrero',data:cData.map(d=>d.Febrero),backgroundColor:'#F59E0B',borderRadius:4,borderSkipped:false},
+    {label:'Marzo',  data:cData.map(d=>d.Marzo),  backgroundColor:'#3057F3',borderRadius:4,borderSkipped:false},
+    {label:'Abril',  data:cData.map(d=>d.Abril),  backgroundColor:'#059669',borderRadius:4,borderSkipped:false},
+    {label:'Mayo',   data:cData.map(d=>d.Mayo),   backgroundColor:'#8B5CF6',borderRadius:4,borderSkipped:false}
+  ]}, options:baseOpts(4,12,false)});
+
+  const c2 = document.getElementById('chart-dist');
+  if(c2) CH['chart-dist'] = new Chart(c2, {type:'bar',data:{labels:['1 kg','2 kg','3 kg','6 kg'],datasets:[
+    {label:'Febrero',data:dData.map(d=>d.Febrero),backgroundColor:'#F59E0B',borderRadius:4,borderSkipped:false},
+    {label:'Marzo',  data:dData.map(d=>d.Marzo),  backgroundColor:'#3057F3',borderRadius:4,borderSkipped:false},
+    {label:'Abril',  data:dData.map(d=>d.Abril),  backgroundColor:'#059669',borderRadius:4,borderSkipped:false},
+    {label:'Mayo',   data:dData.map(d=>d.Mayo),   backgroundColor:'#8B5CF6',borderRadius:4,borderSkipped:false}
+  ]}, options:baseOpts(0,80,true)});
+
+  const tbody = document.getElementById('tbody'); if(!tbody) return;
+  tbody.innerHTML = KGS.map((kg,i)=>{
+    const delta = d.may[i]-d.feb[i];
+    const pct = (d.feb[i]-d.may[i])/d.feb[i]*100;
+    const favorable = delta < 0;
+    return `<tr><td>${kg}</td><td>€${f2(d.feb[i])}</td><td style="color:#3057F3">€${f2(d.mar[i])}</td><td style="color:#059669">€${f2(d.abr[i])}</td><td style="color:#8B5CF6">€${f2(d.may[i])}</td><td class="${favorable?'td-g':'td-r'}">${favorable?'':'+'}€${f2(delta)}</td><td class="${favorable?'td-g':'td-r'}">${f1(Math.abs(pct))}% ${favorable?'menos':'más'}</td></tr>`;
+  }).join('');
+
+  document.getElementById('fuel-note').style.display = fuel==='con'?'block':'none';
+  document.getElementById('tbl-lbl').textContent = fuel==='sin'?'sin combustible':'con combustible prorrateado';
+  document.getElementById('fuel-lbl').textContent = fuel==='sin'?'Sin combustible · tarifa neta 19E':'Con combustible prorrateado por pedido';
+}
+
+function setFuel(mode) {
+  fuel = mode;
+  document.getElementById('btn-sin').classList.toggle('active', mode==='sin');
+  document.getElementById('btn-con').classList.toggle('active', mode==='con');
+  buildComp();
+}
+
+function initTab(tab) {
+  if(tab==='comp') { buildComp(); return; }
+  buildTar('tar-'+tab, tab);
+  buildRat('ratio-'+tab, tab);
+  buildPie('pie-'+tab, tab);
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+  initTab(tab);
+}
+
+window.addEventListener('load', ()=>{ initTab('mar'); });
+</script>
+</body>
+</html>
