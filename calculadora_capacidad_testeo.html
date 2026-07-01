@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pares &amp; Co — Calculadora de Capacidad de Testeo</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#3057F3;--primary-light:#ECEFFE;--primary-dark:#1E3FD8;--navy:#111931;
+  --fg:#0F1626;--muted:#75787E;--bg:#FFFFFF;--card-bg:#F2F3F5;--border:#E5E7EB;
+  --success:#059669;--success-light:#ECFDF5;--danger:#EF4444;--danger-light:#FEF2F2;
+  --warn:#D97706;--warn-light:#FFFBEB;--font-sans:'Montserrat',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-sans);font-size:14px;line-height:1.5;min-height:100vh;}
+header{background:var(--navy);padding:16px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
+.logo{font-weight:800;line-height:1.05;letter-spacing:.06em;font-size:18px;}
+.logo-p{color:#3057F3;}.logo-c{color:#FFFFFF;}
+.hc{flex:1;padding-left:20px;border-left:1px solid rgba(255,255,255,.12);margin-left:4px;min-width:220px;}
+.ht{color:rgba(255,255,255,.9);font-size:14px;font-weight:600;}
+.hs{color:rgba(255,255,255,.4);font-size:10px;letter-spacing:.04em;text-transform:uppercase;margin-top:2px;}
+.hbg{background:var(--primary);color:#fff;font-size:10px;font-weight:700;padding:5px 12px;border-radius:6px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;}
+.ctx-banner{background:var(--primary-light);border-bottom:2px solid var(--primary);padding:10px 28px;display:flex;align-items:center;gap:10px;}
+.ctx-text{font-size:11px;color:#1E3A8A;line-height:1.5;}
+.ctx-text strong{font-weight:700;}
+main{padding:22px 28px;max-width:1320px;margin:0 auto;}
+
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;align-items:center;}
+.presets .lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-right:4px;}
+.preset-btn{font-family:var(--font-sans);font-size:12px;font-weight:600;padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;transition:all .15s;}
+.preset-btn:hover{background:var(--primary-light);color:var(--fg);}
+.preset-btn.active{background:var(--primary);color:#fff;border-color:var(--primary);}
+
+.grid{display:grid;grid-template-columns:340px 1fr;gap:16px;align-items:start;}
+@media(max-width:820px){.grid{grid-template-columns:1fr;}}
+.card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px;}
+.card-title{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.card-title::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.fgroup{margin-bottom:14px;}
+.fgroup:last-child{margin-bottom:0;}
+.fsub{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--primary);margin:16px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--border);}
+.fsub:first-child{margin-top:0;}
+label.fl{display:flex;justify-content:space-between;align-items:baseline;font-size:11px;font-weight:600;color:var(--fg);margin-bottom:5px;}
+label.fl .u{font-size:9px;font-weight:500;color:var(--muted);text-transform:none;letter-spacing:0;}
+input[type=number]{width:100%;font-family:var(--font-sans);font-size:14px;font-weight:700;color:var(--fg);padding:8px 10px;border:1px solid var(--border);border-radius:6px;background:var(--card-bg);}
+input[type=number]:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light);}
+.slider-row{display:flex;align-items:center;gap:12px;}
+input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:5px;border-radius:3px;background:var(--border);outline:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--primary);cursor:pointer;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.25);}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--primary);cursor:pointer;border:2px solid #fff;}
+.sval{min-width:70px;text-align:right;font-size:16px;font-weight:800;color:var(--primary);letter-spacing:-.02em;}
+.hint{font-size:9px;color:var(--muted);margin-top:4px;line-height:1.4;}
+
+/* Results */
+.res-hl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+@media(max-width:520px){.res-hl{grid-template-columns:1fr;}}
+.hlcard{border-radius:12px;padding:16px 18px;border:1px solid var(--border);position:relative;overflow:hidden;}
+.hlcard.floor{background:var(--success-light);border-color:var(--success);}
+.hlcard.exp{background:var(--primary-light);border-color:var(--primary);}
+.hlcard .hl-l{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
+.hlcard.floor .hl-l{color:var(--success);}.hlcard.exp .hl-l{color:var(--primary);}
+.hlcard .hl-v{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1;}
+.hlcard.floor .hl-v{color:var(--success);}.hlcard.exp .hl-v{color:var(--primary);}
+.hlcard .hl-u{font-size:12px;font-weight:600;color:var(--muted);}
+.hlcard .hl-sub{font-size:10px;font-weight:500;color:var(--muted);margin-top:6px;line-height:1.45;}
+
+.gauge{margin:6px 0 18px;}
+.gauge-track{position:relative;height:34px;background:var(--card-bg);border-radius:8px;border:1px solid var(--border);overflow:hidden;}
+.gauge-fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--primary-light),var(--primary));opacity:.35;}
+.gmark{position:absolute;top:0;bottom:0;width:2px;}
+.gmark .flag{position:absolute;top:-2px;transform:translateX(-50%);font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;padding:1px 4px;border-radius:3px;}
+.gauge-scale{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-top:3px;font-weight:600;}
+
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+@media(max-width:640px){.mgrid{grid-template-columns:repeat(2,1fr);}}
+.mc{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+.mc.hl{background:var(--bg);border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light);}
+.mc .ml{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:4px;line-height:1.3;}
+.mc .mv{font-size:19px;font-weight:800;color:var(--fg);letter-spacing:-.02em;line-height:1.1;}
+.mc .mv.g{color:var(--success);}.mc .mv.r{color:var(--danger);}.mc .mv.p{color:var(--primary);}.mc .mv.w{color:var(--warn);}
+.mc .ms{font-size:9px;font-weight:500;color:var(--muted);margin-top:3px;line-height:1.35;}
+
+.al{border-radius:8px;padding:10px 14px;font-size:11px;font-weight:500;line-height:1.55;margin-top:4px;display:flex;gap:10px;align-items:flex-start;border-left:3px solid transparent;}
+.al .ic{font-size:14px;flex-shrink:0;margin-top:1px;}
+.al .ti{font-weight:700;font-size:11.5px;margin-bottom:2px;}
+.al.in{background:var(--primary-light);border-color:var(--primary);color:#1E3A8A;}.al.in .ti{color:var(--primary);}
+.al.sc{background:var(--success-light);border-color:var(--success);color:#065F46;}.al.sc .ti{color:var(--success);}
+.al.wn{background:var(--warn-light);border-color:var(--warn);color:#92400E;}.al.wn .ti{color:var(--warn);}
+
+footer{background:var(--navy);padding:12px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:28px;}
+footer p{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.4);}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><div class="logo-p">PARES</div><div class="logo-c">&amp; CO</div></div>
+  <div class="hc">
+    <div class="ht">Calculadora de Capacidad de Testeo</div>
+    <div class="hs">COD Analytics · Blended de cuenta · Guardarraíl por margen/pedido</div>
+  </div>
+  <div class="hbg">Datos 1 May – 30 Jun 2026</div>
+</header>
+
+<div class="ctx-banner">
+  <div class="ctx-text"><strong>Cómo leerla:</strong> fijás tu margen mínimo por pedido; la calculadora te devuelve cuántos testeos podés correr sin bajar de ese margen — el <strong>piso seguro</strong> aguanta aunque toda la tanda fracase, la <strong>capacidad esperada</strong> asume que el testeo convierte a su CPA histórico. Todo sale del dato de tus 2 meses.</div>
+</div>
+
+<main>
+  <div class="presets">
+    <span class="lbl">Escenario:</span>
+    <button class="preset-btn active" data-p="es">🇪🇸 España (real)</button>
+    <button class="preset-btn" data-p="pt">🇵🇹 Portugal (real)</button>
+    <button class="preset-btn" data-p="hip">Hipotético (150 ped · CPA 6€)</button>
+  </div>
+
+  <div class="grid">
+    <!-- INPUTS -->
+    <div class="card">
+      <div class="card-title">Parámetros</div>
+
+      <div class="fsub">Guardarraíl</div>
+      <div class="fgroup">
+        <label class="fl">Margen mínimo por pedido <span class="u" id="u-marg">→ blended objetivo</span></label>
+        <div class="slider-row">
+          <input type="range" id="s-marg" min="0" max="12" step="0.5" value="5">
+          <span class="sval" id="v-marg">5,0€</span>
+        </div>
+        <div class="hint" id="h-marg"></div>
+      </div>
+
+      <div class="fsub">Cuántos testeos correr</div>
+      <div class="fgroup">
+        <label class="fl">Testeos concurrentes por día (N) <span class="u">productos vivos/día</span></label>
+        <div class="slider-row">
+          <input type="range" id="s-n" min="0" max="100" step="1" value="31">
+          <span class="sval" id="v-n">31</span>
+        </div>
+        <div class="hint" id="h-n"></div>
+      </div>
+
+      <div class="fsub">Base estable</div>
+      <div class="fgroup">
+        <label class="fl">Pedidos estables por día <span class="u">ped/día</span></label>
+        <input type="number" id="i-os" value="185" min="0" step="1">
+      </div>
+      <div class="fgroup">
+        <label class="fl">CPA estable <span class="u">€/pedido</span></label>
+        <input type="number" id="i-cs" value="10.12" min="0" step="0.1">
+      </div>
+
+      <div class="fsub">Economía del testeo</div>
+      <div class="fgroup">
+        <label class="fl">Budget por test / día <span class="u">€/test/día</span></label>
+        <input type="number" id="i-b" value="30" min="1" step="1">
+      </div>
+      <div class="fgroup">
+        <label class="fl">CPA esperado del testeo <span class="u">€/pedido</span></label>
+        <input type="number" id="i-ct" value="12.09" min="0.1" step="0.1">
+      </div>
+      <div class="fgroup">
+        <label class="fl">BEP · CPA de equilibrio <span class="u">€/pedido</span></label>
+        <input type="number" id="i-bep" value="16.48" min="0.1" step="0.1">
+      </div>
+
+      <div class="fsub">Pipeline (graduación)</div>
+      <div class="fgroup">
+        <label class="fl">Tasa de graduación a estable <span class="u">% de tests</span></label>
+        <input type="number" id="i-grad" value="33" min="0" max="100" step="1">
+      </div>
+      <div class="fgroup">
+        <label class="fl">Días que un test ocupa slot <span class="u">vida media</span></label>
+        <input type="number" id="i-life" value="2.1" min="1" step="0.1">
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div>
+      <div class="res-hl">
+        <div class="hlcard floor">
+          <div class="hl-l">🛡️ Piso seguro · a prueba de fracaso</div>
+          <div><span class="hl-v" id="r-floor">15</span> <span class="hl-u">testeos/día</span></div>
+          <div class="hl-sub" id="r-floor-sub"></div>
+        </div>
+        <div class="hlcard exp">
+          <div class="hl-l">📊 Capacidad esperada · testeo a su CPA</div>
+          <div><span class="hl-v" id="r-exp">—</span> <span class="hl-u">testeos/día</span></div>
+          <div class="hl-sub" id="r-exp-sub"></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-title">Tu posición vs capacidad</div>
+        <div class="gauge">
+          <div class="gauge-track" id="gtrack">
+            <div class="gauge-fill" id="gfill"></div>
+            <div class="gmark" id="gm-floor" style="background:var(--success);"><span class="flag" style="background:var(--success-light);color:var(--success);">Piso</span></div>
+            <div class="gmark" id="gm-cur" style="background:var(--warn);"><span class="flag" style="background:var(--warn-light);color:var(--warn);top:auto;bottom:-2px;">Hoy</span></div>
+            <div class="gmark" id="gm-n" style="background:var(--primary);"><span class="flag" style="background:var(--primary);color:#fff;top:11px;">N=<span id="gm-n-lbl">31</span></span></div>
+          </div>
+          <div class="gauge-scale"><span>0</span><span id="g-max">100</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title" id="res-h">Resultado con <span id="res-n">31</span> testeos/día</div>
+        <div class="mgrid">
+          <div class="mc hl"><div class="ml">Blended CPA resultante</div><div class="mv p" id="r-bl">—</div><div class="ms" id="r-bl-s">objetivo ≤ <span id="r-tgt">—</span></div></div>
+          <div class="mc"><div class="ml">Margen / pedido</div><div class="mv" id="r-mg">—</div><div class="ms" id="r-mg-s"></div></div>
+          <div class="mc"><div class="ml">Gasto total / día</div><div class="mv" id="r-sp">—</div><div class="ms" id="r-sp-s"></div></div>
+          <div class="mc"><div class="ml">Profit esperado / día</div><div class="mv g" id="r-pe">—</div><div class="ms">testeo convierte a su CPA</div></div>
+          <div class="mc"><div class="ml">Profit peor caso / día</div><div class="mv" id="r-pw">—</div><div class="ms">tanda con 0 pedidos ese día</div></div>
+          <div class="mc"><div class="ml">Pipeline · gradúan/día</div><div class="mv p" id="r-gr">—</div><div class="ms" id="r-gr-s">productos nuevos estables</div></div>
+        </div>
+        <div class="al" id="verdict"><div class="ic" id="v-ic">✅</div><div><div class="ti" id="v-ti"></div><div id="v-bo"></div></div></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>Pares &amp; Co · Calculadora de Capacidad de Testeo</p>
+  <p>Modelo validado contra la vista diaria estable/testeo · Blended de cuenta</p>
+</footer>
+
+<script>
+const PRESETS = {
+  es:  {name:'España', os:185, cs:10.12, b:30, ct:12.09, bep:16.48, grad:33, life:2.1, cur:31, margDefault:5},
+  pt:  {name:'Portugal', os:97, cs:9.71, b:30, ct:11.39, bep:16.43, grad:42, life:2.4, cur:20, margDefault:5},
+  hip: {name:'Hipotético', os:150, cs:6, b:30, ct:12, bep:16.4, grad:33, life:2.1, cur:null, margDefault:7.4}
+};
+const $=id=>document.getElementById(id);
+const eur=(x,d=0)=>x.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d})+'€';
+const num=(x,d=1)=>x.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
+let CUR = null;
+
+function loadPreset(key){
+  const p=PRESETS[key]; CUR=p;
+  $('i-os').value=p.os; $('i-cs').value=p.cs; $('i-b').value=p.b; $('i-ct').value=p.ct;
+  $('i-bep').value=p.bep; $('i-grad').value=p.grad; $('i-life').value=p.life;
+  $('s-marg').value=p.margDefault; $('s-marg').max=Math.max(12, Math.floor(p.bep));
+  // set N range and default
+  const os=p.os, cs=p.cs, bep=p.bep, b=p.b, marg=p.margDefault;
+  const tgt=bep-marg; const burn=tgt*os-cs*os; const floor=burn>0?burn/b:0;
+  const nmax=Math.max(60, Math.ceil((p.cur||floor)*2), Math.ceil(floor*2));
+  $('s-n').max=nmax; $('g-max').textContent=nmax;
+  $('s-n').value = Math.round(p.cur!=null?p.cur:Math.max(1,floor));
+  document.querySelectorAll('.preset-btn').forEach(b=>b.classList.toggle('active',b.dataset.p===key));
+  compute();
+}
+
+function compute(){
+  const os=+$('i-os').value, cs=+$('i-cs').value, b=+$('i-b').value, ct=+$('i-ct').value,
+        bep=+$('i-bep').value, gradR=+$('i-grad').value/100, life=+$('i-life').value,
+        marg=+$('s-marg').value, N=+$('s-n').value;
+
+  const tgt = bep - marg;                 // blended CPA objetivo
+  const Ss  = os*cs;                       // gasto estable/día
+  const burn= tgt*os - Ss;                // "burn budget" (gasto de testeo que puede perderse entero)
+  const floor = burn>0 ? burn/b : 0;      // piso: N si toda la tanda da 0 pedidos
+  // capacidad esperada: testeo entra a CPA=ct
+  let expInf=false, exp=0;
+  if(tgt>=ct){ expInf=true; }
+  else if(burn>0){ exp = burn/(b*(1 - tgt/ct)); }
+  else { exp = 0; }
+
+  // Estado en N elegido
+  const St = N*b;
+  const Ot = N*b/ct;                       // pedidos esperados del testeo
+  const blended = (Ss+St)/(os+Ot);
+  const marginAtN = bep - blended;
+  const profitExp = os*(bep-cs) + Ot*(bep-ct);      // testeo a su CPA
+  const profitWorst = os*(bep-cs) - N*b;            // 0 pedidos de testeo
+  const launches = N/life;
+  const grads = gradR*launches;
+
+  // Labels de inputs
+  $('v-marg').textContent = num(marg,1)+'€';
+  $('u-marg').textContent = '→ blended obj. '+num(tgt,1)+'€';
+  $('h-marg').textContent = 'Con BEP '+num(bep,1)+'€, exigir '+num(marg,1)+'€/ped de margen = no pasar de '+num(tgt,1)+'€ de blended CPA.';
+  $('v-n').textContent = N; $('gm-n-lbl').textContent=N; $('res-n').textContent=N;
+  $('h-n').textContent = CUR && CUR.cur!=null ? ('Hoy corrés ~'+CUR.cur+'/día en '+CUR.name+'.') : 'Escenario teórico, sin nivel actual.';
+
+  // Highlight cards
+  $('r-floor').textContent = Math.floor(floor);
+  $('r-floor-sub').textContent = burn>0
+    ? '('+num(tgt,1)+'€ × '+os+' − '+eur(Ss)+') ÷ '+eur(b)+'/test. Corrélo siempre: aunque nada convierta, no bajás del margen.'
+    : 'El CPA estable ('+num(cs,2)+'€) ya deja menos de '+num(marg,1)+'€ de margen: no hay margen para testear a este piso. Subí el margen mínimo o bajá el CPA estable.';
+  if(expInf){
+    $('r-exp').textContent='∞'; $('r-exp').style.fontSize='34px';
+    $('r-exp-sub').textContent='El testeo convierte a '+num(ct,1)+'€, por debajo de tu blended objetivo ('+num(tgt,1)+'€). No hay tope por CPA — el límite pasa a ser operativo y de riesgo (usá el piso seguro).';
+  } else {
+    $('r-exp').textContent = exp>0?Math.floor(exp):0; $('r-exp').style.fontSize='34px';
+    $('r-exp-sub').textContent = exp>0
+      ? 'Si el testeo rinde como su histórico ('+num(ct,1)+'€ CPA), sus pedidos autofinancian parte del gasto y podés llegar hasta aquí sin romper el margen.'
+      : 'A este margen no entra testeo ni convirtiendo bien. Aflojá el guardarraíl.';
+  }
+
+  // Gauge
+  const gmax=+$('s-n').max;
+  const pct=x=>Math.max(0,Math.min(100,100*x/gmax))+'%';
+  $('gfill').style.width=pct(N);
+  $('gm-floor').style.left=pct(floor);
+  $('gm-n').style.left=pct(N);
+  if(CUR && CUR.cur!=null){ $('gm-cur').style.display='block'; $('gm-cur').style.left=pct(CUR.cur); }
+  else { $('gm-cur').style.display='none'; }
+
+  // Result cards
+  $('r-tgt').textContent = num(tgt,1)+'€';
+  $('r-bl').textContent = num(blended,2)+'€';
+  const okCPA = blended<=tgt+1e-9;
+  $('r-bl').className='mv '+(okCPA?'p':'r');
+  $('r-bl-s').innerHTML = 'objetivo ≤ '+num(tgt,1)+'€ '+(okCPA?'✓':'✗ superado');
+  $('r-mg').textContent = num(marginAtN,2)+'€';
+  $('r-mg').className='mv '+(marginAtN>=marg?'g':'r');
+  $('r-mg-s').textContent = marginAtN>=marg?('≥ mínimo ('+num(marg,1)+'€) ✓'):('bajo el mínimo ('+num(marg,1)+'€) ✗');
+  $('r-sp').textContent = eur(Ss+St);
+  $('r-sp-s').textContent = 'estable '+eur(Ss)+' + testeo '+eur(St);
+  $('r-pe').textContent = eur(profitExp);
+  $('r-pw').textContent = eur(profitWorst);
+  $('r-pw').className='mv '+(profitWorst>=0?'w':'r');
+  $('r-gr').textContent = num(grads,1);
+  $('r-gr-s').textContent = num(launches,1)+' lanzamientos/día × '+$('i-grad').value+'%';
+
+  // Verdict
+  const v=$('verdict'), ic=$('v-ic'), ti=$('v-ti'), bo=$('v-bo');
+  if(marginAtN>=marg && N<=floor+0.5){
+    v.className='al sc'; ic.textContent='🛡️';
+    ti.textContent='Zona blindada';
+    bo.textContent='Estás dentro del piso seguro: aunque toda la tanda del día dé 0 pedidos, mantenés ≥'+num(marg,1)+'€/ped. Riesgo cero de romper el margen. Generás ~'+num(grads,1)+' productos estables nuevos/día.';
+  } else if(marginAtN>=marg){
+    v.className='al in'; ic.textContent='📊';
+    ti.textContent='Dentro del margen — apoyado en conversión';
+    bo.textContent='Mantenés el margen mínimo asumiendo que el testeo convierte a su CPA histórico ('+num(ct,1)+'€). Es sostenible en promedio, pero una mala tanda te puede acercar al límite. En peor caso (0 pedidos) el profit del día caería a '+eur(profitWorst)+'.';
+  } else {
+    v.className='al wn'; ic.textContent='⚠️';
+    ti.textContent='Fuera del guardarraíl';
+    bo.textContent='Con '+N+' testeos el margen cae a '+num(marginAtN,2)+'€/ped, por debajo de tu mínimo de '+num(marg,1)+'€. Bajá N hacia '+Math.floor(expInf?floor:Math.max(floor,exp))+' o afloja el margen mínimo.';
+  }
+}
+
+document.querySelectorAll('.preset-btn').forEach(b=>b.addEventListener('click',()=>loadPreset(b.dataset.p)));
+['s-marg','s-n','i-os','i-cs','i-b','i-ct','i-bep','i-grad','i-life'].forEach(id=>{
+  $(id).addEventListener('input',compute);
+});
+loadPreset('es');
+</script>
+</body>
+</html>
