@@ -132,6 +132,12 @@ tr.detail td{padding:0;}
 .doc li{font-size:13px;line-height:1.65;margin-bottom:4px;}
 .doc .sub{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:18px;}
 .doc .tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:10px;font-weight:700;padding:3px 9px;border-radius:5px;margin-right:5px;}
+.steps{display:flex;flex-direction:column;gap:12px;margin:6px 0 14px;}
+.step{display:flex;gap:14px;align-items:flex-start;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.step .stepn{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--primary);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .stepc{flex:1;}
+.step .steph{font-size:13px;font-weight:700;color:var(--fg);margin-bottom:4px;}
+.step .stepc p{font-size:12.5px;margin:0;color:var(--fg);line-height:1.6;}
 footer{background:var(--navy);padding:12px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:8px;}
 footer p{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.4);}
 @media(max-width:860px){.kpis{grid-template-columns:repeat(2,1fr);}main{padding:16px 14px 32px;}header,.tabbar{padding-left:14px;padding-right:14px;}}
@@ -149,7 +155,7 @@ footer p{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:
  <button class="tab" data-view="movimientos">Movimientos</button>
  <button class="tab" data-view="empresas">Por Empresa</button>
  <button class="tab" data-view="resumen">Resumen</button>
- <button class="tab" data-view="sistema">Estado del Sistema</button>
+ <button class="tab" data-view="sistema">Guía de uso</button>
 </div>
 <main>
  <div class="view active" id="v-balance"></div>
@@ -468,26 +474,42 @@ function renderResumen(){
 /* ============ SISTEMA ============ */
 function renderSistema(){
  document.getElementById('v-sistema').innerHTML=`<div class="doc">
-  <span class="tag">Actualización de equipo</span>
-  <h1>Estado del sistema de consolidación financiera</h1>
-  <div class="sub">Comunicado interno · Carpeta MOVIMIENTOS FINAL</div>
-  <p>Les compartimos el estado del nuevo sistema de consolidación financiera.</p>
-  <h2>📁 Carpeta principal: MOVIMIENTOS FINAL</h2>
-  <p>Adentro están las carpetas de <b>Airwallex</b> y <b>Mercury</b>. Ahí se cargan los extractos y el sistema los procesa solo. Ya se le explicó el funcionamiento a Diego.</p>
-  <h2>Un poco de lo que hace por detrás</h2>
+  <span class="tag">Guía de uso</span>
+  <h1>Cómo actualizar los movimientos</h1>
+  <div class="sub">Instructivo operativo · Carpeta MOVIMIENTOS FINAL</div>
+  <p>Esta guía explica, paso a paso, cómo cargar los extractos y actualizar la información. La puede hacer cualquier persona del equipo siguiendo este orden. No hace falta saber programar: se cargan archivos en carpetas y se aprietan botones dentro de la planilla.</p>
+
+  <h2>Antes de empezar: cómo está organizado</h2>
+  <p>Todo vive dentro de la carpeta <b>MOVIMIENTOS FINAL</b> en Drive. Adentro hay una carpeta para cada banco/empresa donde se cargan los extractos, y la planilla <b>Movimientos</b>, que es donde se aprietan los botones y donde queda la información final consolidada.</p>
+
+  <div class="steps">
+   <div class="step"><div class="stepn">1</div><div class="stepc"><div class="steph">Cargar los archivos en su carpeta</div>
+    <p>Poné cada extracto en la carpeta que le corresponde según el banco y la empresa. <b>Airwallex</b> se descarga en <b>PDF</b> (Ecom Pro, Biancani). <b>Mercury</b> se descarga en <b>Excel o CSV</b> (Nuvora, Cohete, Arkonis, Giuseppe). Importante: el nombre del archivo de Airwallex tiene que incluir la moneda (EUR, USD o RON), porque así el sistema sabe a qué hoja mandarlo.</p></div></div>
+
+   <div class="step"><div class="stepn">2</div><div class="stepc"><div class="steph">Procesar los extractos — menús 🤖 Airwallex y 📊 Mercury</div>
+    <p>Abrí la planilla <b>Movimientos</b>. En la barra de menús de arriba (al lado de Ayuda) vas a ver los menús propios del sistema. Entrá a <b>🤖 Airwallex</b> y elegí procesar (por empresa, o "Procesar TODO Airwallex"). Después hacé lo mismo en <b>📊 Mercury</b>. Esto lee los archivos que cargaste y los vuelca, ya ordenados, en las hojas internas. Los archivos que se procesan bien se mueven solos a la carpeta de "procesados".</p></div></div>
+
+   <div class="step"><div class="stepn">3</div><div class="stepc"><div class="steph">Detectar reglas nuevas — menú 📋 Reglas</div>
+    <p>Entrá al menú <b>📋 Reglas</b> y apretá <b>Detectar TODO</b>. Esto revisa si aparecieron movimientos nuevos que el sistema todavía no sabe cómo clasificar (ver la sección de abajo para entender qué son las reglas). Si aparecen pendientes, hay que completarlos antes de seguir.</p></div></div>
+
+   <div class="step"><div class="stepn">4</div><div class="stepc"><div class="steph">Generar la hoja final — menú 💰 Movimientos</div>
+    <p>Por último, entrá a <b>💰 Movimientos</b> y apretá <b>Generar Movimientos</b>. El sistema junta todo, aplica las reglas, convierte las monedas a euros y arma la hoja final ordenada por fecha. Cuando termina, avisa cuántas filas generó. Listo: la información quedó actualizada.</p></div></div>
+  </div>
+
+  <h2>Cómo funciona el sistema de Reglas</h2>
+  <p>Una <b>regla</b> es lo que le dice al sistema cómo clasificar un movimiento: a qué <b>Proyecto</b>, <b>Categoría</b> y <b>Subcategoría</b> pertenece. Por ejemplo, una regla dice "todo lo que venga de Facebook Ads es Proyecto TIENDAS, Categoría Publicidad". Gracias a las reglas, el sistema categoriza solo la enorme mayoría de los movimientos.</p>
+  <p>El problema aparece cuando llega un movimiento <b>nuevo que el sistema nunca vio</b> (un proveedor nuevo, una app nueva, una persona nueva). Como no tiene una regla que le diga qué es, queda <b>sin categorizar</b>. Por eso existe el paso 3: al apretar "Detectar TODO", el sistema lista esos movimientos nuevos en la <b>columna H</b> de las hojas de reglas.</p>
+  <p>Hay tres hojas de reglas, cada una para un tipo de movimiento:</p>
   <ul>
-   <li>Toma los extractos de <b>Airwallex</b> (PDF) y <b>Mercury</b> (Excel) de múltiples empresas y cuentas — Ecom Pro, Biancani, Nuvora, Cohete, Arkonis y Giuseppe — cada una con sus monedas (EUR, USD, RON).</li>
-   <li>Los PDF de Airwallex se leen con un motor de IA que extrae cada transacción automáticamente, incluso en extractos de 50+ páginas.</li>
-   <li>Un sistema de reglas categoriza cada movimiento (proyecto, categoría y subcategoría) de forma automática.</li>
-   <li>Convierte todo a euros con el tipo de cambio histórico real de cada fecha.</li>
-   <li>Consolida las transacciones de todas las cuentas y wallets en una sola tabla ordenada.</li>
+   <li><b>Reglas_Tarjetas</b> — gastos con tarjeta de Airwallex (Facebook Ads, Shopify, apps, herramientas).</li>
+   <li><b>Reglas_Payouts</b> — pagos salientes de Airwallex (proveedores, sueldos, envíos, reembolsos).</li>
+   <li><b>Reglas_Otros</b> — Mercury y el resto de Airwallex (apps, ingresos, transferencias internas, comisiones).</li>
   </ul>
-  <h2>📊 Movimientos</h2>
-  <p>Acá converge la información unificada. La hoja Movimientos ya quedó conectada al Looker de MOVIMIENTOS, así que los dashboards ya están tomando los datos nuevos.</p>
-  <p>Cabe aclarar que resta categorizar algunas transacciones y completar las fechas de factura. Mientras falten categorizar movimientos, hay filas que no impactan en la hoja de balance, por lo que el dato no es el real aún. Una vez categorizado todo, corresponde un chequeo profundo para validar que la información esté completa y correcta.</p>
-  <div class="al in"><div class="ic">📅</div><div><div class="tt">Fecha Movimiento vs. Fecha Factura</div>El toggle <b>"Ver por"</b> permite mirar los datos de dos formas: por <b>Fecha Movimiento</b> (cuándo entró o salió la plata — flujo de caja real) o por <b>Fecha Factura</b> (a qué mes corresponde realmente el gasto o ingreso). Esto es clave: si en un mismo mes se pagan tres facturas de meses distintos, la vista por Fecha Factura las imputa a su mes real en vez de inflar el mes en que se pagaron. La Fecha Factura se carga a mano; mientras esté vacía, esos movimientos se imputan por su Fecha de Movimiento.</div></div>
-  <div class="al in"><div class="ic">ℹ️</div><div><div class="tt">Filtros que replican el Looker</div>Por defecto este panel muestra <b>solo 2026</b> y <b>excluye Transferencias Internas y Cambio de Moneda</b> (movimientos entre cuentas propias, que no son ingresos ni egresos reales). Podés desactivar cualquiera de los dos con el año o el toggle "Transf. internas y cambio".</div></div>
-  <div class="al sc"><div class="ic">✅</div><div><div class="tt">Datos leídos en vivo</div>Los números de este panel se tomaron directamente de la hoja Movimientos de Google Sheets, por lo que coinciden con el Looker.</div></div>
+  <p><b>Qué hacer cuando aparece una regla nueva:</b> el sistema la muestra en la columna H con su origen y su detalle. Hay que copiar ese detalle a las columnas de la izquierda (donde van las reglas cargadas) y completar el <b>Proyecto</b>, la <b>Categoría</b> y la <b>Subcategoría</b> que le corresponden. Una vez cargada, esa regla queda para siempre: el sistema ya va a saber clasificar ese movimiento y todos los futuros iguales.</p>
+
+  <div class="al wn"><div class="ic">📝</div><div><div class="tt">Regla de oro para las subcategorías</div>La subcategoría tiene que ser una <b>entidad estable</b>: un proveedor, una app, una persona, una tienda o un banco (por ejemplo "Dropea", "Shopify", "Jorge"). <b>Nunca</b> pongas ahí un mes, una fecha o un estado (evitá cosas como "Sueldo Marzo Jorge" o "Pendiente compra 05/08"). Los meses y fechas van en el Detalle o en la Nota. Esto mantiene los reportes ordenados.</div></div>
+
+  <div class="al in"><div class="ic">💡</div><div><div class="tt">Regla práctica del orden</div>Siempre el mismo orden: primero <b>cargar archivos</b>, después <b>procesar</b> (Airwallex y Mercury), después <b>detectar y completar reglas</b>, y recién al final <b>generar Movimientos</b>. Si se generan los movimientos antes de completar las reglas nuevas, esos movimientos van a quedar sin categoría hasta la próxima vez.</div></div>
  </div>`;
 }
 
