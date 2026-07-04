@@ -341,7 +341,7 @@ function wireMov(){
 }
 
 /* ============ POR EMPRESA ============ */
-const empState={empresa:null};
+const empState={empresa:'__ALL__'};
 function companiesFrom(rows){
  const by={};
  rows.forEach(t=>{const e=t.e;if(!by[e])by[e]={empresa:e,banco:{},ingreso:0,gasto:0,count:0,monedas:{}};
@@ -354,43 +354,61 @@ function renderEmpresas(){
  const el=document.getElementById('v-empresas');
  const rows=baseFiltered();
  const comps=companiesFrom(rows);
- if(!empState.empresa||!comps.find(c=>c.empresa===empState.empresa))empState.empresa=comps.length?comps[0].empresa:null;
+ const isAll = empState.empresa==='__ALL__';
+ if(!isAll && !comps.find(c=>c.empresa===empState.empresa))empState.empresa='__ALL__';
  let html=filterBar('emp')+activeFilterInfo();
  if(!comps.length){html+=`<div class="empty-msg">Sin datos con estos filtros.</div>`;el.innerHTML=html;wireFilterBar('emp',renderEmpresas);return;}
- const empBtns=comps.map(c=>`<button class="${c.empresa===empState.empresa?'on':''}" data-emp="${c.empresa}">${c.empresa}</button>`).join('');
+ const btnAll=`<button class="${isAll?'on':''}" data-emp="__ALL__">Todas</button>`;
+ const empBtns=btnAll+comps.map(c=>`<button class="${c.empresa===empState.empresa?'on':''}" data-emp="${c.empresa}">${c.empresa}</button>`).join('');
  html+=`<div class="controls"><div class="ctl"><span class="ctl-lab">Empresa / cuenta</span><div class="seg" id="empSel">${empBtns}</div></div></div>`;
- const c=comps.find(x=>x.empresa===empState.empresa);
- const emprows=rows.filter(t=>t.e===empState.empresa);
+
+ const emprows = isAll ? rows : rows.filter(t=>t.e===empState.empresa);
+ const titulo = isAll ? 'Todas las empresas' : empState.empresa;
+ // agregados de la selección
+ const ing=emprows.filter(t=>t.t==='Ingreso').reduce((a,t)=>a+t.eur,0);
+ const gas=emprows.filter(t=>t.t==='Gasto').reduce((a,t)=>a+t.eur,0);
+ const neto=ing+gas, count=emprows.length;
+ const monedas={};emprows.forEach(t=>{if(t.mo)monedas[t.mo]=1;});
+ const bancoLabel = isAll ? (comps.length+' cuentas') : comps.find(x=>x.empresa===empState.empresa).banco;
  // mensual
  const mby={};emprows.forEach(t=>{const ym=txYm(t);mby[ym]=mby[ym]||{ingreso:0,gasto:0};mby[ym][t.t==='Ingreso'?'ingreso':'gasto']+=t.eur;});
  const monthly=Object.entries(mby).map(([ym,v])=>({ym,...v,neto:v.ingreso+v.gasto})).sort((a,b)=>a.ym.localeCompare(b.ym));
  html+=`<div class="kpis">
-  <div class="kpi hl"><div class="l">Ingresos</div><div class="v g">${eur(c.ingreso)}</div><div class="s">${c.banco}</div></div>
-  <div class="kpi"><div class="l">Egresos</div><div class="v r">${eur(Math.abs(c.gasto))}</div><div class="s">según filtros</div></div>
-  <div class="kpi hlg"><div class="l">Balance neto</div><div class="v ${c.neto>=0?'g':'r'}">${eur(c.neto)}</div><div class="s">ingresos − egresos</div></div>
-  <div class="kpi"><div class="l">Movimientos</div><div class="v p">${c.count}</div><div class="s">registros</div></div>
-  <div class="kpi"><div class="l">Monedas origen</div><div class="v" style="font-size:13px">${Object.keys(c.monedas).join(' · ')}</div><div class="s">antes de EUR</div></div>
-  <div class="kpi"><div class="l">Ticket prom. gasto</div><div class="v w">${eur(Math.abs(c.gasto)/Math.max(1,c.count))}</div><div class="s">por movimiento</div></div>
+  <div class="kpi hl"><div class="l">Ingresos</div><div class="v g">${eur(ing)}</div><div class="s">${bancoLabel}</div></div>
+  <div class="kpi"><div class="l">Egresos</div><div class="v r">${eur(Math.abs(gas))}</div><div class="s">según filtros</div></div>
+  <div class="kpi hlg"><div class="l">Balance neto</div><div class="v ${neto>=0?'g':'r'}">${eur(neto)}</div><div class="s">ingresos − egresos</div></div>
+  <div class="kpi"><div class="l">Movimientos</div><div class="v p">${count}</div><div class="s">registros</div></div>
+  <div class="kpi"><div class="l">Monedas origen</div><div class="v" style="font-size:13px">${Object.keys(monedas).join(' · ')}</div><div class="s">antes de EUR</div></div>
+  <div class="kpi"><div class="l">Ticket prom. gasto</div><div class="v w">${eur(Math.abs(gas)/Math.max(1,count))}</div><div class="s">por movimiento</div></div>
  </div>`;
  const maxV=Math.max(1,...monthly.map(m=>Math.max(m.ingreso,Math.abs(m.gasto))));
- html+=`<div class="card" style="margin-bottom:18px"><div class="stitle">Evolución mensual · ${empState.empresa}</div><div class="mbars">`;
+ html+=`<div class="card" style="margin-bottom:18px"><div class="stitle">Evolución mensual · ${titulo}</div><div class="mbars">`;
  monthly.forEach(m=>{const hi=Math.max(3,(m.ingreso/maxV)*100),hg=Math.max(3,(Math.abs(m.gasto)/maxV)*100);
    html+=`<div class="mbar ${m.neto<0?'neg':''}"><div class="bwrap"><div class="bar ing" style="height:${hi}%" title="Ingresos ${eur(m.ingreso)}"></div><div class="bar gas" style="height:${hg}%" title="Egresos ${eur(Math.abs(m.gasto))}"></div></div><div class="bl">${ymShort(m.ym)}</div></div>`;});
  html+=`</div><div class="legend"><div class="it"><span class="sw" style="background:var(--success)"></span>Ingresos</div><div class="it"><span class="sw" style="background:var(--danger)"></span>Egresos</div></div></div>`;
+
+ // En "Todas" mostramos aporte por empresa; en una empresa, sus categorías de gasto
+ if(isAll){
+   html+=`<div class="spit"></div><div class="stitle">Balance por empresa / cuenta</div><div class="tw"><table><thead><tr><th>#</th><th>Empresa / Cuenta</th><th>Banco</th><th>Mov.</th><th class="num">Ingresos</th><th class="num">Egresos</th><th class="num">Balance neto</th></tr></thead><tbody>`;
+   comps.forEach((c,i)=>{const rk=i===0?'r1':i===1?'r2':i===2?'r3':'';
+     html+=`<tr style="cursor:pointer" data-goemp="${c.empresa}"><td><span class="rank ${rk}">${i+1}</span></td><td class="name">${c.empresa}</td><td>${bancoBadge(c.banco)}</td><td class="mut">${c.count}</td><td class="num pos">${eur(c.ingreso)}</td><td class="num neg">${eur(Math.abs(c.gasto))}</td><td class="num ${c.neto>=0?'pos':'neg'}">${eur(c.neto)}</td></tr>`;});
+   html+=`</tbody></table></div>`;
+ }
  const byCat={};emprows.forEach(t=>{if(t.t==='Gasto'){byCat[t.c]=(byCat[t.c]||0)+t.eur;}});
  const catArr=Object.entries(byCat).map(([cat,g])=>({cat,gasto:g})).sort((a,b)=>a.gasto-b.gasto).slice(0,8);
  const maxCat=Math.max(1,...catArr.map(c=>Math.abs(c.gasto)));
- html+=`<div class="spit"></div><div class="stitle">Categorías de gasto · ${empState.empresa}</div><div class="card">`;
+ html+=`<div class="spit"></div><div class="stitle">Categorías de gasto · ${titulo}</div><div class="card">`;
  if(!catArr.length)html+=`<div class="empty-msg">Sin gastos.</div>`;
  catArr.forEach(c=>{html+=`<div class="costrow"><div class="cl">${c.cat}</div><div class="ctrack"><div class="cfill" style="width:${Math.abs(c.gasto)/maxCat*100}%"></div></div><div class="cv">${eur(Math.abs(c.gasto))}</div></div>`;});
  html+=`</div>`;
  const rec=emprows.slice().sort((a,b)=>b.fm.localeCompare(a.fm)).slice(0,15);
- html+=`<div class="spit"></div><div class="stitle">Movimientos recientes · ${empState.empresa}</div><div class="tw"><table><thead><tr><th>Fecha</th><th>Detalle</th><th>Categoría</th><th>Tipo</th><th class="num">Monto €</th></tr></thead><tbody>`;
- rec.forEach(t=>{html+=`<tr><td class="mut">${t.fm}</td><td class="name">${t.d||''}</td><td class="mut">${t.c}</td><td>${tipoBadge(t.t)}</td><td class="num ${t.eur>=0?'pos':'neg'}">${eur2(t.eur)}</td></tr>`;});
+ html+=`<div class="spit"></div><div class="stitle">Movimientos recientes · ${titulo}</div><div class="tw"><table><thead><tr><th>Fecha</th>${isAll?'<th>Empresa</th>':''}<th>Detalle</th><th>Categoría</th><th>Tipo</th><th class="num">Monto €</th></tr></thead><tbody>`;
+ rec.forEach(t=>{html+=`<tr><td class="mut">${t.fm}</td>${isAll?`<td class="mut">${t.e||''}</td>`:''}<td class="name">${t.d||''}</td><td class="mut">${t.c}</td><td>${tipoBadge(t.t)}</td><td class="num ${t.eur>=0?'pos':'neg'}">${eur2(t.eur)}</td></tr>`;});
  html+=`</tbody></table></div>`;
  el.innerHTML=html;
  wireFilterBar('emp',renderEmpresas);
  document.querySelectorAll('#empSel button').forEach(b=>b.onclick=()=>{empState.empresa=b.dataset.emp;renderEmpresas();});
+ el.querySelectorAll('tr[data-goemp]').forEach(tr=>tr.onclick=()=>{empState.empresa=tr.dataset.goemp;renderEmpresas();});
 }
 
 /* ============ RESUMEN ============ */
