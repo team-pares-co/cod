@@ -306,6 +306,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--fg);fo
         <div class="alert al-s"><strong>Renegociación aplicada.</strong> Tarifa plana de €5,70 sobre el 100% de las líneas. Ahorro de <strong>€3.837,18 (–12,8%)</strong> respecto a las tarifas de mayo aplicadas al mismo mix de peso y destino.</div>
         <div class="alert al-s"><strong>Azores resuelto.</strong> El ratio pasa de 61,7% (mayo) a <strong>11,9%</strong>. Los 8 envíos costaron €45,60 frente a los ~€197,28 del esquema anterior.</div>
         <div class="alert al-w"><strong>460 devoluciones facturadas (€2.622,00).</strong> Incluye el backlog de retornos pendientes de meses previos. No interpretar como tasa mensual — ver bloque de devoluciones en la comparativa.</div>
+        <div class="alert al-d"><strong>Comisión COD indebida: €464,00.</strong> La tarifa plana se compone de €4,70 de flete + €1,00 de comisión por cobro efectivo. CTT facturó los €5,70 completos en 464 líneas sin cobro COD (460 devoluciones + 4 salientes). Una devolución no se entrega ni se cobra: debería facturarse a €4,70. <strong>Reclamable.</strong></div>
       </div></div>
     </div>
   </div>
@@ -320,7 +321,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--fg);fo
     <div class="met"><div class="met-lbl">Total facturado 5M</div><div class="met-val">€74.572</div><div class="met-sub">incl. fuel €1.433</div></div>
     <div class="met"><div class="met-lbl">COD acumulado</div><div class="met-val">€472.127</div><div class="met-sub">11.403 pedidos con COD</div></div>
     <div class="met"><div class="met-lbl">Ratio global 5M</div><div class="met-val">14,9%</div><div class="met-sub">logística / COD</div></div>
-    <div class="met hl"><div class="met-lbl">Ahorro renegociación</div><div class="met-val" style="color:var(--success)">–12,8%</div><div class="met-sub">€3.837/mes a volumen junio</div></div>
+    <div class="met hl"><div class="met-lbl">Ahorro neto renegociación</div><div class="met-val" style="color:var(--success)">€3.668</div><div class="met-sub">/mes · €4.132 si se corrige comisión COD</div></div>
   </div>
 
   <div class="g2" style="margin-bottom:12px">
@@ -355,16 +356,69 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--fg);fo
     <div class="card">
       <div class="card-ttl" style="margin-bottom:14px">Impacto de la renegociación</div>
       <div style="background:var(--success-light);border-radius:10px;padding:16px;margin-bottom:14px">
-        <div style="font-size:10px;font-weight:700;color:var(--success);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px">Ahorro mensual a volumen de junio</div>
-        <div class="kpi-big" style="color:var(--success)">€3.837,18</div>
-        <div style="font-size:11px;color:#065F46;margin-top:4px;font-weight:600">–12,8% sobre el costo que habría tenido a tarifas de mayo</div>
+        <div style="font-size:10px;font-weight:700;color:var(--success);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px">Ahorro neto mensual a volumen de junio</div>
+        <div class="kpi-big" style="color:var(--success)">€3.668,15</div>
+        <div style="font-size:11px;color:#065F46;margin-top:4px;font-weight:600">Salientes –€3.837,18 · Devoluciones +€169,03</div>
       </div>
-      <div class="kpi-row"><span style="color:var(--muted)">Costo real junio (19E + 19H)</span><strong>€26.117,40</strong></div>
-      <div class="kpi-row"><span style="color:var(--muted)">Costo contrafactual a tarifa mayo</span><strong>€29.954,58</strong></div>
-      <div class="kpi-row"><span style="color:var(--muted)">Ahorro atribuible a 19E</span><strong class="td-g">€3.685,50</strong></div>
-      <div class="kpi-row"><span style="color:var(--muted)">Ahorro atribuible a Azores (19H)</span><strong class="td-g">€151,68</strong></div>
-      <div class="kpi-row"><span style="color:var(--muted)">Proyección anualizada (volumen constante)</span><strong class="td-g">≈ €46.000</strong></div>
-      <div class="note">Contrafactual construido aplicando la tabla tarifaria de mayo al mix real de peso y destino de junio. No proyecta crecimiento de volumen.</div>
+
+      <div style="font-size:9px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Envíos salientes (19E + 19H)</div>
+      <div class="kpi-row"><span style="color:var(--muted)">Costo real junio</span><strong>€26.117,40</strong></div>
+      <div class="kpi-row"><span style="color:var(--muted)">Contrafactual a tarifa mayo</span><strong>€29.954,58</strong></div>
+      <div class="kpi-row"><span style="color:var(--muted)">Ahorro atribuible a 19E</span><strong class="td-g">−€3.685,50</strong></div>
+      <div class="kpi-row"><span style="color:var(--muted)">Ahorro atribuible a Azores (19H)</span><strong class="td-g">−€151,68</strong></div>
+
+      <div style="font-size:9px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:16px 0 4px">Devoluciones (67D)</div>
+      <div class="kpi-row"><span style="color:var(--muted)">Costo real junio (460 × €5,70)</span><strong>€2.622,00</strong></div>
+      <div class="kpi-row"><span style="color:var(--muted)">Contrafactual a tarifa mayo</span><strong>€2.452,97</strong></div>
+      <div class="kpi-row"><span style="color:var(--muted)">Sobrecosto por pérdida de descuento</span><strong class="td-r">+€169,03</strong></div>
+
+      <div class="kpi-row" style="border-top:2px solid var(--border);border-bottom:none;margin-top:8px;padding-top:12px">
+        <span style="font-weight:700;color:var(--fg)">Ahorro neto junio</span><strong class="td-g" style="font-size:15px">−€3.668,15</strong>
+      </div>
+
+      <div class="note">Contrafactual construido aplicando la tabla tarifaria de mayo al mix real de peso y destino de junio. Las devoluciones de 3, 4 y 6 kg usan el descuento observado de €1,17; los tramos de 1 y 2 kg (432 de 460) usan tarifas reales.</div>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-bottom:12px">
+    <div class="card">
+      <div class="card-ttl" style="margin-bottom:6px">Comisión COD sobre envíos nunca cobrados</div>
+      <div class="card-sub">Estructura de la tarifa plana: €4,70 flete + €1,00 comisión por cobro efectivo</div>
+
+      <div style="background:var(--danger-light);border-radius:10px;padding:16px;margin:14px 0">
+        <div style="font-size:10px;font-weight:700;color:var(--danger);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px">Sobrefacturación identificada — junio</div>
+        <div class="kpi-big" style="color:var(--danger)">€464,00</div>
+        <div style="font-size:11px;color:#991B1B;margin-top:4px;font-weight:600">464 líneas facturadas a €5,70 sin cobro COD asociado</div>
+      </div>
+
+      <table class="dtbl">
+        <thead><tr><th>Concepto</th><th>Líneas</th><th>Facturado</th><th>Debería ser</th><th>Diferencia</th></tr></thead>
+        <tbody>
+          <tr><td>Devoluciones 67D</td><td>460</td><td>€2.622,00</td><td>€2.162,00</td><td class="td-r">€460,00</td></tr>
+          <tr><td>Salientes 19E sin COD</td><td>4</td><td>€22,80</td><td>€18,80</td><td class="td-r">€4,00</td></tr>
+          <tr style="background:var(--card-bg)"><td>Total</td><td>464</td><td>€2.644,80</td><td>€2.180,80</td><td class="td-r">€464,00</td></tr>
+        </tbody>
+      </table>
+
+      <div class="note"><strong>El contrato anterior ya excluía este componente.</strong> El descuento histórico de las devoluciones frente a los salientes era de <strong>€1,17</strong> constante — consistente con la exclusión de la comisión COD. Bajo la tarifa plana, CTT factura el <strong>€1,00 de comisión sobre entregas que nunca ocurrieron</strong>. Una devolución no se entrega ni se cobra: su costo teórico es €4,70.</div>
+
+      <div class="note" style="background:var(--warn-light);color:#92400E"><strong>Acción sugerida:</strong> reclamar la exclusión de la comisión COD sobre líneas 67D. A volumen de junio son <strong>€464/mes</strong>. Corregido, el ahorro neto de la renegociación pasa de €3.668,15 a <strong>€4.132,15</strong> mensuales.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-ttl" style="margin-bottom:6px">Devolución: qué cambió con la tarifa plana</div>
+      <div class="card-sub">Punto de indiferencia en 3 kg · el mix real está dominado por 1–2 kg</div>
+      <table class="dtbl" style="margin-top:12px">
+        <thead><tr><th>Peso</th><th>Devol.</th><th>Antes</th><th>Ahora</th><th>Delta</th></tr></thead>
+        <tbody>
+          <tr><td>1 kg</td><td>132</td><td>€4,70</td><td>€5,70</td><td class="td-r">+€1,00</td></tr>
+          <tr><td>2 kg</td><td>300</td><td>€5,45</td><td>€5,70</td><td class="td-r">+€0,25</td></tr>
+          <tr><td>3 kg</td><td>16</td><td>€6,08</td><td>€5,70</td><td class="td-g">−€0,38</td></tr>
+          <tr><td>4 kg</td><td>1</td><td>€6,79</td><td>€5,70</td><td class="td-g">−€1,09</td></tr>
+          <tr><td>6 kg</td><td>11</td><td>€8,50</td><td>€5,70</td><td class="td-g">−€2,80</td></tr>
+        </tbody>
+      </table>
+      <div class="note">Por debajo de 3 kg la tarifa plana encarece el retorno, porque se perdió el descuento de €1,17. Por encima lo abarata. Como <strong>432 de 460 devoluciones son de 1 y 2 kg</strong>, el efecto neto es un sobrecosto de €169,03 frente al régimen anterior — marginal comparado con el ahorro en salientes, pero corregible vía la comisión COD.</div>
     </div>
   </div>
 
@@ -387,6 +441,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--fg);fo
         </tbody>
       </table>
       <div class="note"><strong>Por qué no usamos tasa mensual.</strong> Entre abril y mayo los retornos no regresaban físicamente al FF, por lo que CTT no los facturó. Las 460 devoluciones de junio absorben ese pendiente acumulado. Una tasa mensual daría 0% en abril–mayo y 10,0% en junio: ambos números serían falsos. La <strong>tasa acumulada del 4,13% desde el inicio de la serie</strong> es la única lectura estable hasta que el flujo de retornos alcance régimen.</div>
+      <div class="note" style="background:var(--danger-light);color:#991B1B"><strong>Costo unitario incorrecto.</strong> Las 460 devoluciones se facturaron a €5,70, la misma tarifa que un pedido entregado. Al incluir €1,00 de comisión COD sobre envíos que nunca se cobraron, hay <strong>€460,00 sobrefacturados</strong>. El costo acumulado correcto sería €2.219,10 en lugar de €2.679,10.</div>
     </div>
 
     <div class="card">
