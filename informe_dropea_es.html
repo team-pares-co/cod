@@ -23,7 +23,7 @@ header { background:var(--navy); padding:16px 28px; display:flex; justify-conten
 .hleft { display:flex; align-items:center; }
 .hright { text-align:right; color:rgba(255,255,255,0.4); font-size:10px; letter-spacing:0.04em; text-transform:uppercase; line-height:1.7; }
 .tabbar { background:#FFFFFF; border-bottom:1px solid var(--border); padding:0 28px; display:flex; gap:4px; height:44px; align-items:stretch; }
-.tab-btn { background:none; border:none; border-bottom:2px solid transparent; font-family:inherit; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.02em; color:var(--muted); padding:0 14px; cursor:pointer; }
+.tab-btn { background:none; border:none; border-bottom:2px solid transparent; font-family:inherit; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.02em; color:var(--muted); padding:0 12px; cursor:pointer; }
 .tab-btn:hover { color:var(--fg); background:var(--card-bg); }
 .tab-btn.active { color:var(--primary); border-bottom-color:var(--primary); }
 main { padding:22px 28px; }
@@ -41,13 +41,13 @@ main { padding:22px 28px; }
 .cod-note { background:var(--primary-light); color:#1E3A8A; border-left:3px solid var(--primary); border-radius:8px; padding:9px 12px; font-size:11px; line-height:1.55; font-weight:500; margin-bottom:12px; }
 .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
 .grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:12px; }
-.card { background:#FFFFFF; border:1px solid var(--border); border-radius:12px; padding:16px 18px; margin-bottom:0; }
+.card { background:#FFFFFF; border:1px solid var(--border); border-radius:12px; padding:16px 18px; }
 main > .card { margin-bottom:12px; }
 .card-title { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:3px; }
 .card-sub { font-size:10px; color:#C4C8D0; margin-bottom:12px; }
 table { width:100%; border-collapse:collapse; }
-th { background:var(--card-bg); font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--muted); padding:9px 14px; text-align:left; border-bottom:2px solid var(--border); }
-td { padding:10px 14px; border-bottom:1px solid var(--border); font-size:12px; font-weight:600; }
+th { background:var(--card-bg); font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--muted); padding:9px 12px; text-align:left; border-bottom:2px solid var(--border); }
+td { padding:10px 12px; border-bottom:1px solid var(--border); font-size:12px; font-weight:600; }
 tbody tr:hover { background:var(--primary-light); }
 .badge { font-size:9px; font-weight:700; padding:3px 8px; border-radius:4px; text-transform:uppercase; letter-spacing:0.04em; }
 .brow { display:grid; grid-template-columns:80px 1fr 130px; gap:10px; align-items:center; margin-bottom:8px; }
@@ -62,11 +62,15 @@ tbody tr:hover { background:var(--primary-light); }
 .alert.warning { background:var(--warn-light); color:#92400E; border-left:3px solid var(--warn); }
 .alert.info { background:var(--primary-light); color:#1E3A8A; border-left:3px solid var(--primary); }
 .alert.success { background:var(--success-light); color:#065F46; border-left:3px solid var(--success); }
-.cbars { display:flex; align-items:flex-end; gap:14px; height:180px; padding-top:8px; }
+.cbars { display:flex; align-items:flex-end; gap:12px; height:180px; padding-top:8px; }
 .cbar-col { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:5px; }
-.cbar { width:100%; max-width:52px; border-radius:4px 4px 0 0; }
+.cbar { width:100%; max-width:48px; border-radius:4px 4px 0 0; }
 .cbar-val { font-size:10px; font-weight:800; letter-spacing:-0.02em; }
 .cbar-lab { font-size:9px; font-weight:700; letter-spacing:0.07em; color:var(--muted); }
+.gpair { display:flex; gap:4px; align-items:flex-end; width:100%; justify-content:center; }
+.gcol { display:flex; flex-direction:column; align-items:center; gap:4px; flex:1; max-width:34px; }
+.gval { font-size:9px; font-weight:800; letter-spacing:-0.02em; }
+.cbar.g { max-width:34px; }
 .impact-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:12px; font-weight:500; }
 .impact-row b { font-weight:800; }
 .impact-row.hl { background:var(--card-bg); margin:0 -8px; padding:8px; border-radius:6px; border-bottom:none; }
@@ -81,12 +85,12 @@ footer { background:var(--navy); padding:12px 28px; display:flex; justify-conten
     <div class="hsep"></div>
     <div>
       <div class="htitle">Dropea España — Análisis de Costes Logísticos</div>
-      <div class="hsub">GLS &amp; TIPSA · Enero – Mayo 2026 · Estados Charged / Reject / Delivered</div>
+      <div class="hsub">GLS &amp; TIPSA · Enero – 17 Julio 2026 · Estados Charged / Reject / Delivered</div>
     </div>
   </div>
-  <div class="hright">43.850 pedidos<br>€290.652 coste logístico</div>
+  <div class="hright">51.477 pedidos<br>€336.193 coste logístico</div>
 </header>
-<nav class="tabbar"><button class="tab-btn" data-tab="tab-2026-01">Enero</button><button class="tab-btn" data-tab="tab-2026-02">Febrero</button><button class="tab-btn" data-tab="tab-2026-03">Marzo</button><button class="tab-btn" data-tab="tab-2026-04">Abril</button><button class="tab-btn" data-tab="tab-2026-05">Mayo</button><button class="tab-btn active" data-tab="tab-comp">Comparativa</button></nav>
+<nav class="tabbar"><button class="tab-btn" data-tab="tab-2026-01">Enero</button><button class="tab-btn" data-tab="tab-2026-02">Febrero</button><button class="tab-btn" data-tab="tab-2026-03">Marzo</button><button class="tab-btn" data-tab="tab-2026-04">Abril</button><button class="tab-btn" data-tab="tab-2026-05">Mayo</button><button class="tab-btn" data-tab="tab-2026-06">Junio</button><button class="tab-btn" data-tab="tab-2026-07">Julio</button><button class="tab-btn active" data-tab="tab-comp">Comparativa</button></nav>
 <main>
 
   <section class="tab-panel" id="tab-2026-01">
@@ -98,7 +102,7 @@ footer { background:var(--navy); padding:12px 28px; display:flex; justify-conten
     <div class="metrics">
       <div class="met"><div class="met-label">Pedidos</div><div class="met-value">8.325</div><div class="met-sub">Charged · Reject · Delivered</div></div>
       <div class="met hl"><div class="met-label">Coste logístico total</div><div class="met-value">€59.640</div><div class="met-sub">envío + devolución + COD aplicado</div></div>
-      <div class="met"><div class="met-label">Coste / pedido</div><div class="met-value">€7,16</div><div class="met-sub">sobre 8.325 pedidos</div></div>
+      <div class="met"><div class="met-label">Coste / pedido</div><div class="met-value">€7,16</div><div class="met-sub">entregados €6,05 · devueltos €9,69</div></div>
       <div class="met"><div class="met-label">Coste envío</div><div class="met-value">€41.769</div><div class="met-sub">medio €5,02 / envío</div></div>
       <div class="met"><div class="met-label">Coste devoluciones</div><div class="met-value">€12.113</div><div class="met-sub">media €4,75 / devolución</div></div>
       <div class="met"><div class="met-label">COD aplicado</div><div class="met-value">€5.758</div><div class="met-sub" style="color:var(--success)">−€2.552 excluido por regla</div></div>
@@ -171,7 +175,7 @@ footer { background:var(--navy); padding:12px 28px; display:flex; justify-conten
     <div class="metrics">
       <div class="met"><div class="met-label">Pedidos</div><div class="met-value">8.324</div><div class="met-sub">Charged · Reject · Delivered</div></div>
       <div class="met hl"><div class="met-label">Coste logístico total</div><div class="met-value">€64.770</div><div class="met-sub">envío + devolución + COD aplicado</div></div>
-      <div class="met"><div class="met-label">Coste / pedido</div><div class="met-value">€7,78</div><div class="met-sub">sobre 8.324 pedidos</div></div>
+      <div class="met"><div class="met-label">Coste / pedido</div><div class="met-value">€7,78</div><div class="met-sub">entregados €6,47 · devueltos €10,66</div></div>
       <div class="met"><div class="met-label">Coste envío</div><div class="met-value">€45.096</div><div class="met-sub">medio €5,42 / envío</div></div>
       <div class="met"><div class="met-label">Coste devoluciones</div><div class="met-value">€13.625</div><div class="met-sub">media €5,23 / devolución</div></div>
       <div class="met"><div class="met-label">COD aplicado</div><div class="met-value">€6.049</div><div class="met-sub" style="color:var(--success)">−€2.788 excluido por regla</div></div>
@@ -231,7 +235,7 @@ footer { background:var(--navy); padding:12px 28px; display:flex; justify-conten
       <div class="card">
         <div class="card-title">Alertas operativas</div>
         <div class="card-sub">Se conservan aunque queden resueltas en meses posteriores</div>
-        <div class="alert warning"><b>Tasa de rechazo 31,3%</b> — nivel de atención. Coste hundido en rechazos: €27.752 (42,9% del gasto del mes).</div><div class="alert warning"><b>Comisión COD a €1.20 en 2.786 pedidos</b> (33.5% del mes) frente a la tarifa estándar de €1.00. Este recargo aparece solo en febrero y marzo y desaparece en abril — verificar el concepto contra factura del transportista.</div><div class="alert info">Mes de mayor coste unitario de la serie: €7,78 por pedido, con envío medio de €5,42. Es la referencia previa al cambio tarifario.</div>
+        <div class="alert warning"><b>Tasa de rechazo 31,3%</b> — nivel de atención. Coste hundido en rechazos: €27.752 (42,9% del gasto del mes).</div><div class="alert warning"><b>Comisión COD a €1,20 en 2.786 pedidos</b> (33,5% del mes) frente a la tarifa estándar de €1,00. Este recargo aparece solo en febrero y marzo y desaparece en abril — verificar el concepto contra factura del transportista.</div><div class="alert info">Mes de mayor coste unitario de la serie: €7,78 por pedido, con envío medio de €5,42. Es la referencia previa al cambio tarifario.</div>
       </div>
     </div>
   </section>
@@ -244,7 +248,7 @@ footer { background:var(--navy); padding:12px 28px; display:flex; justify-conten
     <div class="metrics">
       <div class="met"><div class="met-label">Pedidos</div><div class="met-value">8.641</div><div class="met-sub">Charged · Reject · Delivered</div></div>
       <div class="met hl"><div class="met-label">Coste logístico total</div><div class="met-value">€57.947</div><div class="met-sub">envío + devolución + COD aplicado</div></div>
-      <div class="met"><div class="met-label">Coste / pedido</div><div class="met-value">€6,71</div><div class="met-sub">sobre 8.641 pedidos</div></div>
+      <div class="met"><div class="met-label">Coste / pedido</div><div class="met-value">€6,71</div><div class="met-sub">entregados €5,60 · devueltos €8,80</div></div>
       <div class="met"><div class="met-label">Coste envío</div><div class="met-value">€38.952</div><div class="met-sub">medio €4,51 / envío</div></div>
       <div class="met"><div class="met-label">Coste devoluciones</div><div class="met-value">€12.913</div><div class="met-sub">media €4,32 / devolución</div></div>
       <div class="met"><div class="met-label">COD aplicado</div><div class="met-value">€6.082</div><div class="met-sub" style="color:var(--success)">−€3.176 excluido por regla</div></div>
@@ -300,7 +304,7 @@ footer { background:var(--navy); padding:12px 28px; display:flex; justify-conten
       <div class="card">
         <div class="card-title">Alertas operativas</div>
         <div class="card-sub">Se conservan aunque queden resueltas en meses posteriores</div>
-        <div class="alert danger"><b>Tasa de rechazo 34,6%</b> — por encima del umbral crítico. Los pedidos Reject de marzo consumieron €26.299 (45,4% del coste logístico del mes) sin generar ingreso: pagan envío de ida más devolución.</div><div class="alert warning"><b>Comisión COD a €1.20 en 3.107 pedidos</b> (36.0% del mes) frente a la tarifa estándar de €1.00. Este recargo aparece solo en febrero y marzo y desaparece en abril — verificar el concepto contra factura del transportista.</div><div class="alert info">Mes de transición: convive la tarifa 14H saliente (€5,50 / €5,80) con la nueva tarifa 24H (€3,74 / €4,01). Las comparaciones intra-mes deben declarar el mix de servicio.</div>
+        <div class="alert danger"><b>Tasa de rechazo 34,6%</b> — por encima del umbral crítico. Los pedidos Reject consumieron €26.299 (45,4% del coste logístico del mes) sin generar ingreso: pagan envío de ida más devolución.</div><div class="alert warning"><b>Comisión COD a €1,20 en 3.107 pedidos</b> (36,0% del mes) frente a la tarifa estándar de €1,00. Este recargo aparece solo en febrero y marzo y desaparece en abril — verificar el concepto contra factura del transportista.</div><div class="alert info">Mes de transición: convive la tarifa 14H saliente (€5,50 / €5,80) con la nueva tarifa 24H (€3,74 / €4,01). Las comparaciones intra-mes deben declarar el mix de servicio.</div>
       </div>
     </div>
   </section>
@@ -313,7 +317,7 @@ footer { background:var(--navy); padding:12px 28px; display:flex; justify-conten
     <div class="metrics">
       <div class="met"><div class="met-label">Pedidos</div><div class="met-value">9.186</div><div class="met-sub">Charged · Reject · Delivered</div></div>
       <div class="met hl"><div class="met-label">Coste logístico total</div><div class="met-value">€53.291</div><div class="met-sub">envío + devolución + COD aplicado</div></div>
-      <div class="met"><div class="met-label">Coste / pedido</div><div class="met-value">€5,80</div><div class="met-sub">sobre 9.186 pedidos</div></div>
+      <div class="met"><div class="met-label">Coste / pedido</div><div class="met-value">€5,80</div><div class="met-sub">entregados €4,86 · devueltos €7,63</div></div>
       <div class="met"><div class="met-label">Coste envío</div><div class="met-value">€35.538</div><div class="met-sub">medio €3,87 / envío</div></div>
       <div class="met"><div class="met-label">Coste devoluciones</div><div class="met-value">€11.691</div><div class="met-sub">media €3,74 / devolución</div></div>
       <div class="met"><div class="met-label">COD aplicado</div><div class="met-value">€6.063</div><div class="met-sub" style="color:var(--success)">−€3.122 excluido por regla</div></div>
@@ -365,7 +369,7 @@ footer { background:var(--navy); padding:12px 28px; display:flex; justify-conten
       <div class="card">
         <div class="card-title">Alertas operativas</div>
         <div class="card-sub">Se conservan aunque queden resueltas en meses posteriores</div>
-        <div class="alert danger"><b>Tasa de rechazo 34,0%</b> — por encima del umbral crítico. Los pedidos Reject de abril consumieron €23.792 (44,6% del coste logístico del mes) sin generar ingreso: pagan envío de ida más devolución.</div><div class="alert success">Migración completa a <b>Entrega 24H</b>: envío medio €3,87, −28,6% frente a febrero. Primer mes íntegro bajo la tarifa renegociada.</div>
+        <div class="alert danger"><b>Tasa de rechazo 34,0%</b> — por encima del umbral crítico. Los pedidos Reject consumieron €23.792 (44,6% del coste logístico del mes) sin generar ingreso: pagan envío de ida más devolución.</div><div class="alert success">Migración completa a <b>Entrega 24H</b>: envío medio €3,87, −28,6% frente a febrero. Primer mes íntegro bajo la tarifa renegociada.</div>
       </div>
     </div>
   </section>
@@ -378,7 +382,7 @@ footer { background:var(--navy); padding:12px 28px; display:flex; justify-conten
     <div class="metrics">
       <div class="met"><div class="met-label">Pedidos</div><div class="met-value">9.374</div><div class="met-sub">Charged · Reject · Delivered</div></div>
       <div class="met hl"><div class="met-label">Coste logístico total</div><div class="met-value">€55.004</div><div class="met-sub">envío + devolución + COD aplicado</div></div>
-      <div class="met"><div class="met-label">Coste / pedido</div><div class="met-value">€5,87</div><div class="met-sub">sobre 9.374 pedidos</div></div>
+      <div class="met"><div class="met-label">Coste / pedido</div><div class="met-value">€5,87</div><div class="met-sub">entregados €4,95 · devueltos €7,79</div></div>
       <div class="met"><div class="met-label">Coste envío</div><div class="met-value">€37.032</div><div class="met-sub">medio €3,95 / envío</div></div>
       <div class="met"><div class="met-label">Coste devoluciones</div><div class="met-value">€11.643</div><div class="met-sub">media €3,83 / devolución</div></div>
       <div class="met"><div class="met-label">COD aplicado</div><div class="met-value">€6.328</div><div class="met-sub" style="color:var(--success)">−€3.043 excluido por regla</div></div>
@@ -432,24 +436,217 @@ footer { background:var(--navy); padding:12px 28px; display:flex; justify-conten
       <div class="card">
         <div class="card-title">Alertas operativas</div>
         <div class="card-sub">Se conservan aunque queden resueltas en meses posteriores</div>
-        <div class="alert danger"><b>Tasa de rechazo 32,4%</b> — por encima del umbral crítico. Los pedidos Reject de mayo consumieron €23.675 (43,0% del coste logístico del mes) sin generar ingreso: pagan envío de ida más devolución.</div><div class="alert info">Entra en operación <b>TIPSA (Servicio 19)</b> con volumen material: 1.670 pedidos. Hasta abril su participación era residual — la comparación GLS vs TIPSA recién es representativa desde este mes.</div>
+        <div class="alert danger"><b>Tasa de rechazo 32,4%</b> — por encima del umbral crítico. Los pedidos Reject consumieron €23.675 (43,0% del coste logístico del mes) sin generar ingreso: pagan envío de ida más devolución.</div><div class="alert info">Entra en operación <b>TIPSA (Servicio 19)</b> con volumen material: 1.670 pedidos. Hasta abril su participación era residual.</div>
+      </div>
+    </div>
+  </section>
+  <section class="tab-panel" id="tab-2026-06">
+    <div class="pip" style="background:#92400E"></div>
+    <div class="tab-head">
+      <h2>Junio 2026</h2>
+      <span class="regimen" style="background:#ECFDF5;color:#059669">Tarifa 24H · dual GLS/TIPSA</span>
+    </div>
+    <div class="metrics">
+      <div class="met"><div class="met-label">Pedidos</div><div class="met-value">5.208</div><div class="met-sub">Charged · Reject · Delivered</div></div>
+      <div class="met hl"><div class="met-label">Coste logístico total</div><div class="met-value">€31.579</div><div class="met-sub">envío + devolución + COD aplicado</div></div>
+      <div class="met"><div class="met-label">Coste / pedido</div><div class="met-value">€6,06</div><div class="met-sub">entregados €5,02 · devueltos €7,98</div></div>
+      <div class="met"><div class="met-label">Coste envío</div><div class="met-value">€20.959</div><div class="met-sub">medio €4,02 / envío</div></div>
+      <div class="met"><div class="met-label">Coste devoluciones</div><div class="met-value">€7.255</div><div class="met-sub">media €3,94 / devolución</div></div>
+      <div class="met"><div class="met-label">COD aplicado</div><div class="met-value">€3.365</div><div class="met-sub" style="color:var(--success)">−€1.843 excluido por regla</div></div>
+    </div>
+    <div class="cod-note">Regla COD aplicada: €1.843 de comisión contra reembolso <b>excluidos</b> en pedidos con devolución (€5.208 facturado → €3.365 computado).</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Distribución por estado</div>
+        <div class="card-sub">5.208 pedidos del mes</div>
+        <div class="brow"><div class="blab">Charged</div>
+      <div class="btrack"><div class="bfill" style="width:100.0%;background:#059669"></div></div>
+      <div class="bval">3.341 <span class="bsub">(64,2%)</span></div></div><div class="brow"><div class="blab">Reject</div>
+      <div class="btrack"><div class="bfill" style="width:55.1%;background:#EF4444"></div></div>
+      <div class="bval">1.841 <span class="bsub">(35,3%)</span></div></div><div class="brow"><div class="blab">Delivered</div>
+      <div class="btrack"><div class="bfill" style="width:2.0%;background:#3057F3"></div></div>
+      <div class="bval">26 <span class="bsub">(0,5%)</span></div></div>
+        <div class="sunk">Coste hundido en rechazos: <b style="color:var(--danger)">€14.683</b> · 46,5% del gasto del mes</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Transportistas</div>
+        <div class="card-sub">Coste y rechazo por operador</div>
+        <table><thead><tr><th>Operador</th><th>Pedidos</th><th>Envío medio</th><th>Coste total</th><th>€/pedido</th><th>Rechazo</th></tr></thead><tbody><tr><td><span class="badge" style="background:#ECEFFE;color:#3057F3">GLS</span></td>
+      <td>3.173</td><td>€3,90</td><td>€18.543</td><td>€5,84</td>
+      <td style="color:#EF4444;font-weight:800">34,3%</td></tr><tr><td><span class="badge" style="background:#FFFBEB;color:#92400E">TIPSA</span></td>
+      <td>2.035</td><td>€4,21</td><td>€13.036</td><td>€6,41</td>
+      <td style="color:#EF4444;font-weight:800">37,0%</td></tr></tbody></table>
+        <div class="card-title" style="margin-top:14px">Tipos de servicio</div>
+        <table><thead><tr><th>Servicio</th><th>Operador</th><th>Pedidos</th><th>Coste total</th><th>€/pedido</th><th>Rechazo</th></tr></thead><tbody><tr><td style="font-weight:700">Entrega 24H</td><td>GLS</td>
+      <td>3.172</td><td>€18.528</td><td>€5,84</td>
+      <td style="color:#EF4444;font-weight:800">34,3%</td></tr><tr><td style="font-weight:700">Servicio 19</td><td>TIPSA</td>
+      <td>2.034</td><td>€13.031</td><td>€6,41</td>
+      <td style="color:#EF4444;font-weight:800">37,0%</td></tr><tr><td style="font-weight:700">Baleares 24H</td><td>GLS</td>
+      <td>1</td><td>€15</td><td>€14,96</td>
+      <td style="color:#EF4444;font-weight:800">100,0%</td></tr><tr><td style="font-weight:700">Servicio 24</td><td>TIPSA</td>
+      <td>1</td><td>€5</td><td>€4,68</td>
+      <td style="color:#059669;font-weight:800">0,0%</td></tr></tbody></table>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Tiendas</div>
+        <div class="card-sub">Segmentación por marca</div>
+        <table><thead><tr><th>Tienda</th><th>Pedidos</th><th>Coste total</th><th>€/pedido</th><th>Rechazo</th></tr></thead><tbody><tr><td style="font-weight:700">AMALFI STUDIO</td><td>2.301</td>
+      <td>€14.045</td><td>€6,10</td>
+      <td style="color:#EF4444;font-weight:800">35,9%</td></tr><tr><td style="font-weight:700">Eterea</td><td>1.804</td>
+      <td>€10.812</td><td>€5,99</td>
+      <td style="color:#EF4444;font-weight:800">33,5%</td></tr><tr><td style="font-weight:700">SIENA</td><td>1.103</td>
+      <td>€6.722</td><td>€6,09</td>
+      <td style="color:#EF4444;font-weight:800">37,1%</td></tr></tbody></table>
+      </div>
+      <div class="card">
+        <div class="card-title">Alertas operativas</div>
+        <div class="card-sub">Se conservan aunque queden resueltas en meses posteriores</div>
+        <div class="alert danger"><b>Tasa de rechazo 35,4%</b> — por encima del umbral crítico. Los pedidos Reject consumieron €14.683 (46,5% del coste logístico del mes) sin generar ingreso: pagan envío de ida más devolución.</div><div class="alert info">Primer mes con operación dual consolidada: TIPSA absorbe el 39,1% del volumen. Envío medio TIPSA €4,21 vs GLS €3,90 — TIPSA opera ~€0,31 más caro por envío con tasa de rechazo similar.</div><div class="alert warning">El volumen en estados finales cae a 5.208 pedidos (vs 9.374 en mayo). Parte de la diferencia son pedidos de junio aún en Incidence / Transit en la exportación del 17/07 — el mes puede seguir moviéndose hasta que liquiden.</div>
+      </div>
+    </div>
+  </section>
+  <section class="tab-panel" id="tab-2026-07">
+    <div class="pip" style="background:#1E3FD8"></div>
+    <div class="tab-head">
+      <h2>Julio 2026</h2>
+      <span class="regimen" style="background:#ECEFFE;color:#1E3A8A">Mes parcial · hasta 17/07</span>
+    </div>
+    <div class="metrics">
+      <div class="met"><div class="met-label">Pedidos</div><div class="met-value">2.419</div><div class="met-sub">Charged · Reject · Delivered</div></div>
+      <div class="met hl"><div class="met-label">Coste logístico total</div><div class="met-value">€13.962</div><div class="met-sub">envío + devolución + COD aplicado</div></div>
+      <div class="met"><div class="met-label">Coste / pedido</div><div class="met-value">€5,77</div><div class="met-sub">entregados €5,03 · devueltos €7,93</div></div>
+      <div class="met"><div class="met-label">Coste envío</div><div class="met-value">€9.755</div><div class="met-sub">medio €4,03 / envío</div></div>
+      <div class="met"><div class="met-label">Coste devoluciones</div><div class="met-value">€2.410</div><div class="met-sub">media €3,87 / devolución</div></div>
+      <div class="met"><div class="met-label">COD aplicado</div><div class="met-value">€1.797</div><div class="met-sub" style="color:var(--success)">−€622 excluido por regla</div></div>
+    </div>
+    <div class="cod-note">Regla COD aplicada: €622 de comisión contra reembolso <b>excluidos</b> en pedidos con devolución (€2.419 facturado → €1.797 computado).</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Distribución por estado</div>
+        <div class="card-sub">2.419 pedidos del mes</div>
+        <div class="brow"><div class="blab">Charged</div>
+      <div class="btrack"><div class="bfill" style="width:94.1%;background:#059669"></div></div>
+      <div class="bval">871 <span class="bsub">(36,0%)</span></div></div><div class="brow"><div class="blab">Reject</div>
+      <div class="btrack"><div class="bfill" style="width:67.2%;background:#EF4444"></div></div>
+      <div class="bval">622 <span class="bsub">(25,7%)</span></div></div><div class="brow"><div class="blab">Delivered</div>
+      <div class="btrack"><div class="bfill" style="width:100.0%;background:#3057F3"></div></div>
+      <div class="bval">926 <span class="bsub">(38,3%)</span></div></div>
+        <div class="sunk">Coste hundido en rechazos: <b style="color:var(--danger)">€4.932</b> · 35,3% del gasto del mes</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Transportistas</div>
+        <div class="card-sub">Coste y rechazo por operador</div>
+        <table><thead><tr><th>Operador</th><th>Pedidos</th><th>Envío medio</th><th>Coste total</th><th>€/pedido</th><th>Rechazo</th></tr></thead><tbody><tr><td><span class="badge" style="background:#ECEFFE;color:#3057F3">GLS</span></td>
+      <td>1.806</td><td>€3,97</td><td>€10.233</td><td>€5,67</td>
+      <td style="color:#D97706;font-weight:800">25,4%</td></tr><tr><td><span class="badge" style="background:#FFFBEB;color:#92400E">TIPSA</span></td>
+      <td>613</td><td>€4,22</td><td>€3.729</td><td>€6,08</td>
+      <td style="color:#D97706;font-weight:800">26,6%</td></tr></tbody></table>
+        <div class="card-title" style="margin-top:14px">Tipos de servicio</div>
+        <table><thead><tr><th>Servicio</th><th>Operador</th><th>Pedidos</th><th>Coste total</th><th>€/pedido</th><th>Rechazo</th></tr></thead><tbody><tr><td style="font-weight:700">Entrega 24H</td><td>GLS</td>
+      <td>1.803</td><td>€10.203</td><td>€5,66</td>
+      <td style="color:#D97706;font-weight:800">25,4%</td></tr><tr><td style="font-weight:700">Servicio 19</td><td>TIPSA</td>
+      <td>590</td><td>€3.591</td><td>€6,09</td>
+      <td style="color:#D97706;font-weight:800">26,4%</td></tr><tr><td style="font-weight:700">Servicio 24</td><td>TIPSA</td>
+      <td>19</td><td>€111</td><td>€5,84</td>
+      <td style="color:#D97706;font-weight:800">31,6%</td></tr><tr><td style="font-weight:700">Servicio 14</td><td>TIPSA</td>
+      <td>4</td><td>€27</td><td>€6,79</td>
+      <td style="color:#059669;font-weight:800">25,0%</td></tr><tr><td style="font-weight:700">Entrega 14H</td><td>GLS</td>
+      <td>2</td><td>€21</td><td>€10,49</td>
+      <td style="color:#EF4444;font-weight:800">50,0%</td></tr><tr><td style="font-weight:700">Baleares 24H</td><td>GLS</td>
+      <td>1</td><td>€8</td><td>€8,48</td>
+      <td style="color:#059669;font-weight:800">0,0%</td></tr></tbody></table>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Tiendas</div>
+        <div class="card-sub">Segmentación por marca</div>
+        <table><thead><tr><th>Tienda</th><th>Pedidos</th><th>Coste total</th><th>€/pedido</th><th>Rechazo</th></tr></thead><tbody><tr><td style="font-weight:700">AMALFI STUDIO</td><td>1.117</td>
+      <td>€6.520</td><td>€5,84</td>
+      <td style="color:#D97706;font-weight:800">26,2%</td></tr><tr><td style="font-weight:700">Eterea</td><td>802</td>
+      <td>€4.535</td><td>€5,65</td>
+      <td style="color:#059669;font-weight:800">23,4%</td></tr><tr><td style="font-weight:700">SIENA</td><td>500</td>
+      <td>€2.907</td><td>€5,81</td>
+      <td style="color:#D97706;font-weight:800">28,2%</td></tr></tbody></table>
+      </div>
+      <div class="card">
+        <div class="card-title">Alertas operativas</div>
+        <div class="card-sub">Se conservan aunque queden resueltas en meses posteriores</div>
+        <div class="alert info"><b>Mes parcial (1–17 de julio)</b> con estados aún en tránsito. La tasa de rechazo del 25,7% está <b>subestimada</b>: parte de los pedidos en Transit / Incidence / Pending terminará en Reject. No comparar contra meses cerrados hasta el cierre.</div><div class="alert warning"><b>Tasa de rechazo 25,7%</b> — nivel de atención. Coste hundido en rechazos: €4.932 (35,3% del gasto del mes).</div>
       </div>
     </div>
   </section>
   <section class="tab-panel" id="tab-comp">
-    <div class="pip" style="background:linear-gradient(90deg,#9CA3AF,#F59E0B,#3057F3,#059669,#065F46)"></div>
-    <div class="tab-head"><h2>Comparativa Enero – Mayo 2026</h2>
-      <span class="regimen" style="background:#ECEFFE;color:#1E3A8A">5 meses · 2 regímenes tarifarios</span></div>
+    <div class="pip" style="background:linear-gradient(90deg,#9CA3AF,#F59E0B,#3057F3,#059669,#065F46,#92400E,#1E3FD8)"></div>
+    <div class="tab-head"><h2>Comparativa Enero – Julio 2026</h2>
+      <span class="regimen" style="background:#ECEFFE;color:#1E3A8A">7 meses · Julio parcial (hasta 17/07)</span></div>
     <div class="metrics">
-      <div class="met"><div class="met-label">Pedidos período</div><div class="met-value">43.850</div><div class="met-sub">29.357 Charged · 14.302 Reject · 191 Delivered</div></div>
-      <div class="met hl"><div class="met-label">Coste logístico total</div><div class="met-value">€290.652</div><div class="met-sub">envío €198.387 · dev. €61.985 · COD €30.280</div></div>
-      <div class="met"><div class="met-label">Coste / pedido</div><div class="met-value">€6,63</div><div class="met-sub" style="color:var(--success)">↓ €7,78 (feb) → €5,87 (may)</div></div>
-      <div class="met"><div class="met-label">Tasa de rechazo</div><div class="met-value" style="color:var(--danger)">32,6%</div><div class="met-sub">14.302 pedidos Reject</div></div>
-      <div class="met"><div class="met-label">Coste hundido en rechazos</div><div class="met-value" style="color:var(--danger)">€126.228</div><div class="met-sub">43,4% del gasto logístico</div></div>
-      <div class="met"><div class="met-label">COD excluido por regla</div><div class="met-value" style="color:var(--success)">€14.681</div><div class="met-sub">pedidos con devolución sin cómputo de COD</div></div>
+      <div class="met"><div class="met-label">Pedidos período</div><div class="met-value">51.477</div><div class="met-sub">33.569 Charged · 16.765 Reject · 1.143 Delivered</div></div>
+      <div class="met hl"><div class="met-label">Coste logístico total</div><div class="met-value">€336.193</div><div class="met-sub">envío €229.101 · dev. €71.650 · COD €35.442</div></div>
+      <div class="met"><div class="met-label">€/ped. entregado-pagado</div><div class="met-value" style="color:var(--success)">€5,48</div><div class="met-sub">Charged + Delivered (34.712)</div></div>
+      <div class="met"><div class="met-label">€/ped. devuelto</div><div class="met-value" style="color:var(--danger)">€8,70</div><div class="met-sub">Reject (16.765) · ida + vuelta</div></div>
+      <div class="met"><div class="met-label">Coste hundido en rechazos</div><div class="met-value" style="color:var(--danger)">€145.843</div><div class="met-sub">43,4% del gasto logístico</div></div>
+      <div class="met"><div class="met-label">COD excluido por regla</div><div class="met-value" style="color:var(--success)">€17.146</div><div class="met-sub">pedidos con devolución sin cómputo de COD</div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Coste medio por pedido — entregados/pagados vs devueltos</div>
+      <div class="card-sub"><span style="color:var(--success);font-weight:700">■ Entregados / pagados</span> (Charged + Delivered) &nbsp;·&nbsp; <span style="color:var(--danger);font-weight:700">■ Devueltos</span> (Reject, envío ida + devolución, sin COD por regla) &nbsp;·&nbsp; * mes parcial</div>
+      <div class="cbars" style="height:190px"><div class="cbar-col">
+  <div class="gpair">
+    <div class="gcol"><div class="gval" style="color:var(--success)">€6,05</div>
+      <div class="cbar g" style="height:68px;background:#059669"></div></div>
+    <div class="gcol"><div class="gval" style="color:var(--danger)">€9,69</div>
+      <div class="cbar g" style="height:109px;background:#EF4444"></div></div>
+  </div>
+  <div class="cbar-lab">ENE</div></div><div class="cbar-col">
+  <div class="gpair">
+    <div class="gcol"><div class="gval" style="color:var(--success)">€6,47</div>
+      <div class="cbar g" style="height:73px;background:#059669"></div></div>
+    <div class="gcol"><div class="gval" style="color:var(--danger)">€10,66</div>
+      <div class="cbar g" style="height:120px;background:#EF4444"></div></div>
+  </div>
+  <div class="cbar-lab">FEB</div></div><div class="cbar-col">
+  <div class="gpair">
+    <div class="gcol"><div class="gval" style="color:var(--success)">€5,60</div>
+      <div class="cbar g" style="height:63px;background:#059669"></div></div>
+    <div class="gcol"><div class="gval" style="color:var(--danger)">€8,80</div>
+      <div class="cbar g" style="height:99px;background:#EF4444"></div></div>
+  </div>
+  <div class="cbar-lab">MAR</div></div><div class="cbar-col">
+  <div class="gpair">
+    <div class="gcol"><div class="gval" style="color:var(--success)">€4,86</div>
+      <div class="cbar g" style="height:55px;background:#059669"></div></div>
+    <div class="gcol"><div class="gval" style="color:var(--danger)">€7,63</div>
+      <div class="cbar g" style="height:86px;background:#EF4444"></div></div>
+  </div>
+  <div class="cbar-lab">ABR</div></div><div class="cbar-col">
+  <div class="gpair">
+    <div class="gcol"><div class="gval" style="color:var(--success)">€4,95</div>
+      <div class="cbar g" style="height:56px;background:#059669"></div></div>
+    <div class="gcol"><div class="gval" style="color:var(--danger)">€7,79</div>
+      <div class="cbar g" style="height:88px;background:#EF4444"></div></div>
+  </div>
+  <div class="cbar-lab">MAY</div></div><div class="cbar-col">
+  <div class="gpair">
+    <div class="gcol"><div class="gval" style="color:var(--success)">€5,02</div>
+      <div class="cbar g" style="height:57px;background:#059669"></div></div>
+    <div class="gcol"><div class="gval" style="color:var(--danger)">€7,98</div>
+      <div class="cbar g" style="height:90px;background:#EF4444"></div></div>
+  </div>
+  <div class="cbar-lab">JUN</div></div><div class="cbar-col">
+  <div class="gpair">
+    <div class="gcol"><div class="gval" style="color:var(--success)">€5,03</div>
+      <div class="cbar g" style="height:57px;background:#059669;opacity:.55"></div></div>
+    <div class="gcol"><div class="gval" style="color:var(--danger)">€7,93</div>
+      <div class="cbar g" style="height:89px;background:#EF4444;opacity:.55"></div></div>
+  </div>
+  <div class="cbar-lab">JUL <span style="opacity:.55">*</span></div></div></div>
+      <div class="foot-note">Un pedido devuelto cuesta en promedio <b>€8,70</b> frente a <b>€5,48</b> del entregado — un multiplicador de <b>×1,6</b> en junio. La brecha se achicó con la tarifa 24H (de €10,66 en febrero a €7,98 en junio) pero el driver sigue siendo el volumen de rechazos, no la tarifa.</div>
     </div>
     <div class="grid3">
-      <div class="card"><div class="card-title">Coste logístico total por mes</div><div class="card-sub">envío + devolución + COD aplicado</div><div class="cbars"><div class="cbar-col"><div class="cbar-val">€59.640</div>
+      <div class="card"><div class="card-title">Coste logístico total por mes</div><div class="card-sub">envío + devolución + COD aplicado · * mes parcial</div><div class="cbars"><div class="cbar-col"><div class="cbar-val">€59.640</div>
   <div class="cbar" style="height:120px;background:#9CA3AF"></div>
   <div class="cbar-lab">ENE</div></div><div class="cbar-col"><div class="cbar-val">€64.770</div>
   <div class="cbar" style="height:130px;background:#F59E0B"></div>
@@ -459,7 +656,11 @@ footer { background:var(--navy); padding:12px 28px; display:flex; justify-conten
   <div class="cbar" style="height:107px;background:#059669"></div>
   <div class="cbar-lab">ABR</div></div><div class="cbar-col"><div class="cbar-val">€55.004</div>
   <div class="cbar" style="height:110px;background:#065F46"></div>
-  <div class="cbar-lab">MAY</div></div></div></div>
+  <div class="cbar-lab">MAY</div></div><div class="cbar-col"><div class="cbar-val">€31.579</div>
+  <div class="cbar" style="height:63px;background:#92400E"></div>
+  <div class="cbar-lab">JUN</div></div><div class="cbar-col"><div class="cbar-val">€13.962</div>
+  <div class="cbar" style="height:28px;background:#1E3FD8;opacity:.55"></div>
+  <div class="cbar-lab">JUL <span style="opacity:.55">*</span></div></div></div></div>
       <div class="card"><div class="card-title">Coste medio por pedido</div><div class="card-sub">el aplanamiento desde abril refleja la tarifa 24H</div><div class="cbars"><div class="cbar-col"><div class="cbar-val">€7,16</div>
   <div class="cbar" style="height:120px;background:#9CA3AF"></div>
   <div class="cbar-lab">ENE</div></div><div class="cbar-col"><div class="cbar-val">€7,78</div>
@@ -470,8 +671,12 @@ footer { background:var(--navy); padding:12px 28px; display:flex; justify-conten
   <div class="cbar" style="height:97px;background:#059669"></div>
   <div class="cbar-lab">ABR</div></div><div class="cbar-col"><div class="cbar-val">€5,87</div>
   <div class="cbar" style="height:98px;background:#065F46"></div>
-  <div class="cbar-lab">MAY</div></div></div></div>
-      <div class="card"><div class="card-title">Tasa de rechazo mensual</div><div class="card-sub">umbral atención 25% · crítico 32%</div><div class="cbars"><div class="cbar-col"><div class="cbar-val" style="color:#D97706">30,6%</div>
+  <div class="cbar-lab">MAY</div></div><div class="cbar-col"><div class="cbar-val">€6,06</div>
+  <div class="cbar" style="height:101px;background:#92400E"></div>
+  <div class="cbar-lab">JUN</div></div><div class="cbar-col"><div class="cbar-val">€5,77</div>
+  <div class="cbar" style="height:96px;background:#1E3FD8;opacity:.55"></div>
+  <div class="cbar-lab">JUL <span style="opacity:.55">*</span></div></div></div></div>
+      <div class="card"><div class="card-title">Tasa de rechazo mensual</div><div class="card-sub">umbral atención 25% · crítico 32% · julio subestimado</div><div class="cbars"><div class="cbar-col"><div class="cbar-val" style="color:#D97706">30,6%</div>
   <div class="cbar" style="height:100px;background:#D97706"></div>
   <div class="cbar-lab">ENE</div></div><div class="cbar-col"><div class="cbar-val" style="color:#D97706">31,3%</div>
   <div class="cbar" style="height:102px;background:#D97706"></div>
@@ -481,38 +686,66 @@ footer { background:var(--navy); padding:12px 28px; display:flex; justify-conten
   <div class="cbar" style="height:110px;background:#EF4444"></div>
   <div class="cbar-lab">ABR</div></div><div class="cbar-col"><div class="cbar-val" style="color:#EF4444">32,4%</div>
   <div class="cbar" style="height:105px;background:#EF4444"></div>
-  <div class="cbar-lab">MAY</div></div></div></div>
+  <div class="cbar-lab">MAY</div></div><div class="cbar-col"><div class="cbar-val" style="color:#EF4444">35,4%</div>
+  <div class="cbar" style="height:115px;background:#EF4444"></div>
+  <div class="cbar-lab">JUN</div></div><div class="cbar-col"><div class="cbar-val" style="color:#D97706">25,7%</div>
+  <div class="cbar" style="height:84px;background:#D97706;opacity:.55"></div>
+  <div class="cbar-lab">JUL <span style="opacity:.55">*</span></div></div></div></div>
     </div>
     <div class="card">
       <div class="card-title">Tabla comparativa mensual</div>
-      <div class="card-sub">Todas las cifras sobre estados Charged, Reject y Delivered · COD neto de la regla de devolución</div>
-      <table><thead><tr><th>Mes</th><th>Pedidos</th><th>Envío</th><th>Devolución</th><th>COD aplicado</th><th>Total</th><th>€/pedido</th><th>Envío medio</th><th>Rechazo</th><th>Coste rechazos</th></tr></thead>
+      <div class="card-sub">Estados Charged, Reject y Delivered · COD neto de la regla de devolución · * julio parcial hasta el 17</div>
+      <table><thead><tr><th>Mes</th><th>Pedidos</th><th>Envío</th><th>Devolución</th><th>COD aplicado</th><th>Total</th><th>€/pedido</th><th>€/ped. entregado</th><th>€/ped. devuelto</th><th>Rechazo</th><th>Coste rechazos</th></tr></thead>
       <tbody><tr><td style="font-weight:800;color:#9CA3AF">Enero</td>
   <td>8.325</td><td>€41.769</td><td>€12.113</td>
   <td>€5.758</td><td style="font-weight:800">€59.640</td>
-  <td>€7,16</td><td>€5,02</td>
+  <td>€7,16</td>
+  <td style="color:var(--success);font-weight:800">€6,05</td>
+  <td style="color:var(--danger);font-weight:800">€9,69</td>
   <td style="color:#D97706;font-weight:800">30,6%</td>
   <td style="color:var(--danger)">€24.710</td></tr><tr><td style="font-weight:800;color:#F59E0B">Febrero</td>
   <td>8.324</td><td>€45.096</td><td>€13.625</td>
   <td>€6.049</td><td style="font-weight:800">€64.770</td>
-  <td>€7,78</td><td>€5,42</td>
+  <td>€7,78</td>
+  <td style="color:var(--success);font-weight:800">€6,47</td>
+  <td style="color:var(--danger);font-weight:800">€10,66</td>
   <td style="color:#D97706;font-weight:800">31,3%</td>
   <td style="color:var(--danger)">€27.752</td></tr><tr><td style="font-weight:800;color:#3057F3">Marzo</td>
   <td>8.641</td><td>€38.952</td><td>€12.913</td>
   <td>€6.082</td><td style="font-weight:800">€57.947</td>
-  <td>€6,71</td><td>€4,51</td>
+  <td>€6,71</td>
+  <td style="color:var(--success);font-weight:800">€5,60</td>
+  <td style="color:var(--danger);font-weight:800">€8,80</td>
   <td style="color:#EF4444;font-weight:800">34,6%</td>
   <td style="color:var(--danger)">€26.299</td></tr><tr><td style="font-weight:800;color:#059669">Abril</td>
   <td>9.186</td><td>€35.538</td><td>€11.691</td>
   <td>€6.063</td><td style="font-weight:800">€53.291</td>
-  <td>€5,80</td><td>€3,87</td>
+  <td>€5,80</td>
+  <td style="color:var(--success);font-weight:800">€4,86</td>
+  <td style="color:var(--danger);font-weight:800">€7,63</td>
   <td style="color:#EF4444;font-weight:800">34,0%</td>
   <td style="color:var(--danger)">€23.792</td></tr><tr><td style="font-weight:800;color:#065F46">Mayo</td>
   <td>9.374</td><td>€37.032</td><td>€11.643</td>
   <td>€6.328</td><td style="font-weight:800">€55.004</td>
-  <td>€5,87</td><td>€3,95</td>
+  <td>€5,87</td>
+  <td style="color:var(--success);font-weight:800">€4,95</td>
+  <td style="color:var(--danger);font-weight:800">€7,79</td>
   <td style="color:#EF4444;font-weight:800">32,4%</td>
-  <td style="color:var(--danger)">€23.675</td></tr></tbody></table>
+  <td style="color:var(--danger)">€23.675</td></tr><tr><td style="font-weight:800;color:#92400E">Junio</td>
+  <td>5.208</td><td>€20.959</td><td>€7.255</td>
+  <td>€3.365</td><td style="font-weight:800">€31.579</td>
+  <td>€6,06</td>
+  <td style="color:var(--success);font-weight:800">€5,02</td>
+  <td style="color:var(--danger);font-weight:800">€7,98</td>
+  <td style="color:#EF4444;font-weight:800">35,4%</td>
+  <td style="color:var(--danger)">€14.683</td></tr><tr><td style="font-weight:800;color:#1E3FD8">Julio <span style="opacity:.55">*</span></td>
+  <td>2.419</td><td>€9.755</td><td>€2.410</td>
+  <td>€1.797</td><td style="font-weight:800">€13.962</td>
+  <td>€5,77</td>
+  <td style="color:var(--success);font-weight:800">€5,03</td>
+  <td style="color:var(--danger);font-weight:800">€7,93</td>
+  <td style="color:#D97706;font-weight:800">25,7%</td>
+  <td style="color:var(--danger)">€4.932</td></tr></tbody></table>
     </div>
     <div class="grid2">
       <div class="card">
@@ -520,25 +753,25 @@ footer { background:var(--navy); padding:12px 28px; display:flex; justify-conten
         <div class="card-sub">Contrafactual declarado · asume mix y volumen constantes</div>
         <div class="impact-row"><span>Envío medio febrero (tarifa 14H)</span><b>€5,42</b></div>
         <div class="impact-row"><span>Envío medio abril (tarifa 24H)</span><b>€3,87</b></div>
-        <div class="impact-row"><span>Envío medio mayo (tarifa 24H)</span><b>€3,95</b></div>
-        <div class="impact-row hl"><span>Reducción de tarifa media</span><b style="color:var(--success)">−27,1%</b></div>
-        <div class="impact-row hl"><span>Ahorro estimado / mes (volumen de mayo)</span><b style="color:var(--success)">≈ €13.780</b></div>
-        <div class="foot-note">Estimación = (envío medio feb − envío medio may) × envíos facturados de mayo. No proyecta crecimiento de volumen ni cambios de mix de servicio.</div>
+        <div class="impact-row"><span>Envío medio junio (24H · dual GLS/TIPSA)</span><b>€4,02</b></div>
+        <div class="impact-row hl"><span>Reducción de tarifa media (feb → jun)</span><b style="color:var(--success)">−25,8%</b></div>
+        <div class="impact-row hl"><span>Ahorro estimado / mes (volumen de junio)</span><b style="color:var(--success)">≈ €7.291</b></div>
+        <div class="foot-note">Estimación = (envío medio feb − envío medio jun) × envíos facturados de junio. No proyecta crecimiento de volumen ni cambios de mix de servicio. El envío medio de junio sube levemente vs abril por la entrada de TIPSA (€4,21 vs €3,90 de GLS).</div>
       </div>
       <div class="card">
         <div class="card-title">Alertas del período</div>
-        <div class="alert danger"><b>El rechazo es el principal driver de coste.</b> 14.302 pedidos Reject (32,6%) generaron €126.228 — el 43,4% de todo el gasto logístico — pagando ida (€4,54 medio) más vuelta (€4,34 media) sin ingreso asociado. Reducir 5 p.p. la tasa de rechazo libera más margen que cualquier renegociación de tarifa.</div>
-        <div class="alert warning"><b>Comisión COD €1,20</b> facturada en 5.895 pedidos de febrero–marzo frente al estándar de €1,00. Desapareció en abril; verificar contra factura si corresponde reclamo (€1.179 facturados de más).</div>
-        <div class="alert warning"><b>8 pedidos Charged con coste de devolución</b> — combinación contradictoria (cobrado y devuelto). Su COD fue excluido por regla; revisar el estado real en el panel de Dropea.</div>
-        <div class="alert info"><b>TIPSA opera con volumen material solo desde mayo</b> (1.832 pedidos en el período, 91% de ellos en mayo). Coste medio €6,26 vs €6,64 de GLS, con tasa de rechazo equivalente (~33%). Aún sin base suficiente para comparar calidad de entrega.</div>
-        <div class="alert success"><b>Renegociación tarifaria verificada:</b> el envío medio cayó de €5,42 a €3,95 (−27,1%) con la migración completa de Entrega 14H a Entrega 24H en abril.</div>
+        <div class="alert danger"><b>El rechazo es el principal driver de coste.</b> 16.765 pedidos Reject (32,6%) generaron €145.843 — el 43,4% de todo el gasto logístico. Cada devuelto cuesta €8,70 vs €5,48 del entregado. Reducir 5 p.p. la tasa de rechazo libera más margen que cualquier renegociación de tarifa.</div>
+        <div class="alert warning"><b>Comisión COD €1,20</b> facturada en 5.895 pedidos de febrero–marzo frente al estándar de €1,00 (€1.179 facturados de más). Desapareció en abril; verificar contra factura si corresponde reclamo.</div>
+        <div class="alert warning"><b>TIPSA opera ~€0,30 más caro por envío que GLS</b> bajo tarifa 24H (€4,21 vs €3,90 en junio) con tasa de rechazo equivalente. Con ~39% del volumen de junio en TIPSA, el sobrecoste ronda los €600/mes — cuantificar contra el beneficio operativo que justifique el dual.</div>
+        <div class="alert info"><b>Junio y julio siguen abiertos:</b> la exportación del 17/07 tiene ~1.100 pedidos de estos meses en Incidence / Transit / Pending que aún no computan. Los números de junio pueden moverse y los de julio son parciales por definición.</div>
+        <div class="alert success"><b>Renegociación tarifaria verificada:</b> el envío medio cayó de €5,42 a €4,02 (−25,8%) con la migración completa de Entrega 14H a Entrega 24H en abril, sostenida en mayo–julio.</div>
       </div>
     </div>
   </section>
 </main>
 <footer>
   <span>Pares &amp; Co · Documento interno · Confidencial</span>
-  <span>Fuente: 6 exportaciones Dropea · Costes: envío + devolución + COD (regla de devolución aplicada)</span>
+  <span>Fuente: 7 exportaciones Dropea · Costes: envío + devolución + COD (regla de devolución aplicada)</span>
 </footer>
 <script>
 document.querySelectorAll('.tab-btn').forEach(b => b.addEventListener('click', () => {
