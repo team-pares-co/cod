@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dropea Portugal — Análisis de Costes Logísticos · CTT</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#3057F3;--primary-light:#ECEFFE;--primary-dark:#1E3FD8;--navy:#111931;
+--fg:#0F1626;--muted:#75787E;--bg:#FFFFFF;--card-bg:#F2F3F5;--border:#E5E7EB;
+--success:#059669;--success-light:#ECFDF5;--danger:#EF4444;--danger-light:#FEF2F2;
+--warn:#D97706;--warn-light:#FFFBEB;--d1:#F59E0B;--d2:#3057F3;--d3:#059669;--d4:#065F46;--d5:#92400E;--d6:#9CA3AF}
+body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--fg);font-size:14px;min-width:900px}
+header{background:var(--navy);padding:16px 28px;display:flex;justify-content:space-between;align-items:center}
+.hleft{display:flex;align-items:center}
+.logo{font-weight:800;line-height:1.1;font-size:15px}
+.logo .l1{color:var(--primary);letter-spacing:.06em}
+.logo .l2{color:#fff;letter-spacing:.06em}
+.hsep{width:1px;height:36px;background:rgba(255,255,255,.12);margin:0 20px}
+.htitle{color:rgba(255,255,255,.9);font-size:14px;font-weight:600}
+.hsub{color:rgba(255,255,255,.4);font-size:10px;letter-spacing:.04em;margin-top:3px}
+.hright{color:rgba(255,255,255,.55);font-size:10px;text-align:right;line-height:1.7;letter-spacing:.03em}
+.hright b{color:#fff;font-weight:800;font-size:12px}
+.tabbar{background:#fff;border-bottom:1px solid var(--border);padding:0 28px;display:flex;gap:2px;position:sticky;top:0;z-index:5}
+.tab-btn{background:none;border:none;font-family:inherit;font-size:12px;font-weight:600;text-transform:uppercase;
+letter-spacing:.02em;color:var(--muted);padding:14px 16px;cursor:pointer;border-bottom:2px solid transparent}
+.tab-btn:hover{color:var(--fg);background:var(--card-bg)}
+.tab-btn.active{color:var(--primary);border-bottom-color:var(--primary)}
+main{padding:22px 28px}
+.tab-panel{display:none}.tab-panel.active{display:block}
+.pip{height:3px;width:32px;border-radius:2px;margin-bottom:14px}
+.sec-title{font-size:20px;font-weight:700;letter-spacing:-.01em;margin-bottom:2px}
+.sec-sub{font-size:11px;color:var(--muted);font-weight:500;margin-bottom:16px}
+.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}
+.metrics.m4{grid-template-columns:repeat(4,1fr)}
+.metrics.m5{grid-template-columns:repeat(5,1fr)}
+.met{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:12px 13px}
+.met.hl{background:#fff;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light)}
+.met-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.met-value{font-size:20px;font-weight:800;letter-spacing:-.02em;margin:5px 0 2px}
+.met-sub{font-size:10px;font-weight:500;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
+.grid21{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;margin-bottom:12px}
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.card-title{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:3px}
+.card-sub{font-size:10px;color:#C4C8D0;margin-bottom:12px;font-weight:500}
+table{width:100%;border-collapse:collapse}
+th{background:var(--card-bg);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;
+color:var(--muted);padding:9px 12px;text-align:right;border-bottom:2px solid var(--border)}
+th:first-child{text-align:left}
+td{padding:9px 12px;font-size:12px;font-weight:600;border-bottom:1px solid var(--border);text-align:right}
+td:first-child{text-align:left}
+tr:hover td{background:var(--primary-light)}
+tr.tot td{background:var(--card-bg);font-weight:800;border-bottom:none}
+.pos{color:var(--success);font-weight:800}.neg{color:var(--danger);font-weight:800}
+.alert{border-radius:8px;padding:9px 12px;font-size:11px;line-height:1.55;font-weight:500;margin-bottom:8px}
+.alert b{font-weight:800}
+.alert.danger{background:var(--danger-light);color:#991B1B;border-left:3px solid var(--danger)}
+.alert.warn{background:var(--warn-light);color:#92400E;border-left:3px solid var(--warn)}
+.alert.info{background:var(--primary-light);color:#1E3A8A;border-left:3px solid var(--primary)}
+.alert.success{background:var(--success-light);color:#065F46;border-left:3px solid var(--success)}
+.badge{display:inline-block;font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;
+text-transform:uppercase;letter-spacing:.04em}
+.b-ok{background:var(--success-light);color:var(--success)}
+.b-warn{background:var(--warn-light);color:var(--warn)}
+.b-bad{background:var(--danger-light);color:var(--danger)}
+.b-info{background:var(--primary-light);color:var(--primary)}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.bar-lab{font-size:10px;font-weight:700;color:var(--muted);width:110px;flex-shrink:0}
+.bar-track{flex:1;background:var(--card-bg);border-radius:3px;height:15px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px}
+.bar-val{font-size:11px;font-weight:800;width:88px;text-align:right;letter-spacing:-.02em}
+.wf{display:flex;align-items:flex-end;gap:8px;height:200px;padding-top:10px}
+.wf-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px}
+.wf-bar{width:100%;max-width:64px;border-radius:4px 4px 0 0}
+.wf-val{font-size:10px;font-weight:800;letter-spacing:-.02em}
+.wf-lab{font-size:9px;font-weight:700;letter-spacing:.06em;color:var(--muted);text-align:center;line-height:1.3}
+.krow{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;font-weight:500}
+.krow b{font-weight:800}
+.krow.hl{background:var(--card-bg);margin:0 -8px;padding:8px;border-radius:6px;border-bottom:none}
+.note{font-size:10px;color:var(--muted);margin-top:10px;line-height:1.55;font-weight:500}
+ul.lst{list-style:none;font-size:11px;line-height:1.7;font-weight:500}
+ul.lst li{padding-left:14px;position:relative;margin-bottom:5px}
+ul.lst li:before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--primary)}
+footer{background:var(--navy);padding:12px 28px;display:flex;justify-content:space-between;
+color:rgba(255,255,255,.4);font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-top:24px}
+</style>
+</head>
+<body>
+<header>
+  <div class="hleft">
+    <div class="logo"><div class="l1">PARES</div><div class="l2">&amp; CO</div></div>
+    <div class="hsep"></div>
+    <div>
+      <div class="htitle">Dropea Portugal — Análisis de Costes Logísticos</div>
+      <div class="hsub">CTT · Base wallet · Cohorte 30 abril – 26 junio 2026 · Biancani Limited</div>
+    </div>
+  </div>
+  <div class="hright"><b>425 pedidos</b> liquidados<br><b>€10.405</b> cobrado · <b>€2.567</b> logística</div>
+</header>
+<nav class="tabbar"><button class="tab-btn active" data-tab="tab-res">Resumen</button><button class="tab-btn" data-tab="tab-mes">Mensual</button><button class="tab-btn" data-tab="tab-ue">Unit economics</button><button class="tab-btn" data-tab="tab-rech">Rechazos</button><button class="tab-btn" data-tab="tab-aud">Auditoría</button><button class="tab-btn" data-tab="tab-comp">Comparativa</button></nav>
+<main><section class="tab-panel active" id="tab-res">
+<div class="pip" style="background:var(--primary)"></div>
+<div class="sec-title">Cohorte liquidada · 425 pedidos</div>
+<div class="sec-sub">Movimientos de wallet del 30/04 al 26/06/2026 · CTT como único operador · Tienda: Biancani Limited</div>
+
+<div class="metrics">
+  <div class="met hl"><div class="met-label">Pedidos liquidados</div><div class="met-value">425</div><div class="met-sub">264 entregados · 161 rechazados</div></div>
+  <div class="met"><div class="met-label">COD cobrado</div><div class="met-value">€10.405</div><div class="met-sub">ticket medio €39,13</div></div>
+  <div class="met"><div class="met-label">Coste logístico</div><div class="met-value">€2.567</div><div class="met-sub">€6,04 / pedido</div></div>
+  <div class="met"><div class="met-label">Coste de producto</div><div class="met-value">€1.688</div><div class="met-sub">€6,39 / entregado</div></div>
+  <div class="met"><div class="met-label">Margen de contribución</div><div class="met-value" style="color:var(--success)">€6.150</div><div class="met-sub">antes de publicidad</div></div>
+  <div class="met"><div class="met-label">Tasa de rechazo</div><div class="met-value" style="color:var(--danger)">37,9%</div><div class="met-sub">161 de 425 pedidos</div></div>
+</div>
+
+<div class="grid21">
+  <div class="card">
+    <div class="card-title">Del cobro al margen</div>
+    <div class="card-sub">Descomposición del euro cobrado · toda la cohorte</div>
+    <div class="wf">
+      <div class="wf-col"><div class="wf-val" style="color:var(--success)">€10.405</div><div class="wf-bar" style="height:100%;background:var(--success)"></div><div class="wf-lab">COD<br>COBRADO</div></div>
+      <div class="wf-col"><div class="wf-val" style="color:var(--danger)">−€1.505</div><div class="wf-bar" style="height:14.5%;background:var(--danger)"></div><div class="wf-lab">ENVÍO</div></div>
+      <div class="wf-col"><div class="wf-val" style="color:var(--danger)">−€640</div><div class="wf-bar" style="height:6.2%;background:#F87171"></div><div class="wf-lab">FULFILL.</div></div>
+      <div class="wf-col"><div class="wf-val" style="color:var(--danger)">−€422</div><div class="wf-bar" style="height:4.1%;background:#FCA5A5"></div><div class="wf-lab">COMISIÓN<br>COD</div></div>
+      <div class="wf-col"><div class="wf-val" style="color:var(--warn)">−€1.688</div><div class="wf-bar" style="height:16.2%;background:var(--warn)"></div><div class="wf-lab">PRODUCTO</div></div>
+      <div class="wf-col"><div class="wf-val" style="color:var(--primary)">€6.150</div><div class="wf-bar" style="height:59.1%;background:var(--primary)"></div><div class="wf-lab">MARGEN<br>CONTRIB.</div></div>
+    </div>
+    <div class="note">El margen de contribución no incluye publicidad ni estructura. En el período se retiraron €6.164 de la wallet bajo el concepto «Publicidad» — ver el bloque de la derecha.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Ratio logística / cobro</div>
+    <div class="card-sub">Umbrales del marco CTT · ≤16% verde · 16–20% ámbar · &gt;20% rojo</div>
+    <div class="krow"><span>Global (toda la cohorte)</span><b style="color:var(--danger)">24,67%</b></div>
+    <div class="krow"><span>Solo pedidos entregados</span><b style="color:var(--success)">15,43%</b></div>
+    <div class="krow hl"><span>Diferencia = carga de rechazos</span><b class="neg">9,24%</b></div>
+    <div style="height:12px"></div>
+    <div class="alert danger"><b>El problema no es la tarifa.</b> Con 15,43% el flete de un pedido que sí cobra está en zona verde. Los 9,24% restantes son íntegramente coste hundido en pedidos rechazados.</div>
+    <div class="alert warn"><b>Resultado neto de la wallet: €-13,90.</b> El margen de contribución de €6.150 quedó prácticamente absorbido por los €6.164 retirados para publicidad. La cohorte cerró en punto de equilibrio.</div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="card">
+    <div class="card-title">Distribución por estado final</div>
+    <div class="card-sub">Estado determinado por el último cargo registrado en wallet</div>
+    <table>
+      <thead><tr><th>Estado</th><th>Pedidos</th><th>%</th><th>COD</th><th>Coste log.</th><th>Resultado</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge b-ok">Entregado</span></td><td>264</td><td>62,1%</td><td>€10.330</td><td>€1.594</td><td class="pos">€7.049</td></tr>
+        <tr><td><span class="badge b-bad">Rechazado</span></td><td>161</td><td>37,9%</td><td>€75</td><td>€973</td><td class="neg">€-898</td></tr>
+        <tr class="tot"><td>Total</td><td>425</td><td>100,0%</td><td>€10.405</td><td>€2.567</td><td>€6.150</td></tr>
+      </tbody>
+    </table>
+    <div class="note">Los €74,98 de COD en la fila de rechazados corresponden a 2 pedidos cuya reclasificación no revirtió el ingreso — ver Auditoría.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Estructura del coste logístico</div>
+    <div class="card-sub">Neto de rectificaciones · 425 pedidos</div>
+    <div class="bar-row"><div class="bar-lab">ENVÍO</div><div class="bar-track"><div class="bar-fill" style="width:58.6%;background:var(--primary)"></div></div><div class="bar-val">€1.505</div></div>
+    <div class="bar-row"><div class="bar-lab">FULFILLMENT</div><div class="bar-track"><div class="bar-fill" style="width:24.9%;background:var(--d1)"></div></div><div class="bar-val">€640</div></div>
+    <div class="bar-row"><div class="bar-lab">COMISIÓN COD</div><div class="bar-track"><div class="bar-fill" style="width:16.4%;background:var(--d5)"></div></div><div class="bar-val">€422</div></div>
+    <div style="height:10px"></div>
+    <div class="krow"><span>Envío medio por pedido</span><b>€3,54</b></div>
+    <div class="krow"><span>Fulfillment por pedido</span><b>€1,51</b></div>
+    <div class="krow"><span>Comisión COD por pedido</span><b>€0,99</b></div>
+    <div class="krow hl"><span>Coste logístico por pedido</span><b>€6,04</b></div>
+    <div class="note">Dos tarifas de envío conviven en la serie: €3,50 (251 pedidos) y €3,60 (174 pedidos). El wallet no expone peso ni destino, de modo que el driver de la diferencia no es determinable con este archivo.</div>
+  </div>
+</div>
+</section><section class="tab-panel" id="tab-mes">
+<div class="pip" style="background:linear-gradient(90deg,#F59E0B,#3057F3,#059669)"></div>
+<div class="sec-title">Facturación y costes por mes</div>
+<div class="sec-sub">Criterio de cohorte: cada pedido se imputa al mes de su primer cargo en wallet</div>
+
+<div class="alert warn" style="margin-bottom:14px"><b>Esto no es una serie mensual.</b> Mayo concentra 95,1% de los pedidos y 96,9% de la facturación. Abril son las 8 liquidaciones del día 30 y junio son 13 pedidos de los que 12 son rechazos rezagados del lote de mayo. Los tres meses <b>no son comparables entre sí</b>: abril y junio son cortes de borde, no períodos de operación.</div>
+
+<div class="card">
+  <div class="card-title">Detalle mensual</div>
+  <div class="card-sub">Facturación COD, desglose de coste logístico y margen · importes netos de rectificaciones</div>
+  <table>
+    <thead><tr><th>Mes</th><th>Pedidos</th><th>Entreg.</th><th>Rechaz.</th><th>Tasa rech.</th>
+    <th>Facturación COD</th><th>Envío</th><th>Fulfillment</th><th>Comisión COD</th><th>Coste log.</th>
+    <th>Ratio log./COD</th><th>Envío medio</th><th>Margen contrib.</th></tr></thead>
+    <tbody><tr><td><b>Abril 2026</b></td><td>8</td><td>7</td><td class='neg'>1</td><td>12,5%</td><td class='pos'>€279,93</td><td>€28,40</td><td>€12,00</td><td>€8,00</td><td><b>€48,40</b></td><td style='color:var(--warn)'>17,29%</td><td>€3,55</td><td class='pos'>€175,53</td></tr><tr><td><b>Mayo 2026</b></td><td>404</td><td>256</td><td class='neg'>148</td><td>36,6%</td><td class='pos'>€10.085,43</td><td>€1.430,30</td><td>€608,55</td><td>€401,00</td><td><b>€2.439,85</b></td><td style='color:var(--danger)'>24,19%</td><td>€3,54</td><td class='pos'>€6.021,58</td></tr><tr><td><b>Junio 2026</b></td><td>13</td><td>1</td><td class='neg'>12</td><td>92,3%</td><td class='pos'>€39,99</td><td>€46,20</td><td>€19,80</td><td>€13,00</td><td><b>€79,00</b></td><td style='color:var(--danger)'>197,55%</td><td>€3,55</td><td class='neg'>€-47,01</td></tr><tr class='tot'><td>Total cohorte</td><td>425</td><td>264</td><td>161</td><td>37,9%</td><td>€10.405,35</td><td>€1.504,90</td><td>€640,35</td><td>€422,00</td><td>€2.567,25</td><td>24,67%</td><td>€3,54</td><td>€6.150,10</td></tr></tbody>
+  </table>
+  <div class="note">El envío medio es idénticamente €3,54 en los tres meses: la tarifa no se movió en todo el período. Las diferencias de ratio entre meses son composición (mix entregado/rechazado), no precio.</div>
+</div>
+
+<div class="grid21">
+  <div class="card">
+    <div class="card-title">Facturación contra coste logístico</div>
+    <div class="card-sub"><span style="color:var(--success)">■</span> COD cobrado · <span style="color:var(--danger)">■</span> coste logístico</div>
+    <div class="wf" style="height:230px"><div class="wf-col"><div class="wf-val" style="color:var(--success)">€280</div><div class="wf-bar" style="height:4.4px;background:var(--success)"></div><div class="wf-val" style="color:var(--danger)">−€48</div><div class="wf-bar" style="height:0.8px;background:var(--danger);border-radius:0 0 4px 4px"></div><div class="wf-lab">ABRIL</div></div><div class="wf-col"><div class="wf-val" style="color:var(--success)">€10.085</div><div class="wf-bar" style="height:160.0px;background:var(--success)"></div><div class="wf-val" style="color:var(--danger)">−€2.440</div><div class="wf-bar" style="height:38.7px;background:var(--danger);border-radius:0 0 4px 4px"></div><div class="wf-lab">MAYO</div></div><div class="wf-col"><div class="wf-val" style="color:var(--success)">€40</div><div class="wf-bar" style="height:0.6px;background:var(--success)"></div><div class="wf-val" style="color:var(--danger)">−€79</div><div class="wf-bar" style="height:1.3px;background:var(--danger);border-radius:0 0 4px 4px"></div><div class="wf-lab">JUNIO</div></div></div>
+    <div class="note">Junio no tiene barra verde relevante: son rechazos que se liquidan sin ingreso asociado. Su ratio de 197,5% no significa que la operación se deteriorase — significa que ese mes solo contiene cola de rechazos.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Contraste de criterios</div>
+    <div class="card-sub">Vista de caja (fecha del movimiento) frente a vista de cohorte</div>
+    <table>
+      <thead><tr><th>Mes</th><th>COD</th><th>Envío</th><th>Fulfill.</th><th>Com. COD</th><th>Coste log.</th><th>Δ vs cohorte</th></tr></thead>
+      <tbody><tr><td><b>Abril 2026</b></td><td class='pos'>€279,93</td><td>€28,00</td><td>€12,00</td><td>€8,00</td><td><b>€48,00</b></td><td style='color:var(--muted)'>€0,00 / €0,40</td></tr><tr><td><b>Mayo 2026</b></td><td class='pos'>€10.085,43</td><td>€1.430,70</td><td>€608,55</td><td>€401,00</td><td><b>€2.440,25</b></td><td style='color:var(--muted)'>€0,00 / €-0,40</td></tr><tr><td><b>Junio 2026</b></td><td class='pos'>€39,99</td><td>€46,20</td><td>€19,80</td><td>€13,00</td><td><b>€79,00</b></td><td style='color:var(--muted)'>€0,00 / €0,00</td></tr></tbody>
+    </table>
+    <div class="note">Ambos criterios convergen: la única discrepancia es de <b>€0,40</b> de envío entre abril y mayo, por una rectificación que cruzó el cambio de mes. Se puede usar cualquiera de los dos sin que cambie la lectura — la vista de caja es la que cuadra contra el saldo de la wallet, la de cohorte es la que sirve para unit economics.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Detalle semanal</div>
+  <div class="card-sub">Única granularidad con volumen suficiente dentro de mayo · pedidos imputados a la semana de su primer cargo</div>
+  <table>
+    <thead><tr><th>Semana</th><th>Pedidos</th><th>Entregados</th><th>Rechazados</th><th>Facturación COD</th>
+    <th>Coste envío</th><th>Envío medio</th><th>Coste log.</th><th>Ratio</th></tr></thead>
+    <tbody><tr><td>27/04 – 03/05</td><td>11</td><td>10</td><td class='neg'>1</td><td class='pos'>€399,90</td><td>€39,20</td><td>€3,56</td><td>€66,70</td><td>16,7%</td></tr><tr><td>04/05 – 10/05</td><td>131</td><td>116</td><td class='neg'>15</td><td class='pos'>€4.511,85</td><td>€463,60</td><td>€3,54</td><td>€788,85</td><td>17,5%</td></tr><tr><td>11/05 – 17/05</td><td>175</td><td>113</td><td class='neg'>62</td><td class='pos'>€4.513,85</td><td>€619,50</td><td>€3,54</td><td>€1.057,90</td><td>23,4%</td></tr><tr><td>18/05 – 24/05</td><td>74</td><td>22</td><td class='neg'>52</td><td class='pos'>€859,78</td><td>€262,10</td><td>€3,54</td><td>€447,55</td><td>52,1%</td></tr><tr><td>25/05 – 31/05</td><td>21</td><td>2</td><td class='neg'>19</td><td class='pos'>€79,98</td><td>€74,30</td><td>€3,54</td><td>€127,25</td><td>159,1%</td></tr><tr><td>01/06 – 07/06</td><td>9</td><td>1</td><td class='neg'>8</td><td class='pos'>€39,99</td><td>€31,90</td><td>€3,54</td><td>€54,70</td><td>136,8%</td></tr><tr><td>08/06 – 14/06</td><td>1</td><td>0</td><td class='neg'>1</td><td class='pos'>€0,00</td><td>€3,50</td><td>€3,50</td><td>€6,00</td><td>—</td></tr><tr><td>15/06 – 21/06</td><td>2</td><td>0</td><td class='neg'>2</td><td class='pos'>€0,00</td><td>€7,20</td><td>€3,60</td><td>€12,20</td><td>—</td></tr><tr><td>22/06 – 28/06</td><td>1</td><td>0</td><td class='neg'>1</td><td class='pos'>€0,00</td><td>€3,60</td><td>€3,60</td><td>€6,10</td><td>—</td></tr></tbody>
+  </table>
+  <div class="alert danger" style="margin-top:12px"><b>No leer la columna de ratio como una tendencia.</b> Sube del 17% al 159% no porque la operación empeore sino porque las entregas se liquidan pronto y los rechazos tarde: las últimas semanas solo contienen la cola de rechazos del mismo lote. El único ratio válido de la cohorte es 24,67%, y el de los pedidos que sí cobran, 15,43%.</div>
+</div>
+</section><section class="tab-panel" id="tab-ue">
+<div class="pip" style="background:var(--success)"></div>
+<div class="sec-title">Unit economics por pedido</div>
+<div class="sec-sub">Estructura de contribución de un pedido entregado y coste de un pedido rechazado</div>
+
+<div class="metrics m5">
+  <div class="met hl"><div class="met-label">Contribución / entregado</div><div class="met-value" style="color:var(--success)">€26,70</div><div class="met-sub">antes de rechazos y publicidad</div></div>
+  <div class="met"><div class="met-label">Coste / rechazado</div><div class="met-value" style="color:var(--danger)">−€6,05</div><div class="met-sub">íntegramente hundido</div></div>
+  <div class="met"><div class="met-label">Contribución neta</div><div class="met-value">€23,30</div><div class="met-sub">por entregado, absorbidos los rechazos</div></div>
+  <div class="met"><div class="met-label">Ticket medio</div><div class="met-value">€39,13</div><div class="met-sub">2 puntos de precio dominantes</div></div>
+  <div class="met"><div class="met-label">CPA implícito</div><div class="met-value" style="color:var(--warn)">€23,35</div><div class="met-sub">retiros «Publicidad» / entregados</div></div>
+</div>
+
+<div class="grid2">
+  <div class="card">
+    <div class="card-title">P&amp;L de un pedido entregado</div>
+    <div class="card-sub">Promedios de la cohorte · 264 pedidos</div>
+    <div class="krow"><span>COD cobrado</span><b class="pos">€39,13</b></div>
+    <div class="krow"><span>Coste de producto</span><b>−€6,39</b></div>
+    <div class="krow"><span>Envío</span><b>−€3,55</b></div>
+    <div class="krow"><span>Fulfillment</span><b>−€1,50</b></div>
+    <div class="krow"><span>Comisión COD</span><b>−€0,99</b></div>
+    <div class="krow hl"><span><b>Contribución bruta</b></span><b class="pos">€26,70</b></div>
+    <div class="krow"><span>Carga de rechazos prorrateada</span><b class="neg">−€3,69</b></div>
+    <div class="krow hl"><span><b>Contribución neta por entregado</b></span><b class="pos">€23,30</b></div>
+    <div class="krow"><span>Publicidad implícita por entregado</span><b class="neg">−€23,35</b></div>
+    <div class="krow hl"><span><b>Resultado por entregado</b></span><b class="neg">€-0,05</b></div>
+    <div class="note">El coste de producto medio está subestimado: 54 pedidos entregados (20,5%) no tienen coste de producto registrado en la wallet. Imputándoles €8,00 el coste subiría €432 y la contribución bruta caería a €25,06.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Sensibilidad a la tasa de rechazo</div>
+    <div class="card-sub">Mismos 425 pedidos y misma economía unitaria · solo cambia el mix entregado / rechazado</div>
+    <table>
+      <thead><tr><th>Tasa de rechazo</th><th>Entregados</th><th>Rechazados</th><th>Contribución</th><th>Δ vs actual</th></tr></thead>
+      <tbody><tr><td><b>37,9%</b> <span class=badge style=background:var(--card-bg);color:var(--muted)>Actual</span></td><td>264</td><td>161</td><td>€6.075</td><td class='neg'>€-75</td></tr><tr><td><b>35,0%</b> </td><td>276</td><td>149</td><td>€6.476</td><td class='pos'>+€326</td></tr><tr><td><b>30,0%</b> </td><td>298</td><td>128</td><td>€7.172</td><td class='pos'>+€1.022</td></tr><tr><td><b>25,0%</b> </td><td>319</td><td>106</td><td>€7.868</td><td class='pos'>+€1.718</td></tr><tr><td><b>20,0%</b> </td><td>340</td><td>85</td><td>€8.564</td><td class='pos'>+€2.414</td></tr></tbody>
+    </table>
+    <div class="note">Cada punto porcentual de tasa de rechazo vale ≈ €139,17 de contribución sobre esta cohorte. Bajar del 37,9% al 25% habría convertido un cierre en equilibrio en €1.718 de resultado positivo, sin tocar la tarifa.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Economía por punto de precio</div>
+  <div class="card-sub">Pedidos entregados agrupados por el importe de COD cobrado</div>
+  <table>
+    <thead><tr><th>PVP (COD)</th><th>Entregados</th><th>COD cobrado</th><th>Coste log.</th><th>Coste producto</th><th>Ratio log./COD</th><th>Contribución</th><th>Por pedido</th></tr></thead>
+    <tbody><tr><td><b>€34,99</b></td><td>43</td><td>€1.505</td><td>€259</td><td>€136</td><td style='color:var(--warn)'>17,19%</td><td class='pos'>€1.110</td><td class='pos'>€25,81</td></tr><tr><td><b>€39,99</b></td><td>219</td><td>€8.758</td><td>€1.323</td><td>€1.528</td><td style='color:var(--success)'>15,11%</td><td class='pos'>€5.907</td><td class='pos'>€26,97</td></tr></tbody>
+  </table>
+  <div class="note">El coste logístico es plano por pedido (€6,04), de modo que el ratio mejora mecánicamente con el PVP. La diferencia de 2,08% entre los dos puntos de precio es puramente denominador: subir el ticket es la palanca más barata sobre el ratio, siempre que no mueva la tasa de rechazo.</div>
+</div>
+</section><section class="tab-panel" id="tab-rech">
+<div class="pip" style="background:var(--danger)"></div>
+<div class="sec-title">Rechazos: dónde se va el dinero</div>
+<div class="sec-sub">161 pedidos rechazados · 37,9% de la cohorte</div>
+
+<div class="metrics m4">
+  <div class="met hl"><div class="met-label">Coste hundido</div><div class="met-value" style="color:var(--danger)">€973</div><div class="met-sub">37,9% del gasto logístico</div></div>
+  <div class="met"><div class="met-label">Coste por rechazo</div><div class="met-value">€6,05</div><div class="met-sub">envío + fulfillment + comisión</div></div>
+  <div class="met"><div class="met-label">Contribución perdida</div><div class="met-value" style="color:var(--danger)">€4.299</div><div class="met-sub">coste de oportunidad a contribución actual</div></div>
+  <div class="met"><div class="met-label">Impacto total</div><div class="met-value" style="color:var(--danger)">€5.272</div><div class="met-sub">hundido + contribución no realizada</div></div>
+</div>
+
+<div class="card">
+  <div class="card-title">Liquidación diaria de la cohorte</div>
+  <div class="card-sub">Fecha del primer cargo en wallet · <span style="color:var(--success)">■</span> entregados · <span style="color:var(--danger)">■</span> rechazados</div>
+  <div class="wf" style="height:200px;gap:3px"><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:3.3px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:22.9px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">30/04</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:0.0px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:9.8px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">02/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:0.0px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:22.9px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">04/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:19.6px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:140.4px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">05/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:3.3px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:42.4px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">06/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:26.1px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:84.9px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">07/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:0.0px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:84.9px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">08/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:0.0px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:3.3px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">09/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:13.1px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:75.1px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">11/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:22.9px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:71.8px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">12/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:49.0px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:26.1px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">13/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:58.8px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:101.2px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">14/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:58.8px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:94.7px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">15/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:52.2px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:29.4px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">18/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:35.9px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:13.1px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">19/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:35.9px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:9.8px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">20/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:26.1px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:16.3px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">21/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:19.6px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:3.3px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">22/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:13.1px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:6.5px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">25/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:19.6px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:0.0px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">26/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:19.6px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:0.0px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">27/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:6.5px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:0.0px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">28/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:3.3px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:0.0px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">29/05</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:9.8px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:0.0px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">01/06</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:3.3px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:3.3px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">02/06</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:9.8px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:0.0px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">03/06</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:3.3px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:0.0px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">05/06</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:3.3px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:0.0px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">09/06</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:3.3px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:0.0px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">15/06</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:3.3px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:0.0px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">17/06</div></div><div class="wf-col" style="gap:2px"><div class="wf-bar" style="height:3.3px;background:var(--danger);border-radius:3px 3px 0 0"></div><div class="wf-bar" style="height:0.0px;background:var(--success);border-radius:0"></div><div class="wf-lab" style="font-size:7px;letter-spacing:0">26/06</div></div></div>
+  <div class="note"><b>Esto no es una tendencia, es un rezago de liquidación.</b> Las entregas se registran al cobrar, los rechazos cuando el paquete se da por devuelto — semanas después. Por eso el tramo inicial parece tener un 11% de rechazo y el final un 90%: es el mismo lote visto en dos momentos de su decantación. La única lectura válida es la tasa de la cohorte completa (37,9%), igual que el criterio de tasa acumulada adoptado para CTT Santa Coloma.</div>
+</div>
+
+<div class="grid2">
+  <div class="card">
+    <div class="card-title">Anatomía del coste de un rechazo</div>
+    <div class="card-sub">161 pedidos · ningún ingreso asociado</div>
+    <div class="bar-row"><div class="bar-lab">ENVÍO</div><div class="bar-track"><div class="bar-fill" style="width:58.4%;background:var(--danger)"></div></div><div class="bar-val">€569</div></div>
+    <div class="bar-row"><div class="bar-lab">FULFILLMENT</div><div class="bar-track"><div class="bar-fill" style="width:25.0%;background:#F87171"></div></div><div class="bar-val">€244</div></div>
+    <div class="bar-row"><div class="bar-lab">COMISIÓN COD</div><div class="bar-track"><div class="bar-fill" style="width:16.5%;background:#FCA5A5"></div></div><div class="bar-val">€161</div></div>
+    <div style="height:10px"></div>
+    <div class="alert danger"><b>Comisión COD sobre pedidos no cobrados: €161.</b> Los 161 rechazados llevan €1,00 de comisión de contra-reembolso cada uno, pese a que por definición no hubo entrega ni cobro. Es el mismo hallazgo que en CTT Santa Coloma (§8.2 de las definiciones): un componente devengable solo con cobro efectivo, facturado sobre líneas sin cobro. Reclamable en bloque.</div>
+    <div class="alert info">El wallet <b>no factura el flete de retorno</b>: al rechazado solo se le carga el tramo de salida. La devolución al fulfillment está incluida en la tarifa o absorbida por Dropea — a diferencia de la operación española, donde el retorno se factura aparte.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Lo que costaría corregirlo</div>
+    <div class="card-sub">Palancas ordenadas por coste de implementación</div>
+    <ul class="lst">
+      <li><b>Reclamar la comisión COD de los rechazados</b> — €161 sobre esta cohorte, 6,3% del gasto logístico. Sin coste operativo: es una corrección de facturación con precedente en el contrato de CTT.</li>
+      <li><b>Confirmación previa al despacho</b> (WhatsApp / llamada) sobre el segmento de mayor rechazo. Cada punto de tasa recuperado vale €139,17 sobre un lote de este tamaño.</li>
+      <li><b>Revisar el mix de captación.</b> La tasa de rechazo es una variable de media buying antes que de logística: el flete ya está en zona verde (15,43%) en los pedidos que sí cobran.</li>
+      <li><b>Subir el ticket.</b> Con coste logístico plano de €6,04, mover el PVP de €34,99 a €39,99 mejora el ratio 2,08% sin tocar la operación.</li>
+    </ul>
+    <div style="height:8px"></div>
+    <div class="alert warn"><b>Orden de magnitud:</b> el impacto total de los rechazos sobre esta cohorte (€5.272) es más de 0.9× el margen de contribución efectivamente generado (€6.150).</div>
+  </div>
+</div>
+</section><section class="tab-panel" id="tab-aud">
+<div class="pip" style="background:var(--warn)"></div>
+<div class="sec-title">Auditoría de la wallet</div>
+<div class="sec-sub">2.590 movimientos de categoría ORDEN · cuadre y anomalías</div>
+
+<div class="metrics m4">
+  <div class="met hl"><div class="met-label">Cuadre</div><div class="met-value" style="color:var(--success)">€6.150,10</div><div class="met-sub">suma de movimientos = COD − logística − producto</div></div>
+  <div class="met"><div class="met-label">Reclamable a Dropea</div><div class="met-value" style="color:var(--danger)">€161</div><div class="met-sub">comisión COD sobre rechazos</div></div>
+  <div class="met"><div class="met-label">Pedidos rectificados</div><div class="met-value">113</div><div class="met-sub">26,6% de la cohorte</div></div>
+  <div class="met"><div class="met-label">Datos incompletos</div><div class="met-value" style="color:var(--warn)">54</div><div class="met-sub">entregados sin coste de producto</div></div>
+</div>
+
+<div class="grid2">
+  <div class="card">
+    <div class="card-title">Hallazgos</div>
+    <div class="card-sub">Ordenados por importe reclamable</div>
+    <div class="alert danger"><b>1 · Comisión COD sobre 161 pedidos rechazados — €161.</b> El cargo <code>COD_COMMISSION</code> se aplica también a los pedidos rechazados, donde no hubo cobro que comisionar. Criterio idéntico al aplicado con CTT: el componente es devengable solo si hubo entrega y cobro.</div>
+    <div class="alert warn"><b>2 · Ingreso COD no revertido en 2 pedidos — €74,98.</b> Los pedidos #371 y #972 se cargaron como entregados con cobro, se rectificaron a rechazados días después y el <code>COD_COLLECTION</code> nunca se revirtió. O el ingreso es ficticio o la reclasificación es errónea; en cualquier caso la wallet queda inconsistente.</div>
+    <div class="alert warn"><b>3 · 54 pedidos entregados sin coste de producto (20,5%).</b> Su margen aparece inflado en ≈€432. Hay que determinar si es un fallo de registro o si esos SKU realmente no llevan coste imputado.</div>
+    <div class="alert info"><b>4 · Un cargo de envío de €164,95</b> (pedido #434) frente a una tarifa normal de €3,50. Fue revertido íntegramente el 06/05, de modo que no afecta al resultado, pero confirma que la wallet admite cargos con dos órdenes de magnitud de error.</div>
+    <div class="alert info"><b>5 · 113 pedidos rectificados (26,6%).</b> El mecanismo es reversión total + recargo. Un cuarto de la cohorte pasó por él, casi siempre para corregir la tarifa de envío o el estado del pedido. Cualquier lectura tomada antes del cierre del lote habría sido incorrecta.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Reglas de lectura de este archivo</div>
+    <div class="card-sub">Metodología aplicada · replicable en el próximo corte</div>
+    <ul class="lst">
+      <li><b>Unidad de análisis: el pedido, no el movimiento.</b> Un pedido genera entre 3 y 13 movimientos.</li>
+      <li><b>Todo importe es neto de <code>RECTIFICATION_REVERSAL</code>.</b> Las reversiones se imputan al concepto que corrigen, no se cuentan como ingreso.</li>
+      <li><b>El estado lo fija el último cargo,</b> no la existencia de líneas <code>refused</code>: un pedido puede pasar de rechazado a entregado por rectificación.</li>
+      <li><b>Los retiros (<code>WITHDRAWAL</code>) quedan fuera del coste logístico.</b> Son movimientos de tesorería hacia publicidad, no coste de la operación.</li>
+      <li><b>La wallet solo registra pedidos liquidados.</b> Los que siguen en tránsito no aparecen: la cohorte son 425 pedidos cerrados, no todos los despachados en el período.</li>
+      <li><b>La tasa de rechazo se lee sobre la cohorte completa,</b> nunca por semana ni por día (rezago de liquidación).</li>
+    </ul>
+    <div style="height:8px"></div>
+    <div class="alert success"><b>Cuadre verificado.</b> La suma de los 2.590 movimientos de categoría ORDEN (€6.150,10) coincide al céntimo con COD cobrado − coste logístico − coste de producto reconstruidos por pedido.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Limitaciones vigentes</div>
+  <div class="card-sub">Qué no puede responderse con este archivo</div>
+  <div class="grid3" style="margin:0">
+    <div>
+      <ul class="lst">
+        <li><b>Sin peso ni destino.</b> La wallet no expone peso, código postal ni servicio, así que la diferencia entre €3,50 y €3,60 de envío (y entre €1,50 y €1,65 de fulfillment) no es atribuible a ningún driver.</li>
+        <li><b>Sin cruce con CTT.</b> A diferencia del análisis de Santa Coloma, aquí no hay factura del transportista: se ve lo que Dropea cobra a la tienda, no lo que CTT cobra a Dropea.</li>
+      </ul>
+    </div>
+    <div>
+      <ul class="lst">
+        <li><b>Un solo mes parcial.</b> No hay serie: no puede construirse contrafactual tarifario ni detectar cambios de régimen.</li>
+        <li><b>Una sola tienda.</b> Toda la cohorte es Biancani Limited, de modo que no hay segmentación por marca.</li>
+      </ul>
+    </div>
+    <div>
+      <ul class="lst">
+        <li><b>Publicidad aproximada.</b> Los €6.164 retirados bajo el concepto «Publicidad» se toman como proxy del gasto en medios del período; el dato real vive en las plataformas, no en la wallet.</li>
+        <li><b>Cohorte casi cerrada.</b> El último rechazo se liquidó el 26/06; podría quedar algún residual posterior.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section><section class="tab-panel" id="tab-comp">
+<div class="pip" style="background:linear-gradient(90deg,#F59E0B,#3057F3,#059669)"></div>
+<div class="sec-title">Portugal frente a España</div>
+<div class="sec-sub">Contraste con el informe de costes de Dropea España (base wallet, enero–22 julio 2026)</div>
+
+<div class="card">
+  <div class="card-title">Comparativa de indicadores</div>
+  <div class="card-sub">Portugal: cohorte de 425 pedidos liquidados · España: serie mensual de siete meses</div>
+  <table>
+    <thead><tr><th>Indicador</th><th>Portugal (CTT)</th><th>España (GLS + TIPSA)</th><th>Lectura</th></tr></thead>
+    <tbody><tr><td>Ticket medio cobrado</td><td><b>€39,13</b></td><td style='color:var(--muted)'>€40,26</td><td>Equivalente</td></tr><tr><td>Envío medio por pedido</td><td><b>€3,54</b></td><td style='color:var(--muted)'>€3,90 (GLS) · €4,21 (TIPSA)</td><td>PT más barato</td></tr><tr><td>Coste logístico por pedido</td><td><b>€6,04</b></td><td style='color:var(--muted)'>—</td><td>—</td></tr><tr><td>Ratio logística / cobro global</td><td><b>24,67%</b></td><td style='color:var(--muted)'>≈22,8%</td><td>PT peor</td></tr><tr><td>Ratio solo entregados</td><td><b>15,43%</b></td><td style='color:var(--muted)'>≈12,6%</td><td>PT peor</td></tr><tr><td>Tasa de rechazo</td><td><b>37,9%</b></td><td style='color:var(--muted)'>35,4% (jun) · 25,7% (jul, parcial)</td><td>Comparable</td></tr><tr><td>Transportistas</td><td><b>1 (CTT)</b></td><td style='color:var(--muted)'>2 (GLS + TIPSA)</td><td>—</td></tr><tr><td>Flete de retorno facturado</td><td><b>No</b></td><td style='color:var(--muted)'>Sí, línea aparte</td><td>Ventaja PT</td></tr></tbody>
+  </table>
+  <div class="note">Las cifras de España provienen del informe anterior sobre base wallet. La comparación de ratios es indicativa: Portugal es un lote parcial de un mes y España una serie de siete, con volúmenes de dos órdenes de magnitud de diferencia.</div>
+</div>
+
+<div class="grid2">
+  <div class="card">
+    <div class="card-title">Qué se replica</div>
+    <div class="card-sub">Patrones comunes a las dos operaciones</div>
+    <div class="alert danger"><b>El coste hundido en rechazos domina el ratio.</b> En España los pedidos que cobran explicaban 12,6 de los 22,8 puntos del ratio global; en Portugal explican 15,43% de 24,67%. En ambos mercados la tarifa está resuelta y el problema es la tasa de entrega.</div>
+    <div class="alert warn"><b>El COD se comisiona sobre entregas que no ocurrieron.</b> Idéntico al hallazgo de CTT Santa Coloma. Es un patrón del modelo COD, no una particularidad de un proveedor: conviene revisarlo en cada contrato del ecosistema.</div>
+    <div class="alert info"><b>Las tasas parciales engañan.</b> Tanto la tasa mensual de devoluciones en CTT como la tasa semanal de rechazo aquí producen números falsos por rezago de liquidación. En ambos casos la lectura correcta es acumulada o por cohorte cerrada.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Qué es distinto en Portugal</div>
+    <div class="card-sub">Diferencias estructurales a tener en cuenta</div>
+    <div class="alert success"><b>Flete más barato y retorno no facturado.</b> €3,54 frente a €3,90–€4,21 en España, y sin cargo de devolución. La ventaja de coste unitario es real: ≈€153 sobre un lote de este tamaño solo por diferencia de tarifa de salida.</div>
+    <div class="alert warn"><b>Peor ratio pese a la tarifa más barata.</b> Con envío más barato y ticket equivalente, el ratio de entregados es 2,83% peor que España. La diferencia está en el fulfillment y la comisión COD, que en Portugal suman €2,50 por pedido sobre el flete.</div>
+    <div class="alert info"><b>Un solo operador.</b> No hay comparativa entre transportistas ni palanca de arbitraje: cualquier renegociación es bilateral con CTT vía Dropea.</div>
+    <div style="height:4px"></div>
+    <div class="note">Próximo paso natural: repetir este corte con un mes completo para poder construir serie, y si es posible obtener la factura de CTT a Dropea para medir el margen que el intermediario retiene sobre el flete — igual que se hizo con las exportaciones de facturación en Santa Coloma.</div>
+  </div>
+</div>
+</section></main>
+<footer>
+  <span>Pares &amp; Co · Documento interno · Confidencial</span>
+  <span>Fuente: wallet Dropea Portugal · 2.590 movimientos · Importes netos de rectificaciones</span>
+</footer>
+<script>
+document.querySelectorAll('.tab-btn').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  document.getElementById(b.dataset.tab).classList.add('active');
+}));
+</script>
+</body>
+</html>
